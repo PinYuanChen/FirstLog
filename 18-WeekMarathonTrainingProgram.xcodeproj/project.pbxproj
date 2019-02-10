@@ -22,6 +22,7 @@
 		18690A9121F33B7900F873CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690A9021F33B7900F873CF /* Constants.swift */; };
 		18690A9A21F89EFC00F873CF /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18690A9821F89EFC00F873CF /* ProgramModel.xcdatamodeld */; };
 		18690AA121FC934800F873CF /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690AA021FC934800F873CF /* HelperFunctions.swift */; };
+		18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		18690A9021F33B7900F873CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18690A9921F89EFC00F873CF /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
 		18690AA021FC934800F873CF /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				18690A7321F3195300F873CF /* AppDelegate.swift */,
-				18690A7721F3195300F873CF /* Main.storyboard */,
+				18C71F872210482D007A7FBF /* View */,
 				18690A9F21FC929300F873CF /* Controller */,
 				18690A8F21F33B5700F873CF /* Model */,
 				18690A7F21F3195700F873CF /* LaunchScreen.storyboard */,
@@ -116,6 +118,15 @@
 			);
 			name = Controller;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		18C71F872210482D007A7FBF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18690A7721F3195300F873CF /* Main.storyboard */,
+				18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 				18690A9A21F89EFC00F873CF /* ProgramModel.xcdatamodeld in Sources */,
 				1824EA7422100B1000B3D25B /* ProfileViewController.swift in Sources */,
 				1824EA7122100ABF00B3D25B /* MainViewController.swift in Sources */,
+				18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */,
 				18056F94220C761B00C75241 /* CoreDataManager.swift in Sources */,
 				18690AA121FC934800F873CF /* HelperFunctions.swift in Sources */,
 				1824EA7222100ABF00B3D25B /* InfoViewController.swift in Sources */,
