@@ -10,9 +10,16 @@ import UIKit
 
 class ProgramListTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var cellBackgroundView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cellBackgroundView.layer.shadowColor = UIColor.lightGray.cgColor
+        cellBackgroundView.layer.shadowOpacity = 0.8
+        cellBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        cellBackgroundView.layer.shadowRadius = 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -11,17 +11,19 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableview: UITableView!
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = NSLocalizedString("FIRST_TIME_DESCRIPTION", comment: "")
-//        tableviewSetUp()
+        tableviewSetUp()
         navigationSetUp()
     }
     
     func tableviewSetUp() {
-        //if no data set tableview hidden
-        tableview.isHidden = true
+        //if no data set tableview hidden, otherwise hide the label
+//        tableview.isHidden = true
+        tableview.separatorColor = .clear
     }
     
     func navigationSetUp() {
