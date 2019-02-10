@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  18-WeekMarathonTrainingProgram
+
+  Created by pinyuan on 2019/2/10.
+  Copyright © 2019 Apple. All rights reserved.
+*/
+
+//MARK: Tabbar title
+"TAB_BAR_PROGRAM" = "Program";
+"TAB_BAR_PROFILE" = "Profile";
+"TAB_BAR_INFO" = "Info";
+"TAB_BAR_SETTINGS" = "Settings";
+
+//MARK: Main View Controller
+"FIRST_TIME_DESCRIPTION" = "Create your first marathon training program by pressing \"+\" button below!";
+
+
+
+//MARK: Training program
+"WEEK1" = "Week1";
+"WEEK2" = "Week2";
+"WEEK3" = "Week3";
+"WEEK4" = "Week4";
+"WEEK5" = "Week5";
+"WEEK6" = "Week6";
+"WEEK7" = "Week7";
+"WEEK8" = "Week8";
+"WEEK9" = "Week9";
+"WEEK10" = "Week10";
+"WEEK11" = "Week11";
+"WEEK12" = "Week12";
+"WEEK13" = "Week13";
+"WEEK14" = "Week14";
+"WEEK15" = "Week15";
+"WEEK16" = "Week16";
+

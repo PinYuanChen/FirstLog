@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  18-WeekMarathonTrainingProgram
+
+  Created by pinyuan on 2019/2/10.
+  Copyright © 2019 Apple. All rights reserved.
+*/
+
+//MARK: - Main View Controller
+"FIRST_TIME_DESCRIPTION" = "請按下方的按鈕「＋」來建立第一個訓練計畫!";
+
+"WEEK1" = "第1週";
+"WEEK2" = "第2週";
+"WEEK3" = "第3週";
+"WEEK4" = "";
+"WEEK5" = "";
+"WEEK6" = "";
+"WEEK7" = "";
+"WEEK8" = "";
+"WEEK9" = "";
+"WEEK10" = "";
+"WEEK11" = "";
+"WEEK12" = "";
+"WEEK13" = "";
+"WEEK14" = "";
+"WEEK15" = "";
+"WEEK16" = "";

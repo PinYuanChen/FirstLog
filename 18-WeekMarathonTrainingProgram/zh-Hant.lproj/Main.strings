@@ -1,0 +1,48 @@
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "14J-2I-052"; */
+"14J-2I-052.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "Hello, start your 18-week training program right now"; ObjectID = "1ug-PJ-5kT"; */
+"1ug-PJ-5kT.text" = "Hello, start your 18-week training program right now";
+
+/* Class = "UILabel"; text = "suggestion"; ObjectID = "5Qs-59-VqT"; */
+"5Qs-59-VqT.text" = "suggestion";
+
+/* Class = "UIViewController"; title = "PaceResultViewController"; ObjectID = "Enl-ES-lHb"; */
+"Enl-ES-lHb.title" = "PaceResultViewController";
+
+/* Class = "UIViewController"; title = "MainViewController"; ObjectID = "FJ0-9O-8Ds"; */
+"FJ0-9O-8Ds.title" = "MainViewController";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "LBV-bg-rFg"; */
+"LBV-bg-rFg.text" = ":";
+
+/* Class = "UITextField"; placeholder = "hh"; ObjectID = "RDt-bz-BBH"; */
+"RDt-bz-BBH.placeholder" = "hh";
+
+/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "Xis-Cv-ZZb"; */
+"Xis-Cv-ZZb.normalTitle" = "Calculate";
+
+/* Class = "UITextField"; placeholder = "ss"; ObjectID = "YLT-Bn-LRd"; */
+"YLT-Bn-LRd.placeholder" = "ss";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "fsd-fZ-aCa"; */
+"fsd-fZ-aCa.normalTitle" = "Start";
+
+/* Class = "UILabel"; text = "Distance"; ObjectID = "gYd-qc-ecy"; */
+"gYd-qc-ecy.text" = "Distance";
+
+/* Class = "UILabel"; text = "km"; ObjectID = "hus-m4-guS"; */
+"hus-m4-guS.text" = "km";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "lZU-SG-hOQ"; */
+"lZU-SG-hOQ.text" = ":";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "n2z-IX-QlE"; */
+"n2z-IX-QlE.text" = "Time";
+
+/* Class = "UIButton"; normalTitle = "test vc"; ObjectID = "tEc-BB-RO1"; */
+"tEc-BB-RO1.normalTitle" = "test vc";
+
+/* Class = "UITextField"; placeholder = "mm"; ObjectID = "x26-vq-bdh"; */
+"x26-vq-bdh.placeholder" = "mm";
