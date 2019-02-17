@@ -6,19 +6,6 @@
   Copyright © 2019 Apple. All rights reserved.
 */
 
-"WEEK1" = "Week1";
-"WEEK2" = "Week2";
-"WEEK3" = "Week3";
-"WEEK4" = "Week4";
-"WEEK5" = "Week5";
-"WEEK6" = "Week6";
-"WEEK7" = "Week7";
-"WEEK8" = "Week8";
-"WEEK9" = "Week9";
-"WEEK10" = "Week10";
-"WEEK11" = "Week11";
-"WEEK12" = "Week12";
-"WEEK13" = "Week13";
-"WEEK14" = "Week14";
-"WEEK15" = "Week15";
-"WEEK16" = "Week16";
+"WEEK" = "Week{0}";
+"MINUTE" = "m";
+"SECOND" = "s";

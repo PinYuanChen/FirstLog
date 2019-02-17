@@ -20,8 +20,8 @@
 		18690A7921F3195300F873CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18690A7721F3195300F873CF /* Main.storyboard */; };
 		18690A8121F3195700F873CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18690A7F21F3195700F873CF /* LaunchScreen.storyboard */; };
 		18690A9121F33B7900F873CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690A9021F33B7900F873CF /* Constants.swift */; };
-		18690A9A21F89EFC00F873CF /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18690A9821F89EFC00F873CF /* ProgramModel.xcdatamodeld */; };
 		18690AA121FC934800F873CF /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690AA021FC934800F873CF /* HelperFunctions.swift */; };
+		187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */; };
 		18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +48,8 @@
 		18690A8021F3195700F873CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18690A8221F3195700F873CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18690A9021F33B7900F873CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		18690A9921F89EFC00F873CF /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
 		18690AA021FC934800F873CF /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		187CC5A822143EBB00B3E847 /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
 		18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 				18690A8F21F33B5700F873CF /* Model */,
 				18690A7F21F3195700F873CF /* LaunchScreen.storyboard */,
 				1824EA7522101B6F00B3D25B /* Images.xcassets */,
-				18690A9821F89EFC00F873CF /* ProgramModel.xcdatamodeld */,
+				187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */,
 				18690A8221F3195700F873CF /* Info.plist */,
 				1824EA61220FF59200B3D25B /* Localizable.strings */,
 			);
@@ -205,10 +205,10 @@
 			files = (
 				1824EA6E22100ABF00B3D25B /* PaceCalculationViewController.swift in Sources */,
 				18690A9121F33B7900F873CF /* Constants.swift in Sources */,
+				187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */,
 				18690A7421F3195300F873CF /* AppDelegate.swift in Sources */,
 				1824EA7022100ABF00B3D25B /* PaceResultViewController.swift in Sources */,
 				1824EA5A220FF11300B3D25B /* LocalDataManager.swift in Sources */,
-				18690A9A21F89EFC00F873CF /* ProgramModel.xcdatamodeld in Sources */,
 				1824EA7422100B1000B3D25B /* ProfileViewController.swift in Sources */,
 				1824EA7122100ABF00B3D25B /* MainViewController.swift in Sources */,
 				18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */,
@@ -433,12 +433,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		18690A9821F89EFC00F873CF /* ProgramModel.xcdatamodeld */ = {
+		187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				18690A9921F89EFC00F873CF /* ProgramModel.xcdatamodel */,
+				187CC5A822143EBB00B3E847 /* ProgramModel.xcdatamodel */,
 			);
-			currentVersion = 18690A9921F89EFC00F873CF /* ProgramModel.xcdatamodel */;
+			currentVersion = 187CC5A822143EBB00B3E847 /* ProgramModel.xcdatamodel */;
 			path = ProgramModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

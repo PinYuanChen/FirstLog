@@ -184,7 +184,7 @@ class CoreDataManager<T:NSManagedObject>: NSObject, NSFetchedResultsControllerDe
         
         let indexPath = IndexPath(row: index, section:0)
         
-        return self.fetchedResultsController.object(at: indexPath) as! T
+        return self.fetchedResultsController.object(at: indexPath) as? T
     }
     
     func searchBy(keyword:String,field:String) -> [T]? {

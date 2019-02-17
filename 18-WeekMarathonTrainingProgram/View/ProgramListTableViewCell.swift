@@ -12,6 +12,8 @@ class ProgramListTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var programNameLabel: UILabel!
+    @IBOutlet weak var programStatus: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

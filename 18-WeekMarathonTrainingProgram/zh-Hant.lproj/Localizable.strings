@@ -9,19 +9,4 @@
 //MARK: - Main View Controller
 "FIRST_TIME_DESCRIPTION" = "請按下方的按鈕「＋」來建立第一個訓練計畫!";
 
-"WEEK1" = "第1週";
-"WEEK2" = "第2週";
-"WEEK3" = "第3週";
-"WEEK4" = "";
-"WEEK5" = "";
-"WEEK6" = "";
-"WEEK7" = "";
-"WEEK8" = "";
-"WEEK9" = "";
-"WEEK10" = "";
-"WEEK11" = "";
-"WEEK12" = "";
-"WEEK13" = "";
-"WEEK14" = "";
-"WEEK15" = "";
-"WEEK16" = "";
+"WEEK" = "第{0}週";

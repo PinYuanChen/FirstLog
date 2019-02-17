@@ -21,9 +21,24 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
         hourTextField.delegate = self
         minuteTextField.delegate = self
         secondTextField.delegate = self
+        navigationSetUp()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         self.view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
+    }
+    
+    func navigationSetUp() {
+        
+        self.navigationController?.navigationBar.barTintColor = NAVIGATIONBARCOLOR
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.title = "Pace Calculation"
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 2
+        
     }
     
     @objc func tap(_ sender:Any) {
@@ -39,10 +54,11 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didTappedCalculateBtn(_ sender: UIButton) {
         if (distanceTextField.text != "" && minuteTextField.text != "" && secondTextField.text != "") {
             let inputHour = (hourTextField.hasText ? Int(hourTextField.text!)!*3600 : 0)
-            paceCalculator(hour: inputHour, minute: Int(minuteTextField.text!)!*60, second: Int(secondTextField.text!)!, distance: Int(distanceTextField.text!)!)
+            let paceResult = paceCalculator(hour: inputHour, minute: Int(minuteTextField.text!)!*60, second: Int(secondTextField.text!)!, distance: Int(distanceTextField.text!)!)
             UserDefaults.standard.set(true, forKey: "insertData")
             let paceResultVC = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
-            self.navigationController?.present(paceResultVC, animated: true, completion: nil)
+            paceResultVC.detailResult = paceResult
+            self.navigationController?.pushViewController(paceResultVC, animated: true)
             
         }else{
             let alert = UIAlertController(title: "輸入錯誤", message: "請填入正確數字\n*空欄位請填0", preferredStyle: .alert)
@@ -53,6 +69,8 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func didTappedInfoBtn(_ sender: UIButton) {
+    @IBAction func didTappedCancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
+    
 }
