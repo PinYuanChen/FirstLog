@@ -12,9 +12,9 @@ import CoreData
 class LocalDataManager:CoreDataManager<Program> {
     
     private(set) var programItemArray:[Program]?
-//    private(set) var weekItem:Week?
-//    private(set) var runItem:Run?
-//    private(set) var locationItem:Location?
+    private(set) var programItem:Program?
+    private(set) var runItem:Run?
+    private(set) var locationItem:Location?
     
     static private(set) var shared:LocalDataManager?
     
@@ -30,13 +30,11 @@ class LocalDataManager:CoreDataManager<Program> {
         }
     }
     
-    /*
+    
     func giveValue(toLocalData:NSManagedObject) {
         switch toLocalData {
         case is Program:
-            programItemArray?.append(toLocalData as! Program)
-        case is Week:
-            weekItem = toLocalData as? Week
+            programItem = toLocalData as? Program
         case is Run:
             runItem = toLocalData as? Run
         case is Location:
@@ -45,5 +43,5 @@ class LocalDataManager:CoreDataManager<Program> {
             break
         }
     }
-    */
+
 }

@@ -24,25 +24,20 @@
         <attribute name="slowmidtempo" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="slowshorttempo" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="week" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Week" inverseName="program" inverseEntity="Week" syncable="YES"/>
+        <relationship name="run" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Run" inverseName="program" inverseEntity="Run" syncable="YES"/>
     </entity>
     <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
+        <attribute name="complee" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pace" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="location" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="run" inverseEntity="Location" syncable="YES"/>
-        <relationship name="week" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Week" inverseName="run" inverseEntity="Week" syncable="YES"/>
-    </entity>
-    <entity name="Week" representedClassName="Week" syncable="YES" codeGenerationType="class">
-        <attribute name="complete" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="program" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Program" inverseName="week" inverseEntity="Program" syncable="YES"/>
-        <relationship name="run" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Run" inverseName="week" inverseEntity="Run" syncable="YES"/>
+        <relationship name="program" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Program" inverseName="run" inverseEntity="Program" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-18" positionY="27" width="128" height="88"/>
-        <element name="Program" positionX="207.35546875" positionY="97.15625" width="128" height="328"/>
-        <element name="Run" positionX="-335.7421875" positionY="188.62890625" width="128" height="118"/>
-        <element name="Week" positionX="-76.265625" positionY="377.8515625" width="128" height="103"/>
+        <element name="Location" positionX="-18.75" positionY="137.06640625" width="128" height="88"/>
+        <element name="Program" positionX="-518.64453125" positionY="-89.3203125" width="128" height="328"/>
+        <element name="Run" positionX="-314.0234375" positionY="123" width="128" height="148"/>
     </elements>
 </model>

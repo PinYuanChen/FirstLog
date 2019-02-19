@@ -10,6 +10,7 @@ import UIKit
 
 class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var programNameTextField: UITextField!
     @IBOutlet weak var distanceTextField: UITextField!
     @IBOutlet weak var hourTextField: UITextField!
     @IBOutlet weak var minuteTextField: UITextField!
@@ -18,6 +19,8 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        programNameTextField.delegate = self
+        distanceTextField.delegate = self
         hourTextField.delegate = self
         minuteTextField.delegate = self
         secondTextField.delegate = self
@@ -46,25 +49,40 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn:string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        
+        if textField != programNameTextField {
+            let allowedCharacters = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn:string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        
+        return true
     }
     
     @IBAction func didTappedCalculateBtn(_ sender: UIButton) {
-        if (distanceTextField.text != "" && minuteTextField.text != "" && secondTextField.text != "") {
+        if (distanceTextField.text != "" && minuteTextField.text != "" && secondTextField.text != "" && programNameTextField.text != "") {
             let inputHour = (hourTextField.hasText ? Int(hourTextField.text!)!*3600 : 0)
             let paceResult = paceCalculator(hour: inputHour, minute: Int(minuteTextField.text!)!*60, second: Int(secondTextField.text!)!, distance: Int(distanceTextField.text!)!)
             UserDefaults.standard.set(true, forKey: "insertData")
             let paceResultVC = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
             paceResultVC.detailResult = paceResult
+            paceResultVC.programName = programNameTextField.text
             self.navigationController?.pushViewController(paceResultVC, animated: true)
             
         }else{
-            let alert = UIAlertController(title: "輸入錯誤", message: "請填入正確數字\n*空欄位請填0", preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "確定", style: .cancel, handler: nil)
-            alert.addAction(cancel)
-            self.present(alert, animated: true, completion: nil)
+            
+            if (programNameTextField.text == "") {
+                let alert = UIAlertController(title: "輸入錯誤", message: "請填入訓練名稱", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                let alert = UIAlertController(title: "輸入錯誤", message: "請填入正確數字\n*空欄位請填0", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }
     }
     

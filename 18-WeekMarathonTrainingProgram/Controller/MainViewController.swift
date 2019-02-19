@@ -87,8 +87,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - Tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-//        return localDataManager.totalCount()
+        return localDataManager.totalCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
