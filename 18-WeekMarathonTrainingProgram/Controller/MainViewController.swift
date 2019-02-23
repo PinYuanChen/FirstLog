@@ -12,33 +12,34 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    var roundButton = UIButton()
+    @IBOutlet weak var createButton: UIButton!
+    var rightSettingButton:UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = NSLocalizedString("FIRST_TIME_DESCRIPTION", comment: "")
-        tableviewSetUp()
-        navigationSetUp()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        createFloatingButton()
+        tableviewSetUp()
+        navigationSetUp()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refreshTableView),
+            name: Notification.Name(MAINVIEWRELOADDATA),
+            object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        if roundButton.superview != nil {
-            DispatchQueue.main.async {
-                self.roundButton.removeFromSuperview()
-            }
-        }
-    }
     
     func tableviewSetUp() {
-//        if localDataManager.totalCount() != 0 {
-            tableview.separatorColor = .clear
-//        } else {
-//            tableview.isHidden = true
-//        }
+        if localDataManager.totalCount() != 0 {
+            tableview.isHidden = false
+            createButton.isHidden = true
+        } else {
+            tableview.isHidden = true
+            createButton.isHidden = false
+            createButton.setTitle("Start", for: .normal)
+        }
     
     }
     
@@ -53,45 +54,35 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2
-        
+         rightSettingButton = UIBarButtonItem(image: UIImage(named: "settingsline"), style: .plain, target: self, action: #selector(rightSettingButtonPressed))
+        self.navigationItem.rightBarButtonItem = rightSettingButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = !tableview.isHidden
     }
     
-    func createFloatingButton() {
-        
-        roundButton = UIButton(type: .custom)
-        roundButton.translatesAutoresizingMaskIntoConstraints = false
-        roundButton.backgroundColor = NAVIGATIONBARCOLOR
-        roundButton.addTarget(self, action: #selector(didTappedAddButton), for: UIControl.Event.touchUpInside)
-        
-        DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
-                keyWindow.addSubview(self.roundButton)
-                NSLayoutConstraint.activate([
-                    keyWindow.trailingAnchor.constraint(equalTo: self.roundButton.trailingAnchor, constant: 15),
-                    keyWindow.bottomAnchor.constraint(equalTo: self.roundButton.bottomAnchor, constant: self.view.safeAreaInsets.bottom + 20.0),
-                    self.roundButton.widthAnchor.constraint(equalToConstant: 64),
-                    self.roundButton.heightAnchor.constraint(equalToConstant: 64)])
-            }
-            
-            self.roundButton.layer.cornerRadius = 37.5
-            self.roundButton.layer.shadowColor = UIColor.black.cgColor
-            self.roundButton.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-            self.roundButton.layer.masksToBounds = false
-            self.roundButton.layer.shadowRadius = 2.0
-            self.roundButton.layer.shadowOpacity = 0.5
-            self.roundButton.setImage(UIImage(named: "plus"), for: .normal)
-
-        }
-        
+    @IBAction func didTappedCreateButton(_ sender: Any) {
+        let paceCalculationViewController = storyboard?.instantiateViewController(withIdentifier: "PaceCalculationNavigationController") as! UINavigationController
+        self.present(paceCalculationViewController, animated: true, completion: nil)
+    }
+    
+    @objc func refreshTableView() {
+        localDataManager.checkProgramList()
+        self.tableview.reloadData()
+    }
+    
+    @objc func rightSettingButtonPressed() {
+        let paceResultViewController = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
+        self.present(paceResultViewController, animated: true, completion: nil)
     }
     
     //MARK: - Tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return localDataManager.totalCount()
+            return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramListCell", for: indexPath) as! ProgramListTableViewCell
+        cell.selectionStyle = .none
+        cell.weekLabel.text = "Week \(indexPath.row + 1)"
         return cell
     }
     
@@ -99,9 +90,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 100.0
     }
     
-    @objc func didTappedAddButton() {
-        let paceCalculationViewController = storyboard?.instantiateViewController(withIdentifier: "PaceCalculationNavigationController") as! UINavigationController
-        self.present(paceCalculationViewController, animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let weeklyTrainingViewController = storyboard?.instantiateViewController(withIdentifier: "WeeklyTrainingViewController") as! WeeklyTrainingViewController
+        weeklyTrainingViewController.trainingArray = trainigProgram["Week\(indexPath.row + 1)"]
+        self.navigationController?.pushViewController(weeklyTrainingViewController, animated: true)
     }
+    
+
 }
 

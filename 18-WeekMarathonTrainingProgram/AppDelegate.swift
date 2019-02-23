@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       let localManager = LocalDataManager(momdFilename: "ProgramModel", entityName: "Program", sortKey: "creationdate")
-        LocalDataManager.setAsSingleton(instance: localManager)
+       localDataManager = LocalDataManager(momdFilename: "ProgramModel", entityName: "Program", sortKey: "creationdate")
+        LocalDataManager.setAsSingleton(instance: localDataManager)
         localDataManager = LocalDataManager.shared
-        localManager.checkProgramList()
+        localDataManager.checkProgramList()
         return true
     }
 

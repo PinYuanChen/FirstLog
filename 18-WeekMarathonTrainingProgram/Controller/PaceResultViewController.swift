@@ -10,7 +10,6 @@ import UIKit
 
 class PaceResultViewController: UIViewController {
     
-    @IBOutlet weak var programNameLabel: UILabel!
     @IBOutlet weak var pace400mLabel: UILabel!
     @IBOutlet weak var pace800mLabel: UILabel!
     @IBOutlet weak var pace1200mLabel: UILabel!
@@ -21,16 +20,20 @@ class PaceResultViewController: UIViewController {
     @IBOutlet weak var longRunLabel: UILabel!
     var detailResult = paceDetail()
     var programName:String?
-    
+    @IBOutlet weak var cancelButton: UIButton!
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func didTappedConfirmBtn(_ sender: UIButton) {
         //create new program item
+        if localDataManager.totalCount() != 0 {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+    
         editProgram(originalItem: nil) { (success, item) in
             guard success == true else {
                 return
@@ -41,6 +44,7 @@ class PaceResultViewController: UIViewController {
                     NSLog("Save!")
                     self.dismiss(animated: true, completion: nil)
                     //send notification to reload data
+                    NotificationCenter.default.post(name: Notification.Name(MAINVIEWRELOADDATA), object: nil)
                 } else {
                     NSLog("Fail to save!")
                 }
@@ -48,12 +52,25 @@ class PaceResultViewController: UIViewController {
         }
     }
     
-    @IBAction func didTappedCancelBtn(_ sender: Any) {
+    @IBAction func didTappedCancelBtn(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Delete" {
+            if let item = localDataManager.fetchItemAt(index: 0){
+                localDataManager.deleteItem(item: item)
+                localDataManager.saveContext(completion: { (success) in
+                    NotificationCenter.default.post(name: Notification.Name(MAINVIEWRELOADDATA), object: nil)
+                })
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
     
     func loadData() {
-        programNameLabel.text = programName
+        
+        if localDataManager.totalCount() != 0 {
+            giveValueToDetailResult()
+            cancelButton.setTitle("Delete", for: .normal)
+        }
+        
         pace400mLabel.text = paceRange(fast: detailResult.fast400m, slow: detailResult.slow400m)
         pace800mLabel.text = paceRange(fast: detailResult.fast800m, slow: detailResult.slow800m)
         pace1200mLabel.text = paceRange(fast: detailResult.fast1200m, slow: detailResult.slow1200m)
@@ -77,7 +94,6 @@ class PaceResultViewController: UIViewController {
         var finalItem = originalItem
         if finalItem == nil {
             finalItem = localDataManager.createItem()
-            finalItem?.name = programName
             finalItem?.creationdate = NSDate() as Date
         }
         finalItem?.fast400m = Int32(detailResult.fast400m)
@@ -99,4 +115,21 @@ class PaceResultViewController: UIViewController {
         completion(true,finalItem)
     }
     
+    func giveValueToDetailResult() {
+        detailResult.fast400m = Int(localDataManager.programItem!.fast400m)
+        detailResult.slow400m = Int(localDataManager.programItem!.slow400m)
+        detailResult.fast800m = Int(localDataManager.programItem!.fast800m)
+        detailResult.slow800m = Int(localDataManager.programItem!.slow800m)
+        detailResult.fast1200m = Int(localDataManager.programItem!.fast1200m)
+        detailResult.slow1200m = Int(localDataManager.programItem!.slow1200m)
+        detailResult.fast1600m = Int(localDataManager.programItem!.fast1600m)
+        detailResult.slow1600m = Int(localDataManager.programItem!.slow1600m)
+        detailResult.shortTempoRun = Int(localDataManager.programItem!.slowshorttempo)
+        detailResult.fastMidTempo = Int(localDataManager.programItem!.fastmidtempo)
+        detailResult.slowMidTempo = Int(localDataManager.programItem!.slowmidtempo)
+        detailResult.fastLongTempo = Int(localDataManager.programItem!.fastlongtempo)
+        detailResult.slowLongTempo = Int(localDataManager.programItem!.slowlongtempo)
+        detailResult.fastLongRun = Int(localDataManager.programItem!.fastlongrun)
+        detailResult.slowLongRun = Int(localDataManager.programItem!.slowlongrun)
+    }
 }

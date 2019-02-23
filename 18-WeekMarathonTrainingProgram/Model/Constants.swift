@@ -10,6 +10,7 @@ import UIKit
 
 //MARK: - UI
 let NAVIGATIONBARCOLOR = UIColor(red: CGFloat(36.0/255.0), green: CGFloat(176.0/255.0), blue: CGFloat(235.0/255.0), alpha: CGFloat(1.0))
+let MAINVIEWRELOADDATA = "MainViewReloadData"
 
 //MARK: - CoreData
 var localDataManager:LocalDataManager!

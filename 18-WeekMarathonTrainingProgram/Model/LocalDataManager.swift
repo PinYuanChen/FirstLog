@@ -24,9 +24,7 @@ class LocalDataManager:CoreDataManager<Program> {
     
     func checkProgramList() {
         if self.totalCount() > 0 {
-            for i in 0..<totalCount() {
-                programItemArray?.append(self.fetchItemAt(index: i) as! Program)
-            }
+            self.giveValue(toLocalData: (self.fetchItemAt(index: 0) as! Program))
         }
     }
     

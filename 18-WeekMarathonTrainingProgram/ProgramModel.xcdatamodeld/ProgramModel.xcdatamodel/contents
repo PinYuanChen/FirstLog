@@ -14,7 +14,6 @@
         <attribute name="fastlongrun" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fastlongtempo" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fastmidtempo" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="slow400m" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="slow800m" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="slow1200m" optional="YES" attributeType="Integer 32" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -37,7 +36,7 @@
     </entity>
     <elements>
         <element name="Location" positionX="-18.75" positionY="137.06640625" width="128" height="88"/>
-        <element name="Program" positionX="-518.64453125" positionY="-89.3203125" width="128" height="328"/>
+        <element name="Program" positionX="-518.64453125" positionY="-89.3203125" width="128" height="315"/>
         <element name="Run" positionX="-314.0234375" positionY="123" width="128" height="148"/>
     </elements>
 </model>

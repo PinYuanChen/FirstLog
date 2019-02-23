@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		18056F94220C761B00C75241 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18056F93220C761A00C75241 /* CoreDataManager.swift */; };
+		180BC181221ED92000165916 /* NewRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BC180221ED92000165916 /* NewRunViewController.swift */; };
+		180BC184221ED9C700165916 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BC183221ED9C700165916 /* MapKit.framework */; };
+		180BC186221ED9D300165916 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BC185221ED9D300165916 /* CoreLocation.framework */; };
 		1824EA5A220FF11300B3D25B /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824EA59220FF11300B3D25B /* LocalDataManager.swift */; };
 		1824EA63220FF59200B3D25B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1824EA61220FF59200B3D25B /* Localizable.strings */; };
 		1824EA6E22100ABF00B3D25B /* PaceCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824EA6922100ABE00B3D25B /* PaceCalculationViewController.swift */; };
@@ -16,6 +19,8 @@
 		1824EA7222100ABF00B3D25B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824EA6D22100ABE00B3D25B /* InfoViewController.swift */; };
 		1824EA7422100B1000B3D25B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824EA7322100B1000B3D25B /* ProfileViewController.swift */; };
 		1824EA7622101B6F00B3D25B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1824EA7522101B6F00B3D25B /* Images.xcassets */; };
+		182D6A8C221D9F350037A111 /* WeeklyTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D6A8B221D9F350037A111 /* WeeklyTrainingViewController.swift */; };
+		182D6A8E221D9F960037A111 /* WeeklyTrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D6A8D221D9F960037A111 /* WeeklyTrainingTableViewCell.swift */; };
 		18690A7421F3195300F873CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690A7321F3195300F873CF /* AppDelegate.swift */; };
 		18690A7921F3195300F873CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18690A7721F3195300F873CF /* Main.storyboard */; };
 		18690A8121F3195700F873CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18690A7F21F3195700F873CF /* LaunchScreen.storyboard */; };
@@ -27,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		18056F93220C761A00C75241 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		180BC180221ED92000165916 /* NewRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewRunViewController.swift; path = "18-WeekMarathonTrainingProgram/Controller/NewRunViewController.swift"; sourceTree = SOURCE_ROOT; };
+		180BC183221ED9C700165916 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		180BC185221ED9D300165916 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1824EA59220FF11300B3D25B /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		1824EA5D220FF4E300B3D25B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		1824EA5E220FF4E300B3D25B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -42,6 +50,8 @@
 		1824EA6D22100ABE00B3D25B /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = "18-WeekMarathonTrainingProgram/Controller/InfoViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1824EA7322100B1000B3D25B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1824EA7522101B6F00B3D25B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "18-WeekMarathonTrainingProgram/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		182D6A8B221D9F350037A111 /* WeeklyTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTrainingViewController.swift; sourceTree = "<group>"; };
+		182D6A8D221D9F960037A111 /* WeeklyTrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTrainingTableViewCell.swift; sourceTree = "<group>"; };
 		18690A7021F3195300F873CF /* 18-WeekMarathonTrainingProgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "18-WeekMarathonTrainingProgram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18690A7321F3195300F873CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18690A7821F3195300F873CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,17 +68,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180BC186221ED9D300165916 /* CoreLocation.framework in Frameworks */,
+				180BC184221ED9C700165916 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180BC182221ED9C700165916 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				180BC185221ED9D300165916 /* CoreLocation.framework */,
+				180BC183221ED9C700165916 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18690A6721F3195200F873CF = {
 			isa = PBXGroup;
 			children = (
 				18690A7221F3195300F873CF /* 18-WeekMarathonTrainingProgram */,
 				18690A7121F3195300F873CF /* Products */,
+				180BC182221ED9C700165916 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +137,8 @@
 				1824EA6D22100ABE00B3D25B /* InfoViewController.swift */,
 				1824EA6922100ABE00B3D25B /* PaceCalculationViewController.swift */,
 				1824EA6B22100ABE00B3D25B /* PaceResultViewController.swift */,
+				182D6A8B221D9F350037A111 /* WeeklyTrainingViewController.swift */,
+				180BC180221ED92000165916 /* NewRunViewController.swift */,
 			);
 			name = Controller;
 			path = "New Group";
@@ -125,6 +149,7 @@
 			children = (
 				18690A7721F3195300F873CF /* Main.storyboard */,
 				18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */,
+				182D6A8D221D9F960037A111 /* WeeklyTrainingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +186,11 @@
 				TargetAttributes = {
 					18690A6F21F3195300F873CF = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -213,6 +243,9 @@
 				1824EA7122100ABF00B3D25B /* MainViewController.swift in Sources */,
 				18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */,
 				18056F94220C761B00C75241 /* CoreDataManager.swift in Sources */,
+				180BC181221ED92000165916 /* NewRunViewController.swift in Sources */,
+				182D6A8E221D9F960037A111 /* WeeklyTrainingTableViewCell.swift in Sources */,
+				182D6A8C221D9F350037A111 /* WeeklyTrainingViewController.swift in Sources */,
 				18690AA121FC934800F873CF /* HelperFunctions.swift in Sources */,
 				1824EA7222100ABF00B3D25B /* InfoViewController.swift in Sources */,
 			);
