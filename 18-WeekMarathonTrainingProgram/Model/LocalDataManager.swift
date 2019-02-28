@@ -28,7 +28,6 @@ class LocalDataManager:CoreDataManager<Program> {
         }
     }
     
-    
     func giveValue(toLocalData:NSManagedObject) {
         switch toLocalData {
         case is Program:
@@ -42,4 +41,41 @@ class LocalDataManager:CoreDataManager<Program> {
         }
     }
 
+    func checkRunData(runManager:CoreDataManager<Run>,key:String) -> (hasRecord:Bool,complete:Bool) {
+        if let result = runManager.searchBy(keyword: key, field: "id"){
+            guard result != [] else {
+                return (false,false)
+            }
+            //give value
+            for item in result {
+                guard item.id == key else {
+                    return (false,false)
+                }
+                self.giveValue(toLocalData: item)
+                
+                guard item.complete else{
+                    return (true,false)
+                }
+            }
+        }
+        return (true,true)
+    }
+    
+    func checkLocationData(locationManager:CoreDataManager<Location>,key:String) -> Bool {
+        if let result = locationManager.searchBy(keyword: key, field: "id"){
+            
+            guard result != [] else {
+                return false
+            }
+            
+            for item in result {
+                guard item.id == key else {
+                    return false
+                }
+                self.giveValue(toLocalData: item)
+            }
+        }
+        return true
+    }
+    
 }

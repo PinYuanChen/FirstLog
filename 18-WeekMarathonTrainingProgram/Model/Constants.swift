@@ -14,6 +14,9 @@ let MAINVIEWRELOADDATA = "MainViewReloadData"
 
 //MARK: - CoreData
 var localDataManager:LocalDataManager!
+var week = 0
+var runSection = 0
+var runRow = 0
 
 struct paceDetail {
     

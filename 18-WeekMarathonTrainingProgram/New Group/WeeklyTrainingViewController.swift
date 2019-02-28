@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var trainingArray:[[String]]?
-
+    let runDataManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
+    let locationManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
+    var idString = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,9 +47,45 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeeklyTrainingTableViewCell", for: indexPath) as! WeeklyTrainingTableViewCell
         cell.distanceLabel.text = trainingArray?[indexPath.section][indexPath.row]
+        cell.selectionStyle = .none
+        
+        runSection = indexPath.section
+        runRow = indexPath.row
+        idString = "\(week)\(runSection)\(runRow)"
+        
+        if localDataManager.checkRunData(runManager: runDataManager, key: idString) == (true,true) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard localDataManager.checkRunData(runManager: runDataManager, key: idString) != (false,false) else {
+            let newRunViewController = storyboard?.instantiateViewController(withIdentifier: "NewRunNavigationController") as! UINavigationController
+            self.present(newRunViewController, animated: true, completion: nil)
+            return
+        }
+        
+        guard localDataManager.checkLocationData(locationManager: locationManager, key: idString) else {
+            return
+        }
+        
+        do {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Run")
+            request.predicate = NSPredicate(format: "id == %@", idString)
+            let requestRun = try localDataManager.runItem?.managedObjectContext?.fetch(request) as! [Run]
+            let newRunViewController = storyboard?.instantiateViewController(withIdentifier: "NewRunViewController") as! NewRunViewController
+            newRunViewController.hasRecord = true
+            self.navigationController?.pushViewController(newRunViewController, animated: true)
+        } catch {
+            print("There is no existing track.")
+        }
     }
 
 }

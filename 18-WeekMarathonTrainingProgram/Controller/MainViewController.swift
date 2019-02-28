@@ -32,6 +32,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableviewSetUp() {
+        
         if localDataManager.totalCount() != 0 {
             tableview.isHidden = false
             createButton.isHidden = true
@@ -93,6 +94,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weeklyTrainingViewController = storyboard?.instantiateViewController(withIdentifier: "WeeklyTrainingViewController") as! WeeklyTrainingViewController
         weeklyTrainingViewController.trainingArray = trainigProgram["Week\(indexPath.row + 1)"]
+        week = indexPath.row + 1
         self.navigationController?.pushViewController(weeklyTrainingViewController, animated: true)
     }
     

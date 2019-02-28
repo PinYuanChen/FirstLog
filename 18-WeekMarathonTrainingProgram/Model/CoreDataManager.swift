@@ -47,7 +47,6 @@ class CoreDataManager<T:NSManagedObject>: NSObject, NSFetchedResultsControllerDe
     //資料模型
     private lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        //apple會把Friend(source code) compile成momd檔
         let modelURL = Bundle.main.url(forResource: self.momdFilename, withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
@@ -190,7 +189,7 @@ class CoreDataManager<T:NSManagedObject>: NSObject, NSFetchedResultsControllerDe
     func searchBy(keyword:String,field:String) -> [T]? {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        // ==> name CONTAINS[cd] "lee"
+        
         let predicate = NSPredicate(format: field + " CONTAINS[cd] \"\(keyword)\"")
         
         request.predicate = predicate

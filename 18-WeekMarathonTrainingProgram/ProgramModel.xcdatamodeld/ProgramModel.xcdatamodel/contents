@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longtitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Run" inverseName="location" inverseEntity="Run" syncable="YES"/>
@@ -26,7 +27,7 @@
         <relationship name="run" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Run" inverseName="program" inverseEntity="Run" syncable="YES"/>
     </entity>
     <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
-        <attribute name="complee" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="complete" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,8 +36,8 @@
         <relationship name="program" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Program" inverseName="run" inverseEntity="Program" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-18.75" positionY="137.06640625" width="128" height="88"/>
+        <element name="Location" positionX="-18.75" positionY="137.06640625" width="128" height="105"/>
         <element name="Program" positionX="-518.64453125" positionY="-89.3203125" width="128" height="315"/>
-        <element name="Run" positionX="-314.0234375" positionY="123" width="128" height="148"/>
+        <element name="Run" positionX="-314.0234375" positionY="123" width="128" height="150"/>
     </elements>
 </model>
