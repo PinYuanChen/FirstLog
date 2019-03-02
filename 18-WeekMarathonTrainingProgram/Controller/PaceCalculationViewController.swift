@@ -57,9 +57,8 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didTappedCalculateBtn(_ sender: UIButton) {
         if (distanceTextField.text != "" && minuteTextField.text != "" && secondTextField.text != "") {
             let inputHour = (hourTextField.hasText ? Int(hourTextField.text!)!*3600 : 0)
-            let paceResult = paceCalculator(hour: inputHour, minute: Int(minuteTextField.text!)!*60, second: Int(secondTextField.text!)!, distance: Int(distanceTextField.text!)!)
+            paceCalculator(hour: inputHour, minute: Int(minuteTextField.text!)!*60, second: Int(secondTextField.text!)!, distance: Int(distanceTextField.text!)!)
             let paceResultVC = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
-            paceResultVC.detailResult = paceResult
             self.navigationController?.pushViewController(paceResultVC, animated: true)
             
         }else{

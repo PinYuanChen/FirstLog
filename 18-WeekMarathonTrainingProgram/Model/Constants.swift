@@ -17,45 +17,43 @@ var localDataManager:LocalDataManager!
 var week = 0
 var runSection = 0
 var runRow = 0
+var runningGoal = ""
+   
+var fast400m = 0
+var slow400m = 0
+var fast800m = 0
+var slow800m = 0
+var fast1200m = 0
+var slow1200m = 0
+var fast1600m = 0
+var slow1600m = 0
+var shortTempoRun = 0
+var fastMidTempo = 0
+var slowMidTempo = 0
+var fastLongTempo = 0
+var slowLongTempo = 0
+var fastLongRun = 0
+var slowLongRun = 0
 
-struct paceDetail {
-    
-    var fast400m = 0
-    var slow400m = 0
-    var fast800m = 0
-    var slow800m = 0
-    var fast1200m = 0
-    var slow1200m = 0
-    var fast1600m = 0
-    var slow1600m = 0
-    var shortTempoRun = 0
-    var fastMidTempo = 0
-    var slowMidTempo = 0
-    var fastLongTempo = 0
-    var slowLongTempo = 0
-    var fastLongRun = 0
-    var slowLongRun = 0
-    
-}
 
 //MARK: - Pace calculation
 var (m,s) = (0,0)
 
 //MARK: - Training program
 let trainigProgram = [
-    "Week1":[["400m","400m","400m","400m","400m","400m","400m","400m"],["5km"],["16km"]],
-    "Week2":[["1200m","1200m","1200m","1200m"],["8km"],["19km"]],
-    "Week3":[["800m","800m","800m","800m","800m","800m"],["11km"],["21km"]],
-    "Week4":[["1600m","1600m","1600m"],["5km"],["16km"]],
-    "Week5":[["400m","400m","400m","400m","400m","400m","400m","400m","400m","400m"],["8km"],["22km"]],
-    "Week6":[["1200m","1200m","1200m","1200m","1200m"],["8km"],["24km"]],
-    "Week7":[["800m","800m","800m","800m","800m","800m","800m"],["13km"],["27km"]],
-    "Week8":[["1600m","1600m","1600m"],["16km"],["21km"]],
-    "Week9":[["400m","400m","400m","400m","400m","400m","400m","400m","400m","400m","400m","400m"],["5km"],["29km"]],
-    "Week10":[["800m","800m","800m","800m","800m","800m","800m","800m"],["8km"],["24km"]],
-    "Week11":[["1600m","1600m","1600m","1600m"],["13km"],["32km"]],
-    "Week12":[["400m","400m","400m","400m","400m","400m","400m","400m","400m","400m","400m","400m"],["8km"],["24km"]],
-    "Week13":[["1200m","1200m","1200m","1200m","1200m","1200m"],["8km"],["32km"]],
-    "Week14":[["800m","800m","800m","800m","800m","800m","800m"],["6km"],["24km"]],
-    "Week15":[["1600m","1600m","1600m"],["13km"],["16km"]]
+    "Week1":[["400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m"],["5 km"],["16 km"]],
+    "Week2":[["1200 m","1200 m","1200 m","1200 m"],["8 km"],["19 km"]],
+    "Week3":[["800 m","800 m","800 m","800 m","800 m","800 m"],["11 km"],["21 km"]],
+    "Week4":[["1600 m","1600 m","1600 m"],["5 km"],["16 km"]],
+    "Week5":[["400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m"],["8 km"],["22 km"]],
+    "Week6":[["1200 m","1200 m","1200 m","1200 m","1200 m"],["8 km"],["24 km"]],
+    "Week7":[["800 m","800 m","800 m","800 m","800 m","800 m","800 m"],["13 km"],["27 km"]],
+    "Week8":[["1600 m","1600 m","1600 m"],["16 km"],["21 km"]],
+    "Week9":[["400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m"],["5 km"],["29 km"]],
+    "Week10":[["800 m","800 m","800 m","800 m","800 m","800 m","800 m","800 m"],["8 km"],["24 km"]],
+    "Week11":[["1600 m","1600 m","1600 m","1600 m"],["13 km"],["32 km"]],
+    "Week12":[["400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m","400 m"],["8 km"],["24 km"]],
+    "Week13":[["1200 m","1200 m","1200 m","1200 m","1200 m","1200 m"],["8 km"],["32 km"]],
+    "Week14":[["800 m","800 m","800 m","800 m","800 m","800 m","800 m"],["6 km"],["24 km"]],
+    "Week15":[["1600 m","1600 m","1600 m"],["13 km"],["16 km"]]
 ]

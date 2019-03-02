@@ -18,7 +18,6 @@ class PaceResultViewController: UIViewController {
     @IBOutlet weak var midTempoRunLabel: UILabel!
     @IBOutlet weak var longTempoRunLabel: UILabel!
     @IBOutlet weak var longRunLabel: UILabel!
-    var detailResult = paceDetail()
     var programName:String?
     @IBOutlet weak var cancelButton: UIButton!
     //MARK: - View Life Cycle
@@ -71,22 +70,16 @@ class PaceResultViewController: UIViewController {
             cancelButton.setTitle("Delete", for: .normal)
         }
         
-        pace400mLabel.text = paceRange(fast: detailResult.fast400m, slow: detailResult.slow400m)
-        pace800mLabel.text = paceRange(fast: detailResult.fast800m, slow: detailResult.slow800m)
-        pace1200mLabel.text = paceRange(fast: detailResult.fast1200m, slow: detailResult.slow1200m)
-        pace1600mLabel.text = paceRange(fast: detailResult.fast1600m, slow: detailResult.slow1600m)
-        shortTempoRunLabel.text = paceRange(fast: detailResult.shortTempoRun, slow: detailResult.shortTempoRun)
-        midTempoRunLabel.text = paceRange(fast: detailResult.fastMidTempo, slow: detailResult.slowMidTempo)
-        longTempoRunLabel.text = paceRange(fast: detailResult.fastLongTempo, slow: detailResult.slowLongTempo)
-        longRunLabel.text = paceRange(fast: detailResult.fastLongRun, slow: detailResult.slowLongRun)
+        pace400mLabel.text = paceRange(fast: fast400m, slow: slow400m)
+        pace800mLabel.text = paceRange(fast: fast800m, slow: slow800m)
+        pace1200mLabel.text = paceRange(fast: fast1200m, slow: slow1200m)
+        pace1600mLabel.text = paceRange(fast: fast1600m, slow: slow1600m)
+        shortTempoRunLabel.text = paceRange(fast: shortTempoRun, slow: shortTempoRun)
+        midTempoRunLabel.text = paceRange(fast: fastMidTempo, slow: slowMidTempo)
+        longTempoRunLabel.text = paceRange(fast: fastLongTempo, slow: slowLongTempo)
+        longRunLabel.text = paceRange(fast: fastLongRun, slow: slowLongRun)
     }
     
-    func paceRange(fast:Int,slow:Int) -> String {
-        let (fm,fs) = secondsToMinutesSeconds(seconds: fast)
-        let (sm,ss) = secondsToMinutesSeconds(seconds: slow)
-        let resultString = "\(fm)\(NSLocalizedString("MINUTE", comment: "")) \(fs)\(NSLocalizedString("SECOND", comment: "")) - \(sm)\(NSLocalizedString("MINUTE", comment: "")) \(ss)\(NSLocalizedString("SECOND", comment: ""))"
-        return resultString
-    }
     
     //MARK: - Core Data
     typealias EditDoneHandler = (_ success:Bool,_ resultItem:Program?) -> Void
@@ -96,40 +89,24 @@ class PaceResultViewController: UIViewController {
             finalItem = localDataManager.createItem()
             finalItem?.creationdate = NSDate() as Date
         }
-        finalItem?.fast400m = Int32(detailResult.fast400m)
-        finalItem?.slow400m = Int32(detailResult.slow400m)
-        finalItem?.fast800m = Int32(detailResult.fast800m)
-        finalItem?.slow800m = Int32(detailResult.slow800m)
-        finalItem?.fast1200m = Int32(detailResult.fast1200m)
-        finalItem?.slow1200m = Int32(detailResult.slow1200m)
-        finalItem?.fast1600m = Int32(detailResult.fast1600m)
-        finalItem?.slow1600m = Int32(detailResult.slow1600m)
-        finalItem?.slowshorttempo = Int32(detailResult.shortTempoRun)
-        finalItem?.fastmidtempo = Int32(detailResult.fastMidTempo)
-        finalItem?.slowmidtempo = Int32(detailResult.slowMidTempo)
-        finalItem?.fastlongtempo = Int32(detailResult.fastLongTempo)
-        finalItem?.slowlongtempo = Int32(detailResult.slowLongTempo)
-        finalItem?.fastlongrun = Int32(detailResult.fastLongRun)
-        finalItem?.slowlongrun = Int32(detailResult.slowLongRun)
+        finalItem?.fast400m = Int32(fast400m)
+        finalItem?.slow400m = Int32(slow400m)
+        finalItem?.fast800m = Int32(fast800m)
+        finalItem?.slow800m = Int32(slow800m)
+        finalItem?.fast1200m = Int32(fast1200m)
+        finalItem?.slow1200m = Int32(slow1200m)
+        finalItem?.fast1600m = Int32(fast1600m)
+        finalItem?.slow1600m = Int32(slow1600m)
+        finalItem?.slowshorttempo = Int32(shortTempoRun)
+        finalItem?.fastmidtempo = Int32(fastMidTempo)
+        finalItem?.slowmidtempo = Int32(slowMidTempo)
+        finalItem?.fastlongtempo = Int32(fastLongTempo)
+        finalItem?.slowlongtempo = Int32(slowLongTempo)
+        finalItem?.fastlongrun = Int32(fastLongRun)
+        finalItem?.slowlongrun = Int32(slowLongRun)
         
         completion(true,finalItem)
     }
     
-    func giveValueToDetailResult() {
-        detailResult.fast400m = Int(localDataManager.programItem!.fast400m)
-        detailResult.slow400m = Int(localDataManager.programItem!.slow400m)
-        detailResult.fast800m = Int(localDataManager.programItem!.fast800m)
-        detailResult.slow800m = Int(localDataManager.programItem!.slow800m)
-        detailResult.fast1200m = Int(localDataManager.programItem!.fast1200m)
-        detailResult.slow1200m = Int(localDataManager.programItem!.slow1200m)
-        detailResult.fast1600m = Int(localDataManager.programItem!.fast1600m)
-        detailResult.slow1600m = Int(localDataManager.programItem!.slow1600m)
-        detailResult.shortTempoRun = Int(localDataManager.programItem!.slowshorttempo)
-        detailResult.fastMidTempo = Int(localDataManager.programItem!.fastmidtempo)
-        detailResult.slowMidTempo = Int(localDataManager.programItem!.slowmidtempo)
-        detailResult.fastLongTempo = Int(localDataManager.programItem!.fastlongtempo)
-        detailResult.slowLongTempo = Int(localDataManager.programItem!.slowlongtempo)
-        detailResult.fastLongRun = Int(localDataManager.programItem!.fastlongrun)
-        detailResult.slowLongRun = Int(localDataManager.programItem!.slowlongrun)
-    }
+    
 }

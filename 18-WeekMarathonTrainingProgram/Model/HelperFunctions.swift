@@ -9,36 +9,38 @@
 import UIKit
 
 
-func paceCalculator(hour:Int, minute:Int, second:Int, distance:Int) -> paceDetail{
-    var paceResult = paceDetail()
+func paceCalculator(hour:Int, minute:Int, second:Int, distance:Int) {
     (m,s) = secondsToMinutesSeconds(seconds:(hour+minute+second)/distance)
     
     let pace10k = (m*60)+s
-    paceResult.fast400m = pace10k - 60
-    paceResult.slow400m = pace10k - 55
+    fast400m = pace10k - 60
+    slow400m = pace10k - 55
     
-    paceResult.fast800m = pace10k - 50
-    paceResult.slow800m = pace10k - 45
+    fast800m = pace10k - 50
+    slow800m = pace10k - 45
     
-    paceResult.fast1200m = pace10k - 45
-    paceResult.slow1200m = pace10k - 40
+    fast1200m = pace10k - 45
+    slow1200m = pace10k - 40
     
-    paceResult.fast1600m = pace10k - 40
-    paceResult.slow1600m = pace10k - 35
+    fast1600m = pace10k - 40
+    slow1600m = pace10k - 35
     
-    paceResult.shortTempoRun = pace10k
-    paceResult.fastMidTempo = pace10k + 15
-    paceResult.slowMidTempo = pace10k + 20
-    paceResult.fastLongTempo = pace10k + 30
-    paceResult.slowLongTempo = pace10k + 35
-    paceResult.fastLongRun = pace10k + 60
-    paceResult.slowLongRun = pace10k + 75
-    
-    return paceResult
+    shortTempoRun = pace10k
+    fastMidTempo = pace10k + 15
+    slowMidTempo = pace10k + 20
+    fastLongTempo = pace10k + 30
+    slowLongTempo = pace10k + 35
+    fastLongRun = pace10k + 60
+    slowLongRun = pace10k + 75
+
 }
 
 func secondsToMinutesSeconds (seconds : Int) -> (Int, Int) {
     return ((seconds % 3600) / 60, (seconds % 3600) % 60)
+}
+
+func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+    return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
 }
 
 private let dateFormat = "yyyyMMddHHmmss"
@@ -52,4 +54,92 @@ func dateFormatter() -> DateFormatter {
     dateFormatter.dateFormat = dateFormat
     
     return dateFormatter
+}
+
+func giveValueToDetailResult() {
+    fast400m = Int(localDataManager.programItem!.fast400m)
+    slow400m = Int(localDataManager.programItem!.slow400m)
+    fast800m = Int(localDataManager.programItem!.fast800m)
+    slow800m = Int(localDataManager.programItem!.slow800m)
+    fast1200m = Int(localDataManager.programItem!.fast1200m)
+    slow1200m = Int(localDataManager.programItem!.slow1200m)
+    fast1600m = Int(localDataManager.programItem!.fast1600m)
+    slow1600m = Int(localDataManager.programItem!.slow1600m)
+    shortTempoRun = Int(localDataManager.programItem!.slowshorttempo)
+    fastMidTempo = Int(localDataManager.programItem!.fastmidtempo)
+    slowMidTempo = Int(localDataManager.programItem!.slowmidtempo)
+    fastLongTempo = Int(localDataManager.programItem!.fastlongtempo)
+    slowLongTempo = Int(localDataManager.programItem!.slowlongtempo)
+    fastLongRun = Int(localDataManager.programItem!.fastlongrun)
+    slowLongRun = Int(localDataManager.programItem!.slowlongrun)
+}
+
+func paceRange(fast:Int,slow:Int) -> String {
+    let (fm,fs) = secondsToMinutesSeconds(seconds: fast)
+    let (sm,ss) = secondsToMinutesSeconds(seconds: slow)
+    let resultString = "\(fm)\(NSLocalizedString("MINUTE", comment: "")) \(fs)\(NSLocalizedString("SECOND", comment: "")) - \(sm)\(NSLocalizedString("MINUTE", comment: "")) \(ss)\(NSLocalizedString("SECOND", comment: ""))"
+    return resultString
+}
+
+func getTargetPace(distance:Int) -> String {
+    giveValueToDetailResult()
+    switch distance {
+    case 400:
+        return paceRange(fast: fast400m, slow: slow400m)
+    case 800:
+        return paceRange(fast: fast800m, slow: slow800m)
+    case 1200:
+        return paceRange(fast: fast1200m, slow: slow1200m)
+    case 1600:
+        return paceRange(fast: fast1600m, slow: slow1600m)
+    case 5000:
+        return paceRange(fast: shortTempoRun, slow: shortTempoRun)
+    case 8000,
+         11000:
+        return paceRange(fast: fastMidTempo, slow: slowMidTempo)
+    case 13000,
+         16000:
+        return paceRange(fast: fastLongTempo, slow: slowLongTempo)
+    case 19000,
+         21000,
+         22000,
+         24000,
+         27000,
+         29000,
+         32000:
+        return paceRange(fast: fastLongRun, slow: slowLongRun)
+    default:
+        return ""
+    }
+}
+
+func checkCompletion(distance:Int, workoutPace:Int) -> Bool{
+    switch distance {
+    case 400:
+        return workoutPace < slow400m
+    case 800:
+        return workoutPace < slow800m
+    case 1200:
+        return workoutPace < slow1200m
+    case 1600:
+        return workoutPace < slow1600m
+    case 5000:
+        return workoutPace < shortTempoRun
+    case 8000,
+         11000:
+        return workoutPace < slowMidTempo
+    case 13000,
+         16000:
+        return workoutPace < slowLongTempo
+    case 19000,
+         21000,
+         22000,
+         24000,
+         27000,
+         29000,
+         32000:
+        return workoutPace < slowLongRun
+    default:
+        return false
+    }
 }

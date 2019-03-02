@@ -13,7 +13,7 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     
     var trainingArray:[[String]]?
     let runDataManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
-    let locationManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
+    let locationDataManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
     var idString = ""
     
     override func viewDidLoad() {
@@ -65,14 +65,15 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard localDataManager.checkRunData(runManager: runDataManager, key: idString) != (false,false) else {
+        let (hasRecord,complete) = localDataManager.checkRunData(runManager: runDataManager, key: idString)
+        guard (hasRecord,complete) != (false,false) else {
             let newRunViewController = storyboard?.instantiateViewController(withIdentifier: "NewRunNavigationController") as! UINavigationController
+            runningGoal = trainingArray?[indexPath.section][indexPath.row] as! String
             self.present(newRunViewController, animated: true, completion: nil)
             return
         }
         
-        guard localDataManager.checkLocationData(locationManager: locationManager, key: idString) else {
+        guard localDataManager.checkLocationData(locationManager: locationDataManager, key: idString) else {
             return
         }
         
@@ -81,7 +82,8 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
             request.predicate = NSPredicate(format: "id == %@", idString)
             let requestRun = try localDataManager.runItem?.managedObjectContext?.fetch(request) as! [Run]
             let newRunViewController = storyboard?.instantiateViewController(withIdentifier: "NewRunViewController") as! NewRunViewController
-            newRunViewController.hasRecord = true
+            newRunViewController.hasRecord = hasRecord
+            newRunViewController.complete = complete
             self.navigationController?.pushViewController(newRunViewController, animated: true)
         } catch {
             print("There is no existing track.")

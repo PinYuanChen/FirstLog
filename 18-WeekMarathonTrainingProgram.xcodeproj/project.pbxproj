@@ -27,6 +27,7 @@
 		18690A9121F33B7900F873CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690A9021F33B7900F873CF /* Constants.swift */; };
 		18690AA121FC934800F873CF /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690AA021FC934800F873CF /* HelperFunctions.swift */; };
 		187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */; };
+		18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BE31E22228717E009672F5 /* HealthKit.framework */; };
 		18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		18690A9021F33B7900F873CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18690AA021FC934800F873CF /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		187CC5A822143EBB00B3E847 /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
+		18BE31E22228717E009672F5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */,
 				180BC186221ED9D300165916 /* CoreLocation.framework in Frameworks */,
 				180BC184221ED9C700165916 /* MapKit.framework in Frameworks */,
 			);
@@ -79,6 +82,7 @@
 		180BC182221ED9C700165916 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18BE31E22228717E009672F5 /* HealthKit.framework */,
 				180BC185221ED9D300165916 /* CoreLocation.framework */,
 				180BC183221ED9C700165916 /* MapKit.framework */,
 			);
@@ -187,6 +191,9 @@
 					18690A6F21F3195300F873CF = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
