@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocalDataManager.setAsSingleton(instance: localDataManager)
         localDataManager = LocalDataManager.shared
         localDataManager.checkProgramList()
+        FirebaseApp.configure()
         return true
     }
 

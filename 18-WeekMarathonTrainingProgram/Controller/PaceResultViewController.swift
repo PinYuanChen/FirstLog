@@ -54,13 +54,18 @@ class PaceResultViewController: UIViewController {
     @IBAction func didTappedCancelBtn(_ sender: UIButton) {
         if sender.titleLabel?.text == "Delete" {
             if let item = localDataManager.fetchItemAt(index: 0){
+                
                 localDataManager.deleteItem(item: item)
                 localDataManager.saveContext(completion: { (success) in
                     NotificationCenter.default.post(name: Notification.Name(MAINVIEWRELOADDATA), object: nil)
                 })
             }
+            localDataManager.clearDatabase(entity: "Run")
+            localDataManager.clearDatabase(entity: "Location")
+            localDataManager.saveContext (completion:nil)
+            dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
+
     }
     
     func loadData() {

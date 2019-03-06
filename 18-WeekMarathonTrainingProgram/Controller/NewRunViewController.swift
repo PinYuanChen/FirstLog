@@ -34,9 +34,19 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var runningGoalInt:Int {
         get { return transferRunStringToInt(runString: runningGoal)}
     }
+    var reLocations = [Location]()
+    var requestRun:[Run]?
+    
+    let runManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
+    let cllocationManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refreshMapAndData),
+            name: Notification.Name("refreshMapAndData"),
+            object: nil)
         labelSetUp()
         buttonSetUp()
         navigationSetUp()
@@ -66,15 +76,38 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         mapViewAddStartPlaceholder()
     }
     
+    @objc func refreshMapAndData() {
+        if mapView.annotations.count > 0 {
+            mapView.removeAnnotations(mapView.annotations)
+        }
+        if mapView.overlays.count > 0 {
+            mapView.removeOverlay(polyline!)
+        }
+        
+        labelSetUp()
+        buttonSetUp()
+        mapSetUp()
+    }
+    
     func labelSetUp() {
         targetDistanceLabel.text = runningGoal
         targetPaceLabel.text = getTargetPace(distance: runningGoalInt)
         if hasRecord {
             //fetch pace data from CD
-            if checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace)) {
+            complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace))
+            if complete {
                 completetionLabel.text = "Pass"
             } else {
                 completetionLabel.text = "Fail"
+            }
+            
+            if requestRun != nil {
+                for item in requestRun! {
+                    currentDistanceLabel.text = item.distance
+                    let (minute,second) = secondsToMinutesSeconds(seconds: Int(item.pace))
+                    currentPaceLabel.text = "\(minute) min \(second) s"
+                    durationLabel.text = item.duration
+                }
             }
         }
     }
@@ -117,7 +150,18 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             mapView.userTrackingMode = .followWithHeading
             
         } else {
-            //show record
+            var locations = localDataManager.runItem?.location?.allObjects as! [Location]
+            guard locations.count > 1 else { return }
+            mapView.region = mapRegion()
+            mapView.userTrackingMode = .none
+            var coords = [CLLocationCoordinate2D]()
+            reArrangeLocations()
+            for i in 0..<reLocations.count{
+                coords.append(CLLocationCoordinate2D(latitude: reLocations[i].latitude, longitude: reLocations[i].longitude))
+            }
+            polyline = MKPolyline(coordinates: coords, count: coords.count)
+            mapView.addOverlay(polyline as! MKOverlay)
+            mapViewAddPlaceholder()
         }
     }
     
@@ -137,7 +181,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             timer!.invalidate()
             timer = nil
             locationManager.stopUpdatingLocation()
-            mapView.userTrackingMode = .none
         }
     }
     
@@ -185,6 +228,30 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     
     //MARK: - Map
+    func mapRegion() -> MKCoordinateRegion {
+        let initialLoc = localDataManager.runItem?.location?.allObjects.first as! Location
+        
+        var minLat = initialLoc.latitude
+        var minLng = initialLoc.longitude
+        var maxLat = minLat
+        var maxLng = minLng
+        
+        let locations = localDataManager.runItem?.location?.allObjects as! [Location]
+        
+        for location in locations {
+            minLat = min(minLat, location.latitude)
+            minLng = min(minLng, location.longitude)
+            maxLat = max(maxLat, location.latitude)
+            maxLng = max(maxLng, location.longitude)
+        }
+        
+        return MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: (minLat + maxLat)/2,
+                                           longitude: (minLng + maxLng)/2),
+            span: MKCoordinateSpan(latitudeDelta: (maxLat - minLat)*3,
+                                   longitudeDelta: (maxLng - minLng)*3))
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
@@ -233,8 +300,37 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         currentPaceLabel.text = "\(minute) min \(second) s"
         if distanceCount >= runningGoalInt {
             stopTimer()
+            hasRecord = true
             //save to core data
-            //update and show result
+            editRun(originalItem: nil, completion: { (success, item) in
+                guard success == true else {
+                    return
+                }
+                localDataManager.giveValue(toLocalData: item as! Run)
+                do {
+                    try localDataManager.runItem?.managedObjectContext?.save()
+                    try localDataManager.programItem?.managedObjectContext?.save()
+                } catch {
+                    let error = error as NSError
+                    assertionFailure("Unresolved error\(error)")
+                }
+            })
+            
+            for i in 0..<locationDataArray.count {
+                editLocation(originalItem: nil, index: i) { (success, item) in
+                    guard success == true else {
+                        return
+                    }
+                    do {
+                        try localDataManager.runItem?.managedObjectContext?.save()
+                        try localDataManager.programItem?.managedObjectContext?.save()
+                        NotificationCenter.default.post(name: Notification.Name("refreshMapAndData"), object: nil)
+                    } catch {
+                        let error = error as NSError
+                        assertionFailure("Unresolved error\(error)")
+                    }
+                }
+            }
         }
     }
     
@@ -246,6 +342,30 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             return polylineRenderer
         }
         return MKOverlayRenderer()
+    }
+    
+    func reArrangeLocations() {
+        var locations = localDataManager.runItem?.location?.allObjects as! [Location]
+        reLocations = locations
+        for i in 0..<locations.count{
+            reLocations.remove(at: Int(locations[i].order))
+            reLocations.insert(locations[i], at: Int(locations[i].order))
+        }
+    }
+    
+    func mapViewAddPlaceholder() {
+        let coordinate1 = reLocations.first
+        let coordinate2 = reLocations.last
+        let placeholder1 = MKPointAnnotation()
+        let placeholder2 = MKPointAnnotation()
+        placeholder1.title = "START"
+        placeholder2.title = "END"
+        placeholder1.coordinate.latitude = (reLocations.first?.latitude)!
+        placeholder1.coordinate.longitude = (reLocations.first?.longitude)!
+        placeholder2.coordinate.latitude = (reLocations.last?.latitude)!
+        placeholder2.coordinate.longitude = (reLocations.last?.longitude)!
+        mapView.addAnnotation(placeholder1)
+        mapView.addAnnotation(placeholder2)
     }
     
     //MARK: - Core Location Method
@@ -281,10 +401,9 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             coordinateArray.append(loc.coordinate)
         }
         
-        self.clearPolyline()
-        
-        self.polyline = MKPolyline(coordinates: coordinateArray, count: coordinateArray.count)
-        self.mapView.addOverlay(polyline as! MKOverlay)
+        clearPolyline()
+        polyline = MKPolyline(coordinates: coordinateArray, count: coordinateArray.count)
+        mapView.addOverlay(polyline as! MKOverlay)
         
     }
     
@@ -317,4 +436,42 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
     }
     
+    //MARK: - Core Data
+    typealias EditDoneHandler = (_ success:Bool,_ resultItem:Run?) -> Void
+    func editRun(originalItem:Run?,completion:@escaping EditDoneHandler) {
+        var finalItem = originalItem
+        if finalItem == nil {
+            //創建一個Run Item
+            finalItem = runManager.createItemTo(target: localDataManager.programItem!)
+            finalItem?.id = "\(week)\(runSection)\(runRow)"
+            print(finalItem!.id)
+            localDataManager.programItem?.addToRun(finalItem!)
+        }
+        
+        finalItem?.id = "\(week)\(runSection)\(runRow)"
+        finalItem?.duration = durationLabel.text
+        finalItem?.distance = currentDistanceLabel.text
+        finalItem?.pace = instantPace
+        finalItem?.complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(instantPace))
+        completion(true,finalItem)
+    }
+    
+    //MARK: Annotation
+    typealias EditLocationDoneHandler = (_ success:Bool, _ resultItem:Location?) -> Void
+    func editLocation(originalItem: Location?, index:Int, completion: @escaping EditLocationDoneHandler) {
+        var finalItem = originalItem
+        if finalItem == nil {
+            finalItem = cllocationManager.createItemTo(target:localDataManager.runItem!)
+            finalItem?.id = "\(week)\(runSection)\(runRow)"
+            finalItem?.order = Int32(index)
+            localDataManager.runItem?.addToLocation(finalItem!)
+        }
+        if let longitude = locationDataArray[index].coordinate.longitude as? Double {
+            finalItem?.longitude = longitude
+        }
+        if let latitude = locationDataArray[index].coordinate.latitude as? Double{
+            finalItem?.latitude = latitude
+        }
+        completion(true,finalItem)
+    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1803BE5A222FF7E9008535E2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803BE59222FF7E9008535E2 /* SettingViewController.swift */; };
 		18056F94220C761B00C75241 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18056F93220C761A00C75241 /* CoreDataManager.swift */; };
 		180BC181221ED92000165916 /* NewRunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BC180221ED92000165916 /* NewRunViewController.swift */; };
 		180BC184221ED9C700165916 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180BC183221ED9C700165916 /* MapKit.framework */; };
@@ -21,6 +22,7 @@
 		1824EA7622101B6F00B3D25B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1824EA7522101B6F00B3D25B /* Images.xcassets */; };
 		182D6A8C221D9F350037A111 /* WeeklyTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D6A8B221D9F350037A111 /* WeeklyTrainingViewController.swift */; };
 		182D6A8E221D9F960037A111 /* WeeklyTrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D6A8D221D9F960037A111 /* WeeklyTrainingTableViewCell.swift */; };
+		1851CAE8222FEED600692C1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1851CAE7222FEED500692C1C /* GoogleService-Info.plist */; };
 		18690A7421F3195300F873CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690A7321F3195300F873CF /* AppDelegate.swift */; };
 		18690A7921F3195300F873CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18690A7721F3195300F873CF /* Main.storyboard */; };
 		18690A8121F3195700F873CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18690A7F21F3195700F873CF /* LaunchScreen.storyboard */; };
@@ -29,9 +31,12 @@
 		187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */; };
 		18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BE31E22228717E009672F5 /* HealthKit.framework */; };
 		18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */; };
+		44E9A16ECDC5BA7061D322F5 /* Pods_18_WeekMarathonTrainingProgram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86153BCD5BBCB5D8536AD780 /* Pods_18_WeekMarathonTrainingProgram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E6A3E53F05E012B3F307712 /* Pods-18-WeekMarathonTrainingProgram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18-WeekMarathonTrainingProgram.release.xcconfig"; path = "Pods/Target Support Files/Pods-18-WeekMarathonTrainingProgram/Pods-18-WeekMarathonTrainingProgram.release.xcconfig"; sourceTree = "<group>"; };
+		1803BE59222FF7E9008535E2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = "18-WeekMarathonTrainingProgram/Controller/SettingViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18056F93220C761A00C75241 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		180BC180221ED92000165916 /* NewRunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewRunViewController.swift; path = "18-WeekMarathonTrainingProgram/Controller/NewRunViewController.swift"; sourceTree = SOURCE_ROOT; };
 		180BC183221ED9C700165916 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -53,6 +58,7 @@
 		1824EA7522101B6F00B3D25B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "18-WeekMarathonTrainingProgram/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		182D6A8B221D9F350037A111 /* WeeklyTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTrainingViewController.swift; sourceTree = "<group>"; };
 		182D6A8D221D9F960037A111 /* WeeklyTrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTrainingTableViewCell.swift; sourceTree = "<group>"; };
+		1851CAE7222FEED500692C1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18690A7021F3195300F873CF /* 18-WeekMarathonTrainingProgram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "18-WeekMarathonTrainingProgram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18690A7321F3195300F873CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18690A7821F3195300F873CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +69,8 @@
 		187CC5A822143EBB00B3E847 /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
 		18BE31E22228717E009672F5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramListTableViewCell.swift; sourceTree = "<group>"; };
+		86153BCD5BBCB5D8536AD780 /* Pods_18_WeekMarathonTrainingProgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18_WeekMarathonTrainingProgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA8650CAA49BC04F843F73EE /* Pods-18-WeekMarathonTrainingProgram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18-WeekMarathonTrainingProgram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18-WeekMarathonTrainingProgram/Pods-18-WeekMarathonTrainingProgram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 				18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */,
 				180BC186221ED9D300165916 /* CoreLocation.framework in Frameworks */,
 				180BC184221ED9C700165916 /* MapKit.framework in Frameworks */,
+				44E9A16ECDC5BA7061D322F5 /* Pods_18_WeekMarathonTrainingProgram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +94,7 @@
 				18BE31E22228717E009672F5 /* HealthKit.framework */,
 				180BC185221ED9D300165916 /* CoreLocation.framework */,
 				180BC183221ED9C700165916 /* MapKit.framework */,
+				86153BCD5BBCB5D8536AD780 /* Pods_18_WeekMarathonTrainingProgram.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,6 +105,7 @@
 				18690A7221F3195300F873CF /* 18-WeekMarathonTrainingProgram */,
 				18690A7121F3195300F873CF /* Products */,
 				180BC182221ED9C700165916 /* Frameworks */,
+				AF6E67B43152D54A7A30E2AE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +127,7 @@
 				18690A7F21F3195700F873CF /* LaunchScreen.storyboard */,
 				1824EA7522101B6F00B3D25B /* Images.xcassets */,
 				187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */,
+				1851CAE7222FEED500692C1C /* GoogleService-Info.plist */,
 				18690A8221F3195700F873CF /* Info.plist */,
 				1824EA61220FF59200B3D25B /* Localizable.strings */,
 			);
@@ -143,6 +155,7 @@
 				1824EA6B22100ABE00B3D25B /* PaceResultViewController.swift */,
 				182D6A8B221D9F350037A111 /* WeeklyTrainingViewController.swift */,
 				180BC180221ED92000165916 /* NewRunViewController.swift */,
+				1803BE59222FF7E9008535E2 /* SettingViewController.swift */,
 			);
 			name = Controller;
 			path = "New Group";
@@ -158,6 +171,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AF6E67B43152D54A7A30E2AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA8650CAA49BC04F843F73EE /* Pods-18-WeekMarathonTrainingProgram.debug.xcconfig */,
+				0E6A3E53F05E012B3F307712 /* Pods-18-WeekMarathonTrainingProgram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18690A8521F3195700F873CF /* Build configuration list for PBXNativeTarget "18-WeekMarathonTrainingProgram" */;
 			buildPhases = (
+				EAE30735B525E6861CD1B93E /* [CP] Check Pods Manifest.lock */,
 				18690A6C21F3195300F873CF /* Sources */,
 				18690A6D21F3195300F873CF /* Frameworks */,
 				18690A6E21F3195300F873CF /* Resources */,
+				DB49119FC7043ACC449D5CF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,12 +252,70 @@
 			files = (
 				18690A8121F3195700F873CF /* LaunchScreen.storyboard in Resources */,
 				1824EA7622101B6F00B3D25B /* Images.xcassets in Resources */,
+				1851CAE8222FEED600692C1C /* GoogleService-Info.plist in Resources */,
 				1824EA63220FF59200B3D25B /* Localizable.strings in Resources */,
 				18690A7921F3195300F873CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DB49119FC7043ACC449D5CF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-18-WeekMarathonTrainingProgram/Pods-18-WeekMarathonTrainingProgram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-18-WeekMarathonTrainingProgram/Pods-18-WeekMarathonTrainingProgram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAE30735B525E6861CD1B93E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-18-WeekMarathonTrainingProgram-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18690A6C21F3195300F873CF /* Sources */ = {
@@ -243,6 +325,7 @@
 				1824EA6E22100ABF00B3D25B /* PaceCalculationViewController.swift in Sources */,
 				18690A9121F33B7900F873CF /* Constants.swift in Sources */,
 				187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */,
+				1803BE5A222FF7E9008535E2 /* SettingViewController.swift in Sources */,
 				18690A7421F3195300F873CF /* AppDelegate.swift in Sources */,
 				1824EA7022100ABF00B3D25B /* PaceResultViewController.swift in Sources */,
 				1824EA5A220FF11300B3D25B /* LocalDataManager.swift in Sources */,
@@ -415,6 +498,7 @@
 		};
 		18690A8621F3195700F873CF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA8650CAA49BC04F843F73EE /* Pods-18-WeekMarathonTrainingProgram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -433,6 +517,7 @@
 		};
 		18690A8721F3195700F873CF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E6A3E53F05E012B3F307712 /* Pods-18-WeekMarathonTrainingProgram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

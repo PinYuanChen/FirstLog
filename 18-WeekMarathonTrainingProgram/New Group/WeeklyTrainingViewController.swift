@@ -57,18 +57,20 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
         idString = "\(week)\(runSection)\(runRow)"
         
         if localDataManager.checkRunData(runManager: runDataManager, key: idString) == (true,true) {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
+            cell.checkImageView.image = UIImage(named: "checked")
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        runningGoal = trainingArray?[indexPath.section][indexPath.row] as! String
+        
+        runSection = indexPath.section
+        runRow = indexPath.row
+        idString = "\(week)\(runSection)\(runRow)"
         let (hasRecord,complete) = localDataManager.checkRunData(runManager: runDataManager, key: idString)
         guard (hasRecord,complete) != (false,false) else {
             let newRunViewController = storyboard?.instantiateViewController(withIdentifier: "NewRunNavigationController") as! UINavigationController
-            runningGoal = trainingArray?[indexPath.section][indexPath.row] as! String
             self.present(newRunViewController, animated: true, completion: nil)
             return
         }
@@ -82,6 +84,7 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
             request.predicate = NSPredicate(format: "id == %@", idString)
             let requestRun = try localDataManager.runItem?.managedObjectContext?.fetch(request) as! [Run]
             let newRunViewController = storyboard?.instantiateViewController(withIdentifier: "NewRunViewController") as! NewRunViewController
+            newRunViewController.requestRun = requestRun
             newRunViewController.hasRecord = hasRecord
             newRunViewController.complete = complete
             self.navigationController?.pushViewController(newRunViewController, animated: true)

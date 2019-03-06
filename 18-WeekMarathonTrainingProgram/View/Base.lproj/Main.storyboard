@@ -551,10 +551,20 @@
         <!--Item-->
         <scene sceneID="RIv-QS-BFS">
             <objects>
-                <viewController id="JlC-rV-vmP" sceneMemberID="viewController">
+                <viewController id="JlC-rV-vmP" customClass="SettingViewController" customModule="_8_WeekMarathonTrainingProgram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YMA-mj-8bQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2w-mI-ebt">
+                                <rect key="frame" x="143" y="268" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="upload"/>
+                                <connections>
+                                    <action selector="upload:" destination="JlC-rV-vmP" eventType="touchUpInside" id="Lmt-Zx-yml"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6dv-8o-NAV"/>
                     </view>
@@ -629,24 +639,34 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FOv-EW-hpL">
+                                                            <rect key="frame" x="329" y="14" width="16" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="16" id="fWK-Jn-YPw"/>
+                                                                <constraint firstAttribute="width" constant="16" id="mKA-0k-ZVU"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="u75-lu-eEl" firstAttribute="leading" secondItem="wFL-Po-Wya" secondAttribute="leading" constant="5" id="2Nd-T8-YYS"/>
                                                         <constraint firstAttribute="bottom" secondItem="u75-lu-eEl" secondAttribute="bottom" constant="5" id="ED4-gH-ZqD"/>
                                                         <constraint firstItem="u75-lu-eEl" firstAttribute="top" secondItem="wFL-Po-Wya" secondAttribute="top" constant="5" id="egQ-fb-gWo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FOv-EW-hpL" secondAttribute="trailing" constant="10" id="g2Z-6n-YSF"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="wFL-Po-Wya" secondAttribute="trailing" constant="10" id="eVh-ab-dc9"/>
                                                 <constraint firstItem="wFL-Po-Wya" firstAttribute="top" secondItem="hfL-LF-hCt" secondAttribute="top" id="hBA-gL-eqC"/>
+                                                <constraint firstItem="FOv-EW-hpL" firstAttribute="centerY" secondItem="hfL-LF-hCt" secondAttribute="centerY" id="oqz-Ta-vrZ"/>
                                                 <constraint firstItem="wFL-Po-Wya" firstAttribute="leading" secondItem="hfL-LF-hCt" secondAttribute="leading" constant="10" id="qux-LA-5jv"/>
                                                 <constraint firstAttribute="bottom" secondItem="wFL-Po-Wya" secondAttribute="bottom" id="xRQ-sg-Gww"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
+                                            <outlet property="checkImageView" destination="FOv-EW-hpL" id="b5G-4g-RXN"/>
                                             <outlet property="distanceLabel" destination="u75-lu-eEl" id="oho-30-5n1"/>
                                         </connections>
                                     </tableViewCell>

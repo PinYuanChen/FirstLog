@@ -46,7 +46,6 @@ class LocalDataManager:CoreDataManager<Program> {
             guard result != [] else {
                 return (false,false)
             }
-            //give value
             for item in result {
                 guard item.id == key else {
                     return (false,false)
@@ -77,5 +76,6 @@ class LocalDataManager:CoreDataManager<Program> {
         }
         return true
     }
+    
     
 }

@@ -204,5 +204,19 @@ class CoreDataManager<T:NSManagedObject>: NSObject, NSFetchedResultsControllerDe
         return nil
     }
     
+    func clearDatabase( entity:String ) {
+        let context = self.managedObjectContext
+        let coord = self.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity )
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.execute(deleteRequest, with: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
 }
 
