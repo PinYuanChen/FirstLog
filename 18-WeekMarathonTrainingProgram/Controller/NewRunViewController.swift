@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import HealthKit
+import CoreData
 
 class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
@@ -67,13 +68,35 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
 
     @IBAction func didTappedRunButton(_ sender: Any) {
-        startRecording = true
-        seconds = 0.0
-        distanceCount = 0
-        instantPace = 0.0
-        startTimer()
-        locationDataArray.removeAll()
-        mapViewAddStartPlaceholder()
+        if hasRecord { //delete record
+            let alert = UIAlertController(title: "Delete record", message: "Are you sure you want to delete this record?", preferredStyle: .alert)
+            let okBtn = UIAlertAction(title: "OK", style: .default) { _ in
+                
+                let manageContext = localDataManager.runItem?.managedObjectContext
+                let item = self.requestRun![0] as Run
+                manageContext?.delete(item)
+                
+                do {
+                    try manageContext?.save()
+                    NotificationCenter.default.post(name: Notification.Name("reloadData"), object: nil)
+                } catch {
+                    print("error: cant save the userDataManager.userItem")
+                }
+                self.navigationController?.popViewController(animated: true)
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(okBtn)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        } else { //start new run
+            startRecording = true
+            seconds = 0.0
+            distanceCount = 0
+            instantPace = 0.0
+            startTimer()
+            locationDataArray.removeAll()
+            mapViewAddStartPlaceholder()
+        }
     }
     
     @objc func refreshMapAndData() {
@@ -100,7 +123,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             } else {
                 completetionLabel.text = "Fail"
             }
-            
+            print(requestRun)
             if requestRun != nil {
                 for item in requestRun! {
                     currentDistanceLabel.text = item.distance
@@ -113,10 +136,8 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func buttonSetUp() {
-        if complete {
-            runButton.setTitle("Cancel", for: .normal)
-        } else if (hasRecord && !complete) {
-            runButton.setTitle("Retry", for: .normal)
+        if hasRecord {
+            runButton.setTitle("Delete", for: .normal)
         } else {
             runButton.setTitle("Start", for: .normal)
         }
@@ -133,14 +154,13 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2
-        rightCancelButton = UIBarButtonItem(title: "Canel", style: .plain, target: self, action: #selector(didTappedCancelButton))
+        rightCancelButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(didTappedCloseButton))
        self.navigationItem.rightBarButtonItem = rightCancelButton
     }
     
     func mapSetUp() {
         
         if !hasRecord {
-            
             locationManager.requestWhenInUseAuthorization()
             locationManager.delegate = self
             locationManager.startUpdatingLocation()
@@ -148,7 +168,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.allowsBackgroundLocationUpdates = true
             locationManager.pausesLocationUpdatesAutomatically = false
             mapView.userTrackingMode = .followWithHeading
-            
         } else {
             var locations = localDataManager.runItem?.location?.allObjects as! [Location]
             guard locations.count > 1 else { return }
@@ -181,16 +200,16 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             timer!.invalidate()
             timer = nil
             locationManager.stopUpdatingLocation()
+            mapView.showsUserLocation = false
         }
     }
     
-    @objc func didTappedCancelButton() {
+    @objc func didTappedCloseButton() {
         dismiss(animated: true, completion: nil)
     }
     
     
     func showTurnOnLocationServiceAlert() {
-        
         let alert = UIAlertController(title: "Turn on Location Service", message: "To use location tracking feature of the app, please turn on the location service from the Settings app.", preferredStyle: .alert)
         
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
@@ -203,9 +222,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
-        
     }
     
     func transferRunStringToInt(runString:String) -> Int {
@@ -296,6 +313,10 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         durationLabel.text = "\(hoursQuantity.description)  \(minutesQuantity.description) \(secondsQuantity.description)"
         let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: Double(distanceCount))
         currentDistanceLabel.text = "\(distanceQuantity.description) "
+        guard !(instantPace.isNaN || instantPace.isInfinite) else {
+            print("illegal value")
+            return
+        }
         let (minute,second) = secondsToMinutesSeconds(seconds: Int(instantPace))
         currentPaceLabel.text = "\(minute) min \(second) s"
         if distanceCount >= runningGoalInt {
@@ -325,6 +346,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                         try localDataManager.runItem?.managedObjectContext?.save()
                         try localDataManager.programItem?.managedObjectContext?.save()
                         NotificationCenter.default.post(name: Notification.Name("refreshMapAndData"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil)
                     } catch {
                         let error = error as NSError
                         assertionFailure("Unresolved error\(error)")

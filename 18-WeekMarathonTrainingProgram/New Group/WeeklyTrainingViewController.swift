@@ -11,6 +11,8 @@ import CoreData
 
 class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    @IBOutlet weak var tableview: UITableView!
     var trainingArray:[[String]]?
     let runDataManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
     let locationDataManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
@@ -18,8 +20,16 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self
+            , selector: #selector(reloadData), name: Notification.Name("reloadData"), object: nil)
+    }
+    
+    @objc func reloadData() {
+       self.tableview.reloadData()
     }
     
     //MARK: - Table View

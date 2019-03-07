@@ -18,6 +18,8 @@ class SettingViewController: UIViewController {
     
 
     @IBAction func upload(_ sender: Any) {
+//        let record = localDataManager.programItem as! Program
+//        let runs = record.run?.allObjects
     }
     
 }
