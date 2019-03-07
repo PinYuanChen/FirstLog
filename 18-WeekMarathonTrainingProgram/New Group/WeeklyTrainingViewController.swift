@@ -68,6 +68,8 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
         
         if localDataManager.checkRunData(runManager: runDataManager, key: idString) == (true,true) {
             cell.checkImageView.image = UIImage(named: "checked")
+        } else {
+            cell.checkImageView.image = nil
         }
         return cell
     }

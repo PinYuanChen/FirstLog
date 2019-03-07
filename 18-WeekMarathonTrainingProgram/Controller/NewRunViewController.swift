@@ -74,15 +74,23 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 
                 let manageContext = localDataManager.runItem?.managedObjectContext
                 let item = self.requestRun![0] as Run
+                let locations = item.location?.allObjects as! [Location]
+                for i in 0..<locations.count {
+                    manageContext?.delete(locations[i])
+                }
                 manageContext?.delete(item)
                 
                 do {
                     try manageContext?.save()
-                    NotificationCenter.default.post(name: Notification.Name("reloadData"), object: nil)
+                    localDataManager.saveContext(completion: { (success) in
+                        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil)
+                        self.navigationController?.popViewController(animated: true)
+//                        self.dismiss(animated: true, completion: nil)
+                    })
+                    
                 } catch {
                     print("error: cant save the userDataManager.userItem")
                 }
-                self.navigationController?.popViewController(animated: true)
             }
             let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(okBtn)
@@ -345,6 +353,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     do {
                         try localDataManager.runItem?.managedObjectContext?.save()
                         try localDataManager.programItem?.managedObjectContext?.save()
+                        self.fetchDataToRequestRun()
                         NotificationCenter.default.post(name: Notification.Name("refreshMapAndData"), object: nil)
                         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil)
                     } catch {
@@ -353,6 +362,17 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     }
                 }
             }
+        }
+    }
+    
+    func fetchDataToRequestRun() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Run")
+        request.predicate = NSPredicate(format: "id == %@", "\(week)\(runSection)\(runRow)")
+        do {
+            let requestRunAry = try localDataManager.runItem?.managedObjectContext?.fetch(request) as! [Run]
+            requestRun = requestRunAry
+        } catch {
+            print("fetch fail")
         }
     }
     
