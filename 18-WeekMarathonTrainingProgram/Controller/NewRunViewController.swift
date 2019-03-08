@@ -491,6 +491,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
         
         finalItem?.id = "\(week)\(runSection)\(runRow)"
+        finalItem?.week = "Week\(week)"
         finalItem?.duration = durationLabel.text
         finalItem?.distance = currentDistanceLabel.text
         finalItem?.pace = instantPace

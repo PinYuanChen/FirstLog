@@ -8,6 +8,29 @@
 
 import UIKit
 
+func getCompleteStatus(week:String, runManager:CoreDataManager<Run>) -> Int {
+    let trainingAry:[[String]] = trainigProgram[week]!
+    var totalCount = 0
+    var completeCount = 0
+    for training in trainingAry {
+        totalCount += training.count
+    }
+    if let result = runManager.searchBy(keyword: week, field: "week"){
+        guard result != [] else {
+           return 0
+        }
+        for item in result {
+            if item.complete {
+               completeCount += 1
+            }
+        }
+    }
+    if completeCount > 0 {
+        return Int((Double(completeCount) * 100 / Double(totalCount)).rounded())
+    } else {
+        return 0
+    }
+}
 
 func paceCalculator(hour:Int, minute:Int, second:Int, distance:Int) {
     (m,s) = secondsToMinutesSeconds(seconds:(hour+minute+second)/distance)
@@ -32,7 +55,6 @@ func paceCalculator(hour:Int, minute:Int, second:Int, distance:Int) {
     slowLongTempo = pace10k + 35
     fastLongRun = pace10k + 60
     slowLongRun = pace10k + 75
-
 }
 
 func secondsToMinutesSeconds (seconds : Int) -> (Int, Int) {

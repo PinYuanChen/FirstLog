@@ -14,6 +14,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var createButton: UIButton!
     var rightSettingButton:UIBarButtonItem?
+    let runDataManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramListCell", for: indexPath) as! ProgramListTableViewCell
         cell.selectionStyle = .none
         cell.weekLabel.text = "Week \(indexPath.row + 1)"
+        let completion = getCompleteStatus(week: "Week\(indexPath.row+1)", runManager: runDataManager)
+        cell.programStatus.text = "\(completion)%"
         return cell
     }
     
