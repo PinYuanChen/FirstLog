@@ -99,6 +99,7 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
             newRunViewController.requestRun = requestRun
             newRunViewController.hasRecord = hasRecord
             newRunViewController.complete = complete
+            newRunViewController.fromNavigationPush = true
             self.navigationController?.pushViewController(newRunViewController, animated: true)
         } catch {
             print("There is no existing track.")

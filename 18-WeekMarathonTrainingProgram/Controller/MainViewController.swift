@@ -72,8 +72,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func rightSettingButtonPressed() {
-        let paceResultViewController = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
-        self.present(paceResultViewController, animated: true, completion: nil)
+//        let paceResultViewController = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
+//        self.present(paceResultViewController, animated: true, completion: nil)
     }
     
     //MARK: - Tableview
@@ -91,7 +91,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 80.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

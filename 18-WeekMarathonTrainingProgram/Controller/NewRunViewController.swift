@@ -37,6 +37,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     var reLocations = [Location]()
     var requestRun:[Run]?
+    var fromNavigationPush:Bool?
     
     let runManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
     let cllocationManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
@@ -84,8 +85,11 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     try manageContext?.save()
                     localDataManager.saveContext(completion: { (success) in
                         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil)
-                        self.navigationController?.popViewController(animated: true)
-//                        self.dismiss(animated: true, completion: nil)
+                        if self.fromNavigationPush == true {
+                           self.navigationController?.popViewController(animated: true)
+                        } else {
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     })
                     
                 } catch {
@@ -96,14 +100,39 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             alert.addAction(okBtn)
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
+        } else if startRecording {
+            let alert = UIAlertController(title: "Stop", message: "You are not finished yet. Do you want to quit or continue this running?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Quit", style: .default, handler: { (UIAlertAction) in
+                self.stopTimer()
+                self.startRecording = false
+                if self.mapView.annotations.count > 0 {
+                    self.mapView.removeAnnotations(self.mapView.annotations)
+                }
+                if self.mapView.overlays.count>0{
+                    self.mapView.removeOverlays(self.mapView.overlays)
+                }
+                self.seconds = 0.0
+                self.distanceCount = 0
+                self.instantPace = 0.0
+                self.currentDistanceLabel.text = ""
+                self.durationLabel.text = ""
+                self.currentPaceLabel.text = ""
+                self.buttonSetUp()
+                self.locationDataArray.removeAll()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
         } else { //start new run
             startRecording = true
             seconds = 0.0
             distanceCount = 0
             instantPace = 0.0
+            buttonSetUp()
             startTimer()
             locationDataArray.removeAll()
             mapViewAddStartPlaceholder()
+            rightCancelButton?.isEnabled = false
         }
     }
     
@@ -146,6 +175,8 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     func buttonSetUp() {
         if hasRecord {
             runButton.setTitle("Delete", for: .normal)
+        } else if startRecording {
+            runButton.setTitle("Stop", for: .normal)
         } else {
             runButton.setTitle("Start", for: .normal)
         }
@@ -208,7 +239,8 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             timer!.invalidate()
             timer = nil
             locationManager.stopUpdatingLocation()
-            mapView.showsUserLocation = false
+            startRecording = false
+            rightCancelButton?.isEnabled = true
         }
     }
     
@@ -330,6 +362,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         if distanceCount >= runningGoalInt {
             stopTimer()
             hasRecord = true
+            mapView.showsUserLocation = false
             //save to core data
             editRun(originalItem: nil, completion: { (success, item) in
                 guard success == true else {
@@ -356,6 +389,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                         self.fetchDataToRequestRun()
                         NotificationCenter.default.post(name: Notification.Name("refreshMapAndData"), object: nil)
                         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(MAINVIEWRELOADDATA), object: nil)
                     } catch {
                         let error = error as NSError
                         assertionFailure("Unresolved error\(error)")
@@ -486,7 +520,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             //創建一個Run Item
             finalItem = runManager.createItemTo(target: localDataManager.programItem!)
             finalItem?.id = "\(week)\(runSection)\(runRow)"
-            print(finalItem!.id)
             localDataManager.programItem?.addToRun(finalItem!)
         }
         
