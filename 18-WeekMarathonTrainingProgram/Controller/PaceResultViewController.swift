@@ -24,6 +24,19 @@ class PaceResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        navigationSetUp()
+    }
+    
+    func navigationSetUp() {
+        
+        self.navigationController?.navigationBar.barTintColor = NAVIGATIONBARCOLOR
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 2
     }
     
     @IBAction func didTappedConfirmBtn(_ sender: UIButton) {
@@ -64,17 +77,17 @@ class PaceResultViewController: UIViewController {
             localDataManager.clearDatabase(entity: "Location")
             localDataManager.saveContext (completion:nil)
             dismiss(animated: true, completion: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
 
     }
     
     func loadData() {
-        
         if localDataManager.totalCount() != 0 {
             giveValueToDetailResult()
             cancelButton.setTitle("Delete", for: .normal)
         }
-        
         pace400mLabel.text = paceRange(fast: fast400m, slow: slow400m)
         pace800mLabel.text = paceRange(fast: fast800m, slow: slow800m)
         pace1200mLabel.text = paceRange(fast: fast1200m, slow: slow1200m)
@@ -84,8 +97,7 @@ class PaceResultViewController: UIViewController {
         longTempoRunLabel.text = paceRange(fast: fastLongTempo, slow: slowLongTempo)
         longRunLabel.text = paceRange(fast: fastLongRun, slow: slowLongRun)
     }
-    
-    
+
     //MARK: - Core Data
     typealias EditDoneHandler = (_ success:Bool,_ resultItem:Program?) -> Void
     func editProgram(originalItem:Program?,completion:@escaping EditDoneHandler) {
@@ -112,6 +124,4 @@ class PaceResultViewController: UIViewController {
         
         completion(true,finalItem)
     }
-    
-    
 }

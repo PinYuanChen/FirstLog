@@ -72,8 +72,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func rightSettingButtonPressed() {
-//        let paceResultViewController = storyboard?.instantiateViewController(withIdentifier: "PaceResultViewController") as! PaceResultViewController
-//        self.present(paceResultViewController, animated: true, completion: nil)
+        let paceResultViewController = storyboard?.instantiateViewController(withIdentifier: "PaceResultNavigationController") as! UINavigationController
+        self.present(paceResultViewController, animated: true, completion: nil)
     }
     
     //MARK: - Tableview
