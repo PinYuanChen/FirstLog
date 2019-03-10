@@ -22,25 +22,13 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
         hourTextField.delegate = self
         minuteTextField.delegate = self
         secondTextField.delegate = self
-        navigationSetUp()
+        navigationSetUp(target: self)
+        self.navigationItem.title = "Pace Calculation"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         self.view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
     }
     
-    func navigationSetUp() {
-        
-        self.navigationController?.navigationBar.barTintColor = NAVIGATIONBARCOLOR
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationItem.title = "Pace Calculation"
-        self.navigationController?.navigationBar.layer.masksToBounds = false
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.navigationController?.navigationBar.layer.shadowRadius = 2
-        
-    }
     
     @objc func tap(_ sender:Any) {
         self.view.endEditing(true)

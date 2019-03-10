@@ -23,7 +23,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         tableviewSetUp()
-        navigationSetUp()
+        navigationSetUp(target: self)
+        self.navigationItem.title = "FIRST Log"
+        rightSettingButton = UIBarButtonItem(image: UIImage(named: "settingsline"), style: .plain, target: self, action: #selector(rightSettingButtonPressed))
+        self.navigationItem.rightBarButtonItem = rightSettingButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = !tableview.isHidden
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(refreshTableView),
@@ -43,22 +48,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             createButton.setTitle("Start", for: .normal)
         }
     
-    }
-    
-    func navigationSetUp() {
-        
-        self.navigationController?.navigationBar.barTintColor = NAVIGATIONBARCOLOR
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationItem.title = "FIRST Log"
-        self.navigationController?.navigationBar.layer.masksToBounds = false
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.navigationController?.navigationBar.layer.shadowRadius = 2
-         rightSettingButton = UIBarButtonItem(image: UIImage(named: "settingsline"), style: .plain, target: self, action: #selector(rightSettingButtonPressed))
-        self.navigationItem.rightBarButtonItem = rightSettingButton
-        self.navigationItem.rightBarButtonItem?.isEnabled = !tableview.isHidden
     }
     
     @IBAction func didTappedCreateButton(_ sender: Any) {
@@ -100,7 +89,5 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         week = indexPath.row + 1
         self.navigationController?.pushViewController(weeklyTrainingViewController, animated: true)
     }
-    
-
 }
 

@@ -51,7 +51,11 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             object: nil)
         labelSetUp()
         buttonSetUp()
-        navigationSetUp()
+        navigationSetUp(target: self)
+        self.navigationItem.title = runningGoal
+        rightCancelButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(didTappedCloseButton))
+        self.navigationItem.rightBarButtonItem = rightCancelButton
+        rightCancelButton?.isEnabled = !hasRecord
         mapSetUp()
     }
     
@@ -153,7 +157,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         targetDistanceLabel.text = runningGoal
         targetPaceLabel.text = getTargetPace(distance: runningGoalInt)
         if hasRecord {
-            //fetch pace data from CD
+            //fetch pacxe data from CD
             complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace))
             if complete {
                 completetionLabel.text = "Pass"
@@ -180,21 +184,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         } else {
             runButton.setTitle("Start", for: .normal)
         }
-    }
-    
-    func navigationSetUp() {
-        
-        self.navigationController?.navigationBar.barTintColor = NAVIGATIONBARCOLOR
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.tintColor = .white
-       self.navigationItem.title = runningGoal
-        self.navigationController?.navigationBar.layer.masksToBounds = false
-        self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
-        self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
-        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        self.navigationController?.navigationBar.layer.shadowRadius = 2
-        rightCancelButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(didTappedCloseButton))
-       self.navigationItem.rightBarButtonItem = rightCancelButton
     }
     
     func mapSetUp() {

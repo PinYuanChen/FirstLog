@@ -8,6 +8,17 @@
 
 import UIKit
 
+public func navigationSetUp(target:UIViewController) {
+    target.navigationController?.navigationBar.barTintColor = NAVIGATIONBARCOLOR
+    target.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    target.navigationController?.navigationBar.tintColor = .white
+    target.navigationController?.navigationBar.layer.masksToBounds = false
+    target.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+    target.navigationController?.navigationBar.layer.shadowOpacity = 0.8
+    target.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+    target.navigationController?.navigationBar.layer.shadowRadius = 2
+}
+
 func getCompleteStatus(week:String, runManager:CoreDataManager<Run>) -> Int {
     let trainingAry:[[String]] = trainigProgram[week]!
     var totalCount = 0

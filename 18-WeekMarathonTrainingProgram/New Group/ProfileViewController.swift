@@ -10,9 +10,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var avatarImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationSetUp(target: self)
+        self.navigationItem.title = "Profile"
         // Do any additional setup after loading the view.
     }
     
