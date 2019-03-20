@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     
     @IBOutlet weak var tableview: UITableView!
@@ -99,8 +99,8 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
             newRunViewController.requestRun = requestRun
             newRunViewController.hasRecord = hasRecord
             newRunViewController.complete = complete
-            newRunViewController.fromNavigationPush = true
-            self.navigationController?.pushViewController(newRunViewController, animated: true)
+            let newRunNavigationController = UINavigationController.init(rootViewController: newRunViewController)
+            self.present(newRunNavigationController, animated: true, completion: nil)
         } catch {
             print("There is no existing track.")
         }

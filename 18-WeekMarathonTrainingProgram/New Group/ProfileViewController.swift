@@ -12,6 +12,12 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    @IBOutlet weak var downloadUploadStackView: UIStackView!
+    @IBOutlet weak var downloadRecordButton: UIButton!
+    @IBOutlet weak var uploadRecordButton: UIButton!
+    @IBOutlet weak var loginStackView: UIStackView!
+    @IBOutlet weak var loginFBButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSetUp(target: self)
@@ -20,14 +26,19 @@ class ProfileViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func didTappedLoginWithFBButton(_ sender: Any) {
     }
-    */
-
+    
+    
+    @IBAction func didTappedCreateAccountButton(_ sender: Any) {
+    }
+    
+    
+    @IBAction func didTappedDownloadRecordButton(_ sender: Any) {
+    }
+    
+    @IBAction func didTappedUploadRecordButton(_ sender: Any) {
+    }
+    
 }

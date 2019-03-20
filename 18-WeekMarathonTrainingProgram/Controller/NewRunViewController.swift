@@ -12,6 +12,10 @@ import CoreLocation
 import HealthKit
 import CoreData
 
+public protocol NewRunViewControllerProtocol:AnyObject {
+    var requestRun:[Run] {get}
+}
+
 class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -37,7 +41,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     var reLocations = [Location]()
     var requestRun:[Run]?
-    var fromNavigationPush:Bool?
     
     let runManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
     let cllocationManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
@@ -55,7 +58,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         self.navigationItem.title = runningGoal
         rightCancelButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(didTappedCloseButton))
         self.navigationItem.rightBarButtonItem = rightCancelButton
-        rightCancelButton?.isEnabled = !hasRecord
         mapSetUp()
     }
     
@@ -89,11 +91,25 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     try manageContext?.save()
                     localDataManager.saveContext(completion: { (success) in
                         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: nil)
-                        if self.fromNavigationPush == true {
-                           self.navigationController?.popViewController(animated: true)
-                        } else {
-                            self.dismiss(animated: true, completion: nil)
+                        //reload data
+                        self.hasRecord = false
+                        if self.mapView.annotations.count > 0 {
+                            self.mapView.removeAnnotations(self.mapView.annotations)
                         }
+                        if self.mapView.overlays.count>0{
+                            self.mapView.removeOverlays(self.mapView.overlays)
+                        }
+                        self.seconds = 0.0
+                        self.distanceCount = 0
+                        self.instantPace = 0.0
+                        self.currentDistanceLabel.text = ""
+                        self.durationLabel.text = ""
+                        self.currentPaceLabel.text = ""
+                        self.completetionLabel.text = "NO"
+                        self.labelSetUp()
+                        self.buttonSetUp()
+                        self.locationDataArray.removeAll()
+                        self.mapSetUp()
                     })
                     
                 } catch {
@@ -164,7 +180,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             } else {
                 completetionLabel.text = "Fail"
             }
-            print(requestRun)
             if requestRun != nil {
                 for item in requestRun! {
                     currentDistanceLabel.text = item.distance

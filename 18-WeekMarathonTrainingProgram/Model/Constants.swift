@@ -57,3 +57,8 @@ let trainigProgram = [
     "Week14":[["800 m","800 m","800 m","800 m","800 m","800 m","800 m"],["6 km"],["24 km"]],
     "Week15":[["1600 m","1600 m","1600 m"],["13 km"],["16 km"]]
 ]
+
+//MARK: - FAQ
+let faqDict = [
+    "About":[NSLocalizedString("ABOUT_QUESTION", comment: ""),NSLocalizedString("ABOUT_ANSWER", comment: "")]
+]

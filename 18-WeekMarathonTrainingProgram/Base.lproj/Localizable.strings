@@ -13,9 +13,7 @@
 "TAB_BAR_SETTINGS" = "Settings";
 
 //MARK: Main View Controller
-"FIRST_TIME_DESCRIPTION" = "Create your first marathon training program by pressing \"+\" button below!";
-
-
+"FIRST_TIME_DESCRIPTION" = "Create your marathon training program by pressing button below!";
 
 //MARK: Training program
 "WEEK" = "Week{0}";

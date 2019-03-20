@@ -7,6 +7,8 @@
 */
 
 //MARK: - Main View Controller
-"FIRST_TIME_DESCRIPTION" = "請按下方的按鈕「＋」來建立第一個訓練計畫!";
+"FIRST_TIME_DESCRIPTION" = "請按下方的按鈕來建立訓練計畫!";
 
 "WEEK" = "第{0}週";
+"MINUTE" = "分";
+"SECOND" = "秒";
