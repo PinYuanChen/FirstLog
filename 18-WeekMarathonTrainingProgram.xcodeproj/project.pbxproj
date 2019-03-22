@@ -29,13 +29,13 @@
 		18690A9121F33B7900F873CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690A9021F33B7900F873CF /* Constants.swift */; };
 		18690AA121FC934800F873CF /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18690AA021FC934800F873CF /* HelperFunctions.swift */; };
 		187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */; };
+		18B9F1702243D71900CD6696 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9F16F2243D71900CD6696 /* HeaderView.swift */; };
+		18B9F1722243D72A00CD6696 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B9F1712243D72A00CD6696 /* HeaderView.xib */; };
 		18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BE31E22228717E009672F5 /* HealthKit.framework */; };
 		18C61A6022425ABE002634B2 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C61A5F22425ABE002634B2 /* InfoTableViewCell.swift */; };
 		18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */; };
 		18EBEADB2237FA0A0091C3EC /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EBEAD92237FA0A0091C3EC /* AnswerTableViewCell.swift */; };
 		18EBEADC2237FA0A0091C3EC /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EBEADA2237FA0A0091C3EC /* AnswerTableViewCell.xib */; };
-		18EBEAE3223800F30091C3EC /* HeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EBEAE1223800F30091C3EC /* HeaderViewCell.swift */; };
-		18EBEAE4223800F30091C3EC /* HeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EBEAE2223800F30091C3EC /* HeaderViewCell.xib */; };
 		44E9A16ECDC5BA7061D322F5 /* Pods_18_WeekMarathonTrainingProgram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86153BCD5BBCB5D8536AD780 /* Pods_18_WeekMarathonTrainingProgram.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,13 +72,13 @@
 		18690A9021F33B7900F873CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18690AA021FC934800F873CF /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		187CC5A822143EBB00B3E847 /* ProgramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProgramModel.xcdatamodel; sourceTree = "<group>"; };
+		18B9F16F2243D71900CD6696 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		18B9F1712243D72A00CD6696 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		18BE31E22228717E009672F5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		18C61A5F22425ABE002634B2 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramListTableViewCell.swift; sourceTree = "<group>"; };
 		18EBEAD92237FA0A0091C3EC /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		18EBEADA2237FA0A0091C3EC /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
-		18EBEAE1223800F30091C3EC /* HeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCell.swift; sourceTree = "<group>"; };
-		18EBEAE2223800F30091C3EC /* HeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderViewCell.xib; sourceTree = "<group>"; };
 		86153BCD5BBCB5D8536AD780 /* Pods_18_WeekMarathonTrainingProgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18_WeekMarathonTrainingProgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8650CAA49BC04F843F73EE /* Pods-18-WeekMarathonTrainingProgram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18-WeekMarathonTrainingProgram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18-WeekMarathonTrainingProgram/Pods-18-WeekMarathonTrainingProgram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,9 +179,9 @@
 				182D6A8D221D9F960037A111 /* WeeklyTrainingTableViewCell.swift */,
 				18EBEAD92237FA0A0091C3EC /* AnswerTableViewCell.swift */,
 				18EBEADA2237FA0A0091C3EC /* AnswerTableViewCell.xib */,
-				18EBEAE1223800F30091C3EC /* HeaderViewCell.swift */,
-				18EBEAE2223800F30091C3EC /* HeaderViewCell.xib */,
 				18C61A5F22425ABE002634B2 /* InfoTableViewCell.swift */,
+				18B9F16F2243D71900CD6696 /* HeaderView.swift */,
+				18B9F1712243D72A00CD6696 /* HeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 				18EBEADC2237FA0A0091C3EC /* AnswerTableViewCell.xib in Resources */,
 				1824EA63220FF59200B3D25B /* Localizable.strings in Resources */,
 				18690A7921F3195300F873CF /* Main.storyboard in Resources */,
-				18EBEAE4223800F30091C3EC /* HeaderViewCell.xib in Resources */,
+				18B9F1722243D72A00CD6696 /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,10 +342,10 @@
 				1824EA6E22100ABF00B3D25B /* PaceCalculationViewController.swift in Sources */,
 				18690A9121F33B7900F873CF /* Constants.swift in Sources */,
 				187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */,
-				18EBEAE3223800F30091C3EC /* HeaderViewCell.swift in Sources */,
 				1803BE5A222FF7E9008535E2 /* SettingViewController.swift in Sources */,
 				18690A7421F3195300F873CF /* AppDelegate.swift in Sources */,
 				1824EA7022100ABF00B3D25B /* PaceResultViewController.swift in Sources */,
+				18B9F1702243D71900CD6696 /* HeaderView.swift in Sources */,
 				1824EA5A220FF11300B3D25B /* LocalDataManager.swift in Sources */,
 				1824EA7422100B1000B3D25B /* ProfileViewController.swift in Sources */,
 				1824EA7122100ABF00B3D25B /* MainViewController.swift in Sources */,

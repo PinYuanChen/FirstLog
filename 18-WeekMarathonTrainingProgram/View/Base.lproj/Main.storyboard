@@ -623,7 +623,6 @@
                         <segue destination="Oy3-bO-tPt" kind="relationship" relationship="viewControllers" id="Xmc-Tc-2tY"/>
                         <segue destination="hkF-xA-4cy" kind="relationship" relationship="viewControllers" id="b2P-hy-nrV"/>
                         <segue destination="uep-UH-Pgh" kind="relationship" relationship="viewControllers" id="gH3-z9-dkG"/>
-                        <segue destination="A3k-Rf-Fix" kind="relationship" relationship="viewControllers" id="0z9-vj-ALY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gz-qC-8pE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -704,7 +703,7 @@
                                                     <rect key="frame" x="10" y="0.0" width="355" height="80"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-page-empty" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-6q-jRK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help-round-button" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-6q-jRK">
                                                     <rect key="frame" x="25" y="30" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="mKl-gj-hcp"/>
@@ -1140,6 +1139,7 @@
     <resources>
         <image name="avatarPlaceholder" width="101" height="101"/>
         <image name="calendar-page-empty" width="48" height="48"/>
+        <image name="help-round-button" width="24" height="24"/>
         <image name="info" width="18.399999618530273" height="18.399999618530273"/>
         <image name="list" width="18.399999618530273" height="18.399999618530273"/>
         <image name="right-arrow" width="24" height="24"/>

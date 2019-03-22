@@ -59,6 +59,14 @@ let trainigProgram = [
 ]
 
 //MARK: - FAQ
-let faqDict = [
-    "About":[NSLocalizedString("ABOUT_QUESTION", comment: ""),NSLocalizedString("ABOUT_ANSWER", comment: "")]
+
+struct ExpandableAnswer {
+    var isExpanded: Bool
+    var answer:String
+}
+
+var faqArray = [
+    ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: "")),
+    ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: "")),
+    ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: ""))
 ]

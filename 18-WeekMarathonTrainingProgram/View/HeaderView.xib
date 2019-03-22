@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="HeaderView" id="C0a-y8-Fyx" customClass="HeaderView" customModule="_8_WeekMarathonTrainingProgram" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="588" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartbeat" translatesAutoresizingMaskIntoConstraints="NO" id="esG-EG-Fo2">
+                    <rect key="frame" x="10" y="30" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="TK9-7r-ZDr"/>
+                        <constraint firstAttribute="height" constant="20" id="qHk-Ug-BFo"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NN-jC-OGW">
+                    <rect key="frame" x="50" y="30" width="518" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="esG-EG-Fo2" firstAttribute="centerY" secondItem="nUy-TQ-Xcu" secondAttribute="centerY" id="1jp-jX-vAZ"/>
+                <constraint firstItem="8NN-jC-OGW" firstAttribute="leading" secondItem="esG-EG-Fo2" secondAttribute="trailing" constant="20" id="9vk-Lr-3YO"/>
+                <constraint firstItem="nUy-TQ-Xcu" firstAttribute="trailing" secondItem="8NN-jC-OGW" secondAttribute="trailing" constant="20" id="LfF-89-Dbw"/>
+                <constraint firstItem="esG-EG-Fo2" firstAttribute="leading" secondItem="nUy-TQ-Xcu" secondAttribute="leading" constant="10" id="mnx-4e-X0A"/>
+                <constraint firstItem="8NN-jC-OGW" firstAttribute="centerY" secondItem="nUy-TQ-Xcu" secondAttribute="centerY" id="uhz-Vb-0Zj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="nUy-TQ-Xcu"/>
+            <connections>
+                <outlet property="imageView" destination="esG-EG-Fo2" id="cYQ-iq-Cyk"/>
+                <outlet property="questionLabel" destination="8NN-jC-OGW" id="R0C-Hg-isG"/>
+            </connections>
+            <point key="canvasLocation" x="414.39999999999998" y="-599.55022488755628"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="heartbeat" width="48" height="48"/>
+    </resources>
+</document>

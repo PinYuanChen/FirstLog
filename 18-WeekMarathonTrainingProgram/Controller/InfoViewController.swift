@@ -16,16 +16,34 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         navigationSetUp(target: self)
         self.navigationItem.title = "FAQ"
+        tableView.register(AnswerTableViewCell.nib, forCellReuseIdentifier: AnswerTableViewCell.identifier)
+        let headerNib = UINib.init(nibName: "HeaderView", bundle: Bundle.main)
+        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "HeaderView")
         // Do any additional setup after loading the view.
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
+        headerView.delegate = self
+        headerView.section = section
+        return headerView
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return faqArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if faqArray[section].isExpanded {
+            return 1
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80.0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -33,9 +51,27 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as? InfoTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableViewCell.identifier, for: indexPath) as? AnswerTableViewCell {
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
+    }
+
+}
+
+extension InfoViewController: HeaderViewDelegate {
+    func didTappedHeaderView(section:Int) {
+        let isExpanded = faqArray[section].isExpanded
+        faqArray[section].isExpanded = !isExpanded
+        var indexPaths = [IndexPath]()
+        let indexPath = IndexPath(row: 0, section: section)
+        indexPaths.append(indexPath)
+        
+        if isExpanded {
+            tableView.deleteRows(at: indexPaths, with: .fade)
+        } else {
+            tableView.insertRows(at: indexPaths, with: .fade)
+        }
     }
 }

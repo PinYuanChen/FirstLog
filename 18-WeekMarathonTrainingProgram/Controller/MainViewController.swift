@@ -28,7 +28,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         rightSettingButton = UIBarButtonItem(image: UIImage(named: "settingsline"), style: .plain, target: self, action: #selector(rightSettingButtonPressed))
         self.navigationItem.rightBarButtonItem = rightSettingButton
         self.navigationItem.rightBarButtonItem?.isEnabled = !tableview.isHidden
-        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(refreshTableView),
@@ -38,7 +37,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableviewSetUp() {
-        
         if localDataManager.totalCount() != 0 {
             tableview.isHidden = false
             createButton.isHidden = true
@@ -47,7 +45,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             createButton.isHidden = false
             createButton.setTitle("Start", for: .normal)
         }
-    
     }
     
     @IBAction func didTappedCreateButton(_ sender: Any) {
