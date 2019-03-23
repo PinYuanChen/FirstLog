@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="409" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1my-Ce-SfV">
+                        <rect key="frame" x="10" y="0.0" width="389" height="99.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isn-eG-ZcO">
                         <rect key="frame" x="30" y="21" width="349" height="58"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -26,10 +30,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="isn-eG-ZcO" secondAttribute="bottom" constant="10" id="AU3-eb-88S"/>
                     <constraint firstAttribute="trailingMargin" secondItem="isn-eG-ZcO" secondAttribute="trailing" constant="10" id="c5S-LG-ahH"/>
+                    <constraint firstItem="1my-Ce-SfV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dTg-ZD-sqT"/>
+                    <constraint firstAttribute="bottom" secondItem="1my-Ce-SfV" secondAttribute="bottom" id="hqS-Vc-rq6"/>
+                    <constraint firstAttribute="trailing" secondItem="1my-Ce-SfV" secondAttribute="trailing" constant="10" id="o7x-Qc-ajE"/>
                     <constraint firstItem="isn-eG-ZcO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="pBg-M2-CHU"/>
+                    <constraint firstItem="1my-Ce-SfV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sGh-Q7-lSE"/>
                     <constraint firstItem="isn-eG-ZcO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="xaU-8c-a54"/>
                 </constraints>
             </tableViewCellContentView>

@@ -446,10 +446,20 @@
                                     <constraint firstAttribute="width" constant="120" id="IpW-LH-Z98"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-hn-YXR">
+                                <rect key="frame" x="20" y="350" width="335" height="245"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="245" id="Obb-cy-hSv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ui9-A6-TqQ" firstAttribute="centerX" secondItem="m4S-pT-JaX" secondAttribute="centerX" id="5gZ-kS-LSv"/>
+                            <constraint firstItem="AAg-Eo-6KZ" firstAttribute="trailing" secondItem="bUB-hn-YXR" secondAttribute="trailing" constant="20" id="CHR-ZP-MW4"/>
+                            <constraint firstItem="bUB-hn-YXR" firstAttribute="top" secondItem="ui9-A6-TqQ" secondAttribute="bottom" constant="30" id="Da0-6K-iA6"/>
+                            <constraint firstItem="bUB-hn-YXR" firstAttribute="leading" secondItem="AAg-Eo-6KZ" secondAttribute="leading" constant="20" id="Dsq-d7-0uj"/>
                             <constraint firstItem="X3k-d2-Y5g" firstAttribute="centerX" secondItem="m4S-pT-JaX" secondAttribute="centerX" id="Pf5-ZA-8lQ"/>
                             <constraint firstItem="Ij0-wR-TrB" firstAttribute="top" secondItem="X3k-d2-Y5g" secondAttribute="bottom" constant="28" id="QEu-OY-xVI"/>
                             <constraint firstItem="X3k-d2-Y5g" firstAttribute="top" secondItem="AAg-Eo-6KZ" secondAttribute="top" constant="40" id="cCO-L8-ztL"/>
@@ -691,51 +701,6 @@
                                 <rect key="frame" x="0.0" y="74" width="375" height="554"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InfoTableViewCell" rowHeight="80" id="n85-yi-qfq" customClass="InfoTableViewCell" customModule="_8_WeekMarathonTrainingProgram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n85-yi-qfq" id="adf-ni-Zwd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMq-E8-4Mn">
-                                                    <rect key="frame" x="10" y="0.0" width="355" height="80"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help-round-button" translatesAutoresizingMaskIntoConstraints="NO" id="bfE-6q-jRK">
-                                                    <rect key="frame" x="25" y="30" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="mKl-gj-hcp"/>
-                                                        <constraint firstAttribute="width" constant="20" id="nkD-ti-7hE"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9U-dy-aTT">
-                                                    <rect key="frame" x="65" y="30" width="280" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstItem="bfE-6q-jRK" firstAttribute="centerY" secondItem="adf-ni-Zwd" secondAttribute="centerY" id="01K-jq-Xtv"/>
-                                                <constraint firstItem="A9U-dy-aTT" firstAttribute="trailing" secondItem="bMq-E8-4Mn" secondAttribute="trailing" constant="-20" id="169-Z8-1z4"/>
-                                                <constraint firstItem="bMq-E8-4Mn" firstAttribute="leading" secondItem="adf-ni-Zwd" secondAttribute="leading" constant="10" id="Ap0-ah-RFc"/>
-                                                <constraint firstItem="bMq-E8-4Mn" firstAttribute="top" secondItem="adf-ni-Zwd" secondAttribute="top" id="MxP-ik-N7g"/>
-                                                <constraint firstItem="A9U-dy-aTT" firstAttribute="centerY" secondItem="adf-ni-Zwd" secondAttribute="centerY" id="UaM-J9-lDW"/>
-                                                <constraint firstAttribute="bottom" secondItem="bMq-E8-4Mn" secondAttribute="bottom" id="VDG-xq-1fM"/>
-                                                <constraint firstItem="bfE-6q-jRK" firstAttribute="leading" secondItem="adf-ni-Zwd" secondAttribute="leadingMargin" constant="10" id="WdQ-dC-cJg"/>
-                                                <constraint firstItem="A9U-dy-aTT" firstAttribute="leading" secondItem="bfE-6q-jRK" secondAttribute="trailing" constant="20" id="XZO-Qa-few"/>
-                                                <constraint firstAttribute="trailing" secondItem="bMq-E8-4Mn" secondAttribute="trailing" constant="10" id="kgJ-0e-AzR"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="cellBackgroundView" destination="bMq-E8-4Mn" id="IAL-oM-nmi"/>
-                                            <outlet property="questionLabel" destination="A9U-dy-aTT" id="IOn-Jz-cW4"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="g0l-5B-hyw" id="HE2-ac-RMV"/>
                                     <outlet property="delegate" destination="g0l-5B-hyw" id="Yxu-Qa-gfV"/>
@@ -1139,7 +1104,6 @@
     <resources>
         <image name="avatarPlaceholder" width="101" height="101"/>
         <image name="calendar-page-empty" width="48" height="48"/>
-        <image name="help-round-button" width="24" height="24"/>
         <image name="info" width="18.399999618530273" height="18.399999618530273"/>
         <image name="list" width="18.399999618530273" height="18.399999618530273"/>
         <image name="right-arrow" width="24" height="24"/>

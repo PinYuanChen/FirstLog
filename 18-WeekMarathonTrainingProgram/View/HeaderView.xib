@@ -16,28 +16,40 @@
             <rect key="frame" x="0.0" y="0.0" width="588" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartbeat" translatesAutoresizingMaskIntoConstraints="NO" id="esG-EG-Fo2">
-                    <rect key="frame" x="10" y="30" width="20" height="20"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2E-nf-4dJ">
+                    <rect key="frame" x="10" y="0.0" width="568" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NN-jC-OGW">
+                            <rect key="frame" x="50" y="30" width="498" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help-round-button" translatesAutoresizingMaskIntoConstraints="NO" id="esG-EG-Fo2">
+                            <rect key="frame" x="10" y="30" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="l9S-bq-smM"/>
+                                <constraint firstAttribute="height" constant="20" id="pMw-nO-2Dp"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="20" id="TK9-7r-ZDr"/>
-                        <constraint firstAttribute="height" constant="20" id="qHk-Ug-BFo"/>
+                        <constraint firstItem="8NN-jC-OGW" firstAttribute="leading" secondItem="esG-EG-Fo2" secondAttribute="trailing" constant="20" id="17s-vI-4Pk"/>
+                        <constraint firstItem="esG-EG-Fo2" firstAttribute="centerY" secondItem="e2E-nf-4dJ" secondAttribute="centerY" id="6MR-FJ-nPg"/>
+                        <constraint firstItem="esG-EG-Fo2" firstAttribute="leading" secondItem="e2E-nf-4dJ" secondAttribute="leading" constant="10" id="FZK-mh-RIq"/>
+                        <constraint firstAttribute="trailing" secondItem="8NN-jC-OGW" secondAttribute="trailing" constant="20" id="FoP-sM-Odc"/>
+                        <constraint firstItem="8NN-jC-OGW" firstAttribute="centerY" secondItem="e2E-nf-4dJ" secondAttribute="centerY" id="sLg-xG-rn8"/>
                     </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NN-jC-OGW">
-                    <rect key="frame" x="50" y="30" width="518" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="esG-EG-Fo2" firstAttribute="centerY" secondItem="nUy-TQ-Xcu" secondAttribute="centerY" id="1jp-jX-vAZ"/>
-                <constraint firstItem="8NN-jC-OGW" firstAttribute="leading" secondItem="esG-EG-Fo2" secondAttribute="trailing" constant="20" id="9vk-Lr-3YO"/>
-                <constraint firstItem="nUy-TQ-Xcu" firstAttribute="trailing" secondItem="8NN-jC-OGW" secondAttribute="trailing" constant="20" id="LfF-89-Dbw"/>
-                <constraint firstItem="esG-EG-Fo2" firstAttribute="leading" secondItem="nUy-TQ-Xcu" secondAttribute="leading" constant="10" id="mnx-4e-X0A"/>
-                <constraint firstItem="8NN-jC-OGW" firstAttribute="centerY" secondItem="nUy-TQ-Xcu" secondAttribute="centerY" id="uhz-Vb-0Zj"/>
+                <constraint firstItem="e2E-nf-4dJ" firstAttribute="top" secondItem="C0a-y8-Fyx" secondAttribute="top" id="P9v-Fh-9pr"/>
+                <constraint firstItem="nUy-TQ-Xcu" firstAttribute="trailing" secondItem="e2E-nf-4dJ" secondAttribute="trailing" constant="10" id="leX-oq-SCa"/>
+                <constraint firstAttribute="bottom" secondItem="e2E-nf-4dJ" secondAttribute="bottom" id="lvz-lB-05g"/>
+                <constraint firstItem="e2E-nf-4dJ" firstAttribute="leading" secondItem="nUy-TQ-Xcu" secondAttribute="leading" constant="10" id="vLn-T5-VTk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="nUy-TQ-Xcu"/>
@@ -49,6 +61,6 @@
         </view>
     </objects>
     <resources>
-        <image name="heartbeat" width="48" height="48"/>
+        <image name="help-round-button" width="24" height="24"/>
     </resources>
 </document>

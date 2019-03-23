@@ -19,7 +19,8 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.register(AnswerTableViewCell.nib, forCellReuseIdentifier: AnswerTableViewCell.identifier)
         let headerNib = UINib.init(nibName: "HeaderView", bundle: Bundle.main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "HeaderView")
-        // Do any additional setup after loading the view.
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -47,12 +48,13 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableViewCell.identifier, for: indexPath) as? AnswerTableViewCell {
             cell.selectionStyle = .none
+            cell.answerLabel.text = "gggggggggqoeiowjrioewijodfdgldfgnlfd;kv,c.nvrgnkfdgnfdgnfd,.bnskjfdgnkfdgjkdfgnfd,.mcv c,nvkjfgfdkgnkfd ngkfdjngkl fdnjklgndkljgn lkfdngklfdnkldfjngkldfngldfngkdf,cxvz,cxgnieoritjrflffadmsfl;nds"
             return cell
         }
         return UITableViewCell()
