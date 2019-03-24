@@ -367,7 +367,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ui9-A6-TqQ">
-                                <rect key="frame" x="127.5" y="232" width="120" height="88"/>
+                                <rect key="frame" x="127.5" y="232" width="120" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCv-ng-fzn">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
@@ -385,29 +385,14 @@
                                             <action selector="didTappedLoginWithFBButton:" destination="ZA6-bm-b9v" eventType="touchUpInside" id="cCt-fy-hti"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQU-73-Gl2">
-                                        <rect key="frame" x="0.0" y="48" width="120" height="40"/>
-                                        <color key="backgroundColor" red="0.25775843858718872" green="0.68530720472335815" blue="0.94575256109237671" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="MHc-5N-O0V"/>
-                                            <constraint firstAttribute="width" constant="120" id="kpQ-mV-lWg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Create account">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didTappedCreateAccountButton:" destination="ZA6-bm-b9v" eventType="touchUpInside" id="CrD-YQ-LJ8"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="RbC-XJ-LE5"/>
+                                    <constraint firstAttribute="height" constant="40" id="RbC-XJ-LE5"/>
                                     <constraint firstAttribute="width" constant="120" id="Yan-AC-sm9"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ij0-wR-TrB">
-                                <rect key="frame" x="127.5" y="232" width="120" height="88"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Ij0-wR-TrB">
+                                <rect key="frame" x="127.5" y="232" width="120" height="124"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="987-Ok-G2g">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
@@ -426,7 +411,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmE-mf-Xwn">
-                                        <rect key="frame" x="0.0" y="48" width="120" height="40"/>
+                                        <rect key="frame" x="0.0" y="42" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.68235294117647061" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="Ngv-Fy-v4K"/>
@@ -440,14 +425,29 @@
                                             <action selector="didTappedUploadRecordButton:" destination="ZA6-bm-b9v" eventType="touchUpInside" id="UsZ-S1-yGU"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYZ-ni-dGi" userLabel="Logout">
+                                        <rect key="frame" x="0.0" y="84" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="rZ4-bb-ZtQ"/>
+                                            <constraint firstAttribute="height" constant="40" id="v2T-7i-UXZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTappedLogoutButton:" destination="ZA6-bm-b9v" eventType="touchUpInside" id="4fD-Qj-6QQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="350-e4-edf"/>
+                                    <constraint firstAttribute="height" constant="124" id="350-e4-edf"/>
                                     <constraint firstAttribute="width" constant="120" id="IpW-LH-Z98"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-hn-YXR">
-                                <rect key="frame" x="20" y="350" width="335" height="245"/>
+                                <rect key="frame" x="20" y="376" width="335" height="245"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="245" id="Obb-cy-hSv"/>
@@ -458,11 +458,11 @@
                         <constraints>
                             <constraint firstItem="ui9-A6-TqQ" firstAttribute="centerX" secondItem="m4S-pT-JaX" secondAttribute="centerX" id="5gZ-kS-LSv"/>
                             <constraint firstItem="AAg-Eo-6KZ" firstAttribute="trailing" secondItem="bUB-hn-YXR" secondAttribute="trailing" constant="20" id="CHR-ZP-MW4"/>
-                            <constraint firstItem="bUB-hn-YXR" firstAttribute="top" secondItem="ui9-A6-TqQ" secondAttribute="bottom" constant="30" id="Da0-6K-iA6"/>
                             <constraint firstItem="bUB-hn-YXR" firstAttribute="leading" secondItem="AAg-Eo-6KZ" secondAttribute="leading" constant="20" id="Dsq-d7-0uj"/>
                             <constraint firstItem="X3k-d2-Y5g" firstAttribute="centerX" secondItem="m4S-pT-JaX" secondAttribute="centerX" id="Pf5-ZA-8lQ"/>
                             <constraint firstItem="Ij0-wR-TrB" firstAttribute="top" secondItem="X3k-d2-Y5g" secondAttribute="bottom" constant="28" id="QEu-OY-xVI"/>
                             <constraint firstItem="X3k-d2-Y5g" firstAttribute="top" secondItem="AAg-Eo-6KZ" secondAttribute="top" constant="40" id="cCO-L8-ztL"/>
+                            <constraint firstItem="bUB-hn-YXR" firstAttribute="top" secondItem="Ij0-wR-TrB" secondAttribute="bottom" constant="20" id="jMd-u8-GMd"/>
                             <constraint firstItem="Ij0-wR-TrB" firstAttribute="centerX" secondItem="AAg-Eo-6KZ" secondAttribute="centerX" id="nkU-62-r5B"/>
                             <constraint firstItem="ui9-A6-TqQ" firstAttribute="top" secondItem="X3k-d2-Y5g" secondAttribute="bottom" constant="28" id="oEB-ow-PjP"/>
                         </constraints>
@@ -471,11 +471,11 @@
                     <navigationItem key="navigationItem" id="DRm-cL-UdO"/>
                     <connections>
                         <outlet property="avatarImageView" destination="X3k-d2-Y5g" id="JTB-0T-G4o"/>
-                        <outlet property="createAccountButton" destination="xQU-73-Gl2" id="ndy-AA-Ao7"/>
                         <outlet property="downloadRecordButton" destination="987-Ok-G2g" id="Iwu-b4-eNL"/>
                         <outlet property="downloadUploadStackView" destination="Ij0-wR-TrB" id="Azw-YJ-XfJ"/>
                         <outlet property="loginFBButton" destination="VCv-ng-fzn" id="pUQ-hG-wVm"/>
                         <outlet property="loginStackView" destination="ui9-A6-TqQ" id="r81-pi-GnL"/>
+                        <outlet property="logoutButton" destination="HYZ-ni-dGi" id="8Ff-mQ-1ik"/>
                         <outlet property="uploadRecordButton" destination="dmE-mf-Xwn" id="ciw-44-YYF"/>
                     </connections>
                 </viewController>
