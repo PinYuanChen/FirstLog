@@ -176,3 +176,31 @@ func checkCompletion(distance:Int, workoutPace:Int) -> Bool{
         return false
     }
 }
+
+//MARK: - Core Data
+typealias EditDoneHandler = (_ success:Bool,_ resultItem:Program?) -> Void
+func editProgram(originalItem:Program?,completion:@escaping EditDoneHandler) {
+    var finalItem = originalItem
+    if finalItem == nil {
+        finalItem = localDataManager.createItem()
+        finalItem?.creationdate = NSDate() as Date
+    }
+    finalItem?.fast400m = Int32(fast400m)
+    finalItem?.slow400m = Int32(slow400m)
+    finalItem?.fast800m = Int32(fast800m)
+    finalItem?.slow800m = Int32(slow800m)
+    finalItem?.fast1200m = Int32(fast1200m)
+    finalItem?.slow1200m = Int32(slow1200m)
+    finalItem?.fast1600m = Int32(fast1600m)
+    finalItem?.slow1600m = Int32(slow1600m)
+    finalItem?.slowshorttempo = Int32(shortTempoRun)
+    finalItem?.fastmidtempo = Int32(fastMidTempo)
+    finalItem?.slowmidtempo = Int32(slowMidTempo)
+    finalItem?.fastlongtempo = Int32(fastLongTempo)
+    finalItem?.slowlongtempo = Int32(slowLongTempo)
+    finalItem?.fastlongrun = Int32(fastLongRun)
+    finalItem?.slowlongrun = Int32(slowLongRun)
+    
+    completion(true,finalItem)
+}
+

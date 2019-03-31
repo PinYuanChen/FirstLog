@@ -12,6 +12,7 @@ pod ‘Firebase/Auth’
 pod ‘Firebase/Storage’
 pod ‘Firebase/Firestore’
 pod 'FBSDKLoginKit'
+pod 'Charts'
   # Pods for 18-WeekMarathonTrainingProgram
 
 end
