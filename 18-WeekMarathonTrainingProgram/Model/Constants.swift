@@ -68,5 +68,17 @@ struct ExpandableAnswer {
 var faqArray = [
     ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: "")),
     ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: "")),
+    ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: "")),
+    ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: "")),
     ExpandableAnswer(isExpanded: false, answer: NSLocalizedString("ABOUT_ANSWER", comment: ""))
+]
+
+let faqQuestionArray = [NSLocalizedString("FAQ_WHAT_IS_THIS", comment: ""), NSLocalizedString("FAQ_ON_WEEK_16", comment: ""), NSLocalizedString("FAQ_TIME_REST", comment: ""), NSLocalizedString("FAQ_MISS_RUN", comment: ""), NSLocalizedString("FAQ_ELSE_TRAININGS", comment: "")];
+
+let faqDictionary = [
+    NSLocalizedString("FAQ_WHAT_IS_THIS", comment: ""):NSLocalizedString("FAQ_WHAT_IS_THIS_A", comment: ""),
+    NSLocalizedString("FAQ_ON_WEEK_16", comment: ""):NSLocalizedString("FAQ_ON_WEEK_16_A", comment: ""),
+    NSLocalizedString("FAQ_TIME_REST", comment: ""):NSLocalizedString("FAQ_TIME_REST_A", comment: ""),
+    NSLocalizedString("FAQ_MISS_RUN", comment: ""):NSLocalizedString("FAQ_MISS_RUN_A", comment: ""),
+    NSLocalizedString("FAQ_ELSE_TRAININGS", comment: ""):NSLocalizedString("FAQ_ELSE_TRAININGS_A", comment: "")
 ]

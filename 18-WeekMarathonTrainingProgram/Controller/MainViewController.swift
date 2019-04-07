@@ -24,15 +24,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         tableviewSetUp()
         navigationSetUp(target: self)
-        self.navigationItem.title = "FIRST Log"
+        self.navigationItem.title = NSLocalizedString("TAB_BAR_PROGRAM", comment: "")
         rightSettingButton = UIBarButtonItem(image: UIImage(named: "settingsline"), style: .plain, target: self, action: #selector(rightSettingButtonPressed))
         self.navigationItem.rightBarButtonItem = rightSettingButton
         self.navigationItem.rightBarButtonItem?.isEnabled = !tableview.isHidden
+        tabbarSetUp()
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(refreshTableView),
             name: Notification.Name(MAINVIEWRELOADDATA),
             object: nil)
+    }
+    
+    func tabbarSetUp() {
+        self.tabBarController?.tabBar.items?[0].title = NSLocalizedString("TAB_BAR_PROGRAM", comment: "")
+        self.tabBarController?.tabBar.items?[1].title = NSLocalizedString("TAB_BAR_PROFILE", comment: "")
+        self.tabBarController?.tabBar.items?[2].title = NSLocalizedString("TAB_BAR_INFO", comment: "")
     }
     
     
@@ -70,7 +77,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramListCell", for: indexPath) as! ProgramListTableViewCell
         cell.selectionStyle = .none
-        cell.weekLabel.text = "Week \(indexPath.row + 1)"
+        var weekString = NSLocalizedString("WEEK", comment: "")
+        cell.weekLabel.text = weekString.replacingOccurrences(of: "{0}", with: "\(indexPath.row+1)")
         let completion = getCompleteStatus(week: "Week\(indexPath.row+1)", runManager: runDataManager)
         cell.programStatus.text = "\(completion)%"
         return cell

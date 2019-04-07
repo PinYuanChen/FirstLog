@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import Charts
+import ProgressHUD
 
 enum Result {
     case success
@@ -33,7 +34,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSetUp(target: self)
-        self.navigationItem.title = "Profile"
+        self.navigationItem.title = NSLocalizedString("TAB_BAR_PROFILE", comment: "")
         // Do any additional setup after loading the view.
         reloadData()
     }
@@ -107,6 +108,7 @@ class ProfileViewController: UIViewController {
         guard let uidString:String = UserDefaults.standard.object(forKey: "uid") as? String else {
             return
         }
+        ProgressHUD.show("Uploading")
         let databaseRef = Database.database().reference().child(uidString)
         let storageRef = Storage.storage().reference().child(uidString)
         
@@ -117,6 +119,7 @@ class ProfileViewController: UIViewController {
                 let post: [String:Any] = ["data": dataURL]
                 databaseRef.setValue(post)
             }
+            ProgressHUD.dismiss()
             let alert = UIAlertController(title: "資料備份成功!", message: nil, preferredStyle: .alert)
             let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(cancel)
@@ -125,6 +128,7 @@ class ProfileViewController: UIViewController {
     }
     
     func reloadData () {
+        ProgressHUD.show("Loading")
         loginStackView.isHidden = isLogin
         downloadUploadStackView.isHidden = !isLogin
         
@@ -133,6 +137,7 @@ class ProfileViewController: UIViewController {
         }else{
             avatarImageView.image = UIImage(named: "avatarPlaceholder")
         }
+        ProgressHUD.dismiss()
     }
     
     func loadPieChartData() {
@@ -167,9 +172,9 @@ class ProfileViewController: UIViewController {
     
     //MARK: - FB login
     func facebookLogin(sender: UIButton) {
-        
+        ProgressHUD.show("Loading")
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            
+            ProgressHUD.dismiss()
             if let error = error {
                 print("Failed to login: \(error.localizedDescription)")
                 return
@@ -268,7 +273,6 @@ class ProfileViewController: UIViewController {
         let databaseRef = Database.database().reference().child(uidString)
         databaseRef.observe(.value, with: { (snapshot) in
             if let downloadDict = snapshot.value as? [String:Any] {
-                print(downloadDict)
                 guard let downloadString = downloadDict["data"] as? String else {
                     return
                 }
@@ -292,6 +296,7 @@ class ProfileViewController: UIViewController {
     }
     
     func downloadFirebaseRecord(urlString:String) {
+        ProgressHUD.show("Downloading")
         if let downloadURL = URL(string:urlString) {
             URLSession.shared.dataTask(with: downloadURL, completionHandler: { [weak self](data, response, error) in
                 if error != nil {
@@ -366,6 +371,7 @@ class ProfileViewController: UIViewController {
             }
         }
         loadPieChartData()
+        ProgressHUD.dismiss()
         saveSuccessAlert()
     }
     

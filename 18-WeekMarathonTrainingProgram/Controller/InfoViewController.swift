@@ -15,7 +15,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSetUp(target: self)
-        self.navigationItem.title = "FAQ"
+        self.navigationItem.title = NSLocalizedString("TAB_BAR_INFO", comment: "")
         tableView.register(AnswerTableViewCell.nib, forCellReuseIdentifier: AnswerTableViewCell.identifier)
         let headerNib = UINib.init(nibName: "HeaderView", bundle: Bundle.main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "HeaderView")
@@ -28,6 +28,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as! HeaderView
         headerView.delegate = self
         headerView.section = section
+        headerView.questionLabel.text = faqQuestionArray[section]
         return headerView
     }
     
@@ -54,7 +55,7 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: AnswerTableViewCell.identifier, for: indexPath) as? AnswerTableViewCell {
             cell.selectionStyle = .none
-            cell.answerLabel.text = "gggggggggqoeiowjrioewijodfdgldfgnlfd;kv,c.nvrgnkfdgnfdgnfd,.bnskjfdgnkfdgjkdfgnfd,.mcv c,nvkjfgfdkgnkfd ngkfdjngkl fdnjklgndkljgn lkfdngklfdnkldfjngkldfngldfngkdf,cxvz,cxgnieoritjrflffadmsfl;nds"
+            cell.answerLabel.text = faqDictionary[faqQuestionArray[indexPath.section]]
             return cell
         }
         return UITableViewCell()

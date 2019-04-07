@@ -56,7 +56,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         buttonSetUp()
         navigationSetUp(target: self)
         self.navigationItem.title = runningGoal
-        rightCancelButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(didTappedCloseButton))
+        rightCancelButton = UIBarButtonItem(title: NSLocalizedString("CLOSE", comment: ""), style: .plain, target: self, action: #selector(didTappedCloseButton))
         self.navigationItem.rightBarButtonItem = rightCancelButton
         mapSetUp()
     }
@@ -76,8 +76,8 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
 
     @IBAction func didTappedRunButton(_ sender: Any) {
         if hasRecord { //delete record
-            let alert = UIAlertController(title: "Delete record", message: "Are you sure you want to delete this record?", preferredStyle: .alert)
-            let okBtn = UIAlertAction(title: "OK", style: .default) { _ in
+            let alert = UIAlertController(title: NSLocalizedString("DELETE_WARN_TITLE", comment: ""), message: NSLocalizedString("DELETE_WARN_MESSAGE", comment: ""), preferredStyle: .alert)
+            let okBtn = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .default) { _ in
                 
                 let manageContext = localDataManager.runItem?.managedObjectContext
                 let item = self.requestRun![0] as Run
@@ -105,7 +105,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                         self.currentDistanceLabel.text = ""
                         self.durationLabel.text = ""
                         self.currentPaceLabel.text = ""
-                        self.completetionLabel.text = "NO"
+                        self.completetionLabel.text = NSLocalizedString("COMPLETE_NOT_YET", comment: "")
                         self.labelSetUp()
                         self.buttonSetUp()
                         self.locationDataArray.removeAll()
@@ -113,16 +113,16 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     })
                     
                 } catch {
-                    print("error: cant save the userDataManager.userItem")
+                    print("error: \(error.localizedDescription)")
                 }
             }
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil)
             alert.addAction(okBtn)
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
         } else if startRecording {
-            let alert = UIAlertController(title: "Stop", message: "You are not finished yet. Do you want to quit or continue this running?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Quit", style: .default, handler: { (UIAlertAction) in
+            let alert = UIAlertController(title: NSLocalizedString("STOP", comment: ""), message: NSLocalizedString("STOP_WARN_MESSAGE", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("QUIT", comment: ""), style: .default, handler: { (UIAlertAction) in
                 self.stopTimer()
                 self.startRecording = false
                 if self.mapView.annotations.count > 0 {
@@ -140,7 +140,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 self.buttonSetUp()
                 self.locationDataArray.removeAll()
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
         } else { //start new run
@@ -176,15 +176,15 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             //fetch pacxe data from CD
             complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace))
             if complete {
-                completetionLabel.text = "Pass"
+                completetionLabel.text = NSLocalizedString("COMPLETE_PASS", comment: "")
             } else {
-                completetionLabel.text = "Fail"
+                completetionLabel.text = NSLocalizedString("COMPLETE_FAIL", comment: "")
             }
             if requestRun != nil {
                 for item in requestRun! {
                     currentDistanceLabel.text = item.distance
                     let (minute,second) = secondsToMinutesSeconds(seconds: Int(item.pace))
-                    currentPaceLabel.text = "\(minute) min \(second) s"
+                    currentPaceLabel.text = "\(minute) \(NSLocalizedString("MINUTE", comment: "")) \(second) \(NSLocalizedString("SECOND", comment: ""))"
                     durationLabel.text = item.duration
                 }
             }
@@ -193,16 +193,15 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     func buttonSetUp() {
         if hasRecord {
-            runButton.setTitle("Delete", for: .normal)
+            runButton.setTitle(NSLocalizedString("DELETE", comment: ""), for: .normal)
         } else if startRecording {
-            runButton.setTitle("Stop", for: .normal)
+            runButton.setTitle(NSLocalizedString("STOP", comment: ""), for: .normal)
         } else {
-            runButton.setTitle("Start", for: .normal)
+            runButton.setTitle(NSLocalizedString("START", comment: ""), for: .normal)
         }
     }
     
     func mapSetUp() {
-        
         if !hasRecord {
             locationManager.requestWhenInUseAuthorization()
             locationManager.delegate = self
@@ -211,7 +210,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.allowsBackgroundLocationUpdates = true
             locationManager.pausesLocationUpdatesAutomatically = false
             mapView.userTrackingMode = .followWithHeading
-        } else {
+        }else{
             var locations = localDataManager.runItem?.location?.allObjects as! [Location]
             guard locations.count > 1 else { return }
             mapView.region = mapRegion()
@@ -225,6 +224,20 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             mapView.addOverlay(polyline as! MKOverlay)
             mapViewAddPlaceholder()
         }
+    }
+    
+    func durationFormatter(hour:String,minute:String,second:String) -> String {
+        guard let hourString = hour.components(separatedBy: " ").first else {
+            return ""
+        }
+        guard let minuteString = minute.components(separatedBy: " ").first else {
+            return ""
+        }
+        guard let secondString = second.components(separatedBy: " ").first else {
+            return ""
+        }
+        let durationString = "\(hourString) \(NSLocalizedString("HOUR", comment: "")) \(minuteString) \(NSLocalizedString("MINUTE", comment: "")) \(secondString) \(NSLocalizedString("SECOND", comment: ""))"
+        return durationString
     }
     
     func startTimer() {
@@ -252,18 +265,17 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         dismiss(animated: true, completion: nil)
     }
     
-    
     func showTurnOnLocationServiceAlert() {
-        let alert = UIAlertController(title: "Turn on Location Service", message: "To use location tracking feature of the app, please turn on the location service from the Settings app.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("LOCATION_SERVICE_TITLE", comment: ""), message: NSLocalizedString("LOCATION_SERVICE_MESSAGE", comment: ""), preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let settingsAction = UIAlertAction(title: NSLocalizedString("SETTINGS", comment: ""), style: .default) { (_) -> Void in
             let settingsUrl = URL(string: UIApplication.openSettingsURLString)
             if let url = settingsUrl {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil)
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
@@ -354,7 +366,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let secondsQuantity = HKQuantity(unit: HKUnit.second(), doubleValue: Double(s))
         let minutesQuantity = HKQuantity(unit: HKUnit.minute(), doubleValue: Double(m))
         let hoursQuantity = HKQuantity(unit: HKUnit.hour(), doubleValue: Double(h))
-        durationLabel.text = "\(hoursQuantity.description)  \(minutesQuantity.description) \(secondsQuantity.description)"
+        durationLabel.text = durationFormatter(hour: hoursQuantity.description, minute: minutesQuantity.description, second: secondsQuantity.description)
         let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: Double(distanceCount))
         currentDistanceLabel.text = "\(distanceQuantity.description) "
         guard !(instantPace.isNaN || instantPace.isInfinite) else {
@@ -362,7 +374,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             return
         }
         let (minute,second) = secondsToMinutesSeconds(seconds: Int(instantPace))
-        currentPaceLabel.text = "\(minute) min \(second) s"
+        currentPaceLabel.text = "\(minute) \(NSLocalizedString("MINUTE", comment: "")) \(second) \(NSLocalizedString("SECOND", comment: ""))"
         if distanceCount >= runningGoalInt {
             stopTimer()
             hasRecord = true

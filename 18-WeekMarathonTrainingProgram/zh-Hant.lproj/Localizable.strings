@@ -6,9 +6,16 @@
   Copyright © 2019 Apple. All rights reserved.
 */
 
+//MARK: Tabbar title
+"TAB_BAR_PROGRAM" = "計畫";
+"TAB_BAR_PROFILE" = "資料";
+"TAB_BAR_INFO" = "問與答";
+
 //MARK: - Main View Controller
 "FIRST_TIME_DESCRIPTION" = "請按下方的按鈕來建立訓練計畫!";
 
 "WEEK" = "第{0}週";
 "MINUTE" = "分";
 "SECOND" = "秒";
+"METER" = "公尺";
+"KM" = "公里";

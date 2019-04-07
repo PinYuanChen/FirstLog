@@ -447,22 +447,20 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-hn-YXR" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="376" width="335" height="205"/>
+                                <rect key="frame" x="20" y="376" width="335" height="222.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="205" id="Obb-cy-hSv"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ui9-A6-TqQ" firstAttribute="centerX" secondItem="m4S-pT-JaX" secondAttribute="centerX" id="5gZ-kS-LSv"/>
+                            <constraint firstItem="bUB-hn-YXR" firstAttribute="height" secondItem="m4S-pT-JaX" secondAttribute="height" multiplier="1/3" id="6ue-0c-NQb"/>
                             <constraint firstItem="AAg-Eo-6KZ" firstAttribute="trailing" secondItem="bUB-hn-YXR" secondAttribute="trailing" constant="20" id="CHR-ZP-MW4"/>
                             <constraint firstItem="bUB-hn-YXR" firstAttribute="leading" secondItem="AAg-Eo-6KZ" secondAttribute="leading" constant="20" id="Dsq-d7-0uj"/>
                             <constraint firstItem="X3k-d2-Y5g" firstAttribute="centerX" secondItem="m4S-pT-JaX" secondAttribute="centerX" id="Pf5-ZA-8lQ"/>
                             <constraint firstItem="Ij0-wR-TrB" firstAttribute="top" secondItem="X3k-d2-Y5g" secondAttribute="bottom" constant="28" id="QEu-OY-xVI"/>
                             <constraint firstItem="X3k-d2-Y5g" firstAttribute="top" secondItem="AAg-Eo-6KZ" secondAttribute="top" constant="40" id="cCO-L8-ztL"/>
-                            <constraint firstItem="bUB-hn-YXR" firstAttribute="top" secondItem="Ij0-wR-TrB" secondAttribute="bottom" constant="20" id="jMd-u8-GMd"/>
+                            <constraint firstItem="bUB-hn-YXR" firstAttribute="top" secondItem="Ij0-wR-TrB" secondAttribute="bottom" constant="20" id="cqb-XZ-M2p"/>
                             <constraint firstItem="Ij0-wR-TrB" firstAttribute="centerX" secondItem="AAg-Eo-6KZ" secondAttribute="centerX" id="nkU-62-r5B"/>
                             <constraint firstItem="ui9-A6-TqQ" firstAttribute="top" secondItem="X3k-d2-Y5g" secondAttribute="bottom" constant="28" id="oEB-ow-PjP"/>
                         </constraints>
@@ -655,11 +653,11 @@
             </objects>
             <point key="canvasLocation" x="3228" y="688.60569715142435"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="v1h-tC-niU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oy3-bO-tPt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" image="list" id="roN-oo-gMM"/>
+                    <tabBarItem key="tabBarItem" title="" image="list" id="roN-oo-gMM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vdg-pl-AzO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -930,7 +928,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="                " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eoz-OQ-b2j">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="                " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Eoz-OQ-b2j">
                                                 <rect key="frame" x="20.5" y="39.5" width="71" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>

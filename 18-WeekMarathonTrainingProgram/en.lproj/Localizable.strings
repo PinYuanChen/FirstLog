@@ -10,12 +10,23 @@
 "TAB_BAR_PROGRAM" = "Program";
 "TAB_BAR_PROFILE" = "Profile";
 "TAB_BAR_INFO" = "Info";
-"TAB_BAR_SETTINGS" = "Settings";
 
 //MARK: Main View Controller
 "FIRST_TIME_DESCRIPTION" = "Create your marathon training program by pressing button below!";
 
 //MARK: Training program
-"WEEK" = "Week{0}";
+"WEEK" = "Week {0}";
 "MINUTE" = "m";
 "SECOND" = "s";
+
+//MARK: FAQ
+"FAQ_WHAT_IS_THIS" = "What is this program?";
+"FAQ_ON_WEEK_16" = "What should I do on 16th week?";
+"FAQ_TIME_REST" = "When I do repeats, how long should I rest in between?";
+"FAQ_MISS_RUN" = "Do I have to make up for lost training?";
+"FAQ_ELSE_TRAININGS" = "Will running only three days a week be sufficient preparation for the marathon? ";
+"FAQ_WHAT_IS_THIS_A" = "This program was developed by the Furman Institute of Running and Scientific Training (FIRST) and was featured in the Runner's World magazine. The author, Amby Burfoot, is a famous American marathon runner who won the 1968 Boston Marathon.So far many FIRTST has helped many runners improve their race finish times.";
+"FAQ_ON_WEEK_16_A" = "The original training program takes 16 weeks to finish it. On the 16th week, there are three trainings: 30-minute easy run, 20-minute easy run and the last day is your marathon racing day.";
+"FAQ_TIME_REST_A" = "The rest  intervals is specified in time (ex: 90 seconds recovery of walking and jogging) or distance (ex: 400 meters of walking and jogging). Walk or jog (as dictated by your body conditions like fatigue, heat, etc.) for the specified time or distance.";
+"FAQ_MISS_RUN_A" = "You can't make up what you missed and you certainly shouldn't double up on your workouts to catch up with your program. If you had a slight cold which you can recover and get back to where you want to be relatively quickly. But if you injure your foot, you should take care of your injure first and stop training til you get full recovery.";
+"FAQ_ELSE_TRAININGS_A" = "No. You should take two cross-training workouts per week. These are an important part of the program. We recommend aerobic cross-training to supplement your running and to augment your aerobic fitness level. This includes stationary biking, rowing, elliptical, etc. workouts that are performed for the same amount of time as your typical running workout and at a similar intensity.";
