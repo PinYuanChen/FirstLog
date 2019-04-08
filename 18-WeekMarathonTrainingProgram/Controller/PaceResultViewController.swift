@@ -20,13 +20,18 @@ class PaceResultViewController: UIViewController {
     @IBOutlet weak var longRunLabel: UILabel!
     var programName:String?
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var shortTempoRunTitile: UILabel!
+    @IBOutlet weak var midTempoRunTitle: UILabel!
+    @IBOutlet weak var longTempoRunTitle: UILabel!
+    @IBOutlet weak var longRunTitle: UILabel!
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         navigationSetUp(target: self)
-        self.navigationItem.title = "Pace Detail"
+        self.navigationItem.title = NSLocalizedString("PACE_RESULT_TITLE", comment: "")
     }
     
     @IBAction func didTappedConfirmBtn(_ sender: UIButton) {
@@ -55,7 +60,7 @@ class PaceResultViewController: UIViewController {
     }
     
     @IBAction func didTappedCancelBtn(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Delete" {
+        if sender.titleLabel?.text == NSLocalizedString("DELETE", comment: "") {
             if let item = localDataManager.fetchItemAt(index: 0){
                 
                 localDataManager.deleteItem(item: item)
@@ -71,10 +76,13 @@ class PaceResultViewController: UIViewController {
     }
     
     func loadData() {
+        confirmButton.setTitle(NSLocalizedString("CONFIRM", comment: ""), for: .normal)
+        cancelButton.setTitle(NSLocalizedString("CANCEL", comment: ""), for: .normal)
         if localDataManager.totalCount() != 0 {
             giveValueToDetailResult()
-            cancelButton.setTitle("Delete", for: .normal)
+            cancelButton.setTitle(NSLocalizedString("DELETE", comment: ""), for: .normal)
         }
+        //set up pace range
         pace400mLabel.text = paceRange(fast: fast400m, slow: slow400m)
         pace800mLabel.text = paceRange(fast: fast800m, slow: slow800m)
         pace1200mLabel.text = paceRange(fast: fast1200m, slow: slow1200m)
@@ -83,5 +91,11 @@ class PaceResultViewController: UIViewController {
         midTempoRunLabel.text = paceRange(fast: fastMidTempo, slow: slowMidTempo)
         longTempoRunLabel.text = paceRange(fast: fastLongTempo, slow: slowLongTempo)
         longRunLabel.text = paceRange(fast: fastLongRun, slow: slowLongRun)
+        
+        //set up label title
+        shortTempoRunTitile.text = NSLocalizedString("SHORT_TEMPO_RUN", comment: "")
+        midTempoRunTitle.text = NSLocalizedString("MID_TEMPO_RUN", comment: "")
+        longTempoRunTitle.text = NSLocalizedString("LONG_TEMPO_RUN", comment: "")
+        longRunTitle.text = NSLocalizedString("LONG_RUN", comment: "")
     }
 }

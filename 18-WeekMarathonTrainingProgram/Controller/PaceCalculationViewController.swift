@@ -10,11 +10,17 @@ import UIKit
 
 class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
 
+    
+    @IBOutlet weak var distanceTitleLabel: UILabel!
+    @IBOutlet weak var kmLabel: UILabel!
+    @IBOutlet weak var timeTitleLabel: UILabel!
     @IBOutlet weak var distanceTextField: UITextField!
     @IBOutlet weak var hourTextField: UITextField!
     @IBOutlet weak var minuteTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var suggestionLabel: UILabel!
+    @IBOutlet weak var calculateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +29,23 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
         minuteTextField.delegate = self
         secondTextField.delegate = self
         navigationSetUp(target: self)
-        self.navigationItem.title = "Pace Calculation"
+        self.navigationItem.title = NSLocalizedString("PACE_CALCULATION", comment: "")
+        setUpUI()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         self.view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
+    }
+    
+    func setUpUI() {
+        distanceTitleLabel.text = NSLocalizedString("DISTANCE", comment: "")
+        kmLabel.text = NSLocalizedString("KM", comment: "")
+        timeTitleLabel.text = NSLocalizedString("TIME", comment: "")
+        suggestionLabel.text = NSLocalizedString("SUGGESTION_LABEL", comment: "")
+        calculateButton.setTitle(NSLocalizedString("CALCULATE", comment: ""), for: .normal)
+        cancelButton.setTitle(NSLocalizedString("CANCEL", comment: ""), for: .normal)
+        hourTextField.placeholder = NSLocalizedString("HOUR", comment: "")
+        minuteTextField.placeholder = NSLocalizedString("MINUTE", comment: "")
+        secondTextField.placeholder = NSLocalizedString("SECOND", comment: "")
     }
     
     
@@ -52,8 +71,8 @@ class PaceCalculationViewController: UIViewController, UITextFieldDelegate {
         }else{
             
             
-            let alert = UIAlertController(title: "輸入錯誤", message: "請填入正確數字\n*空欄位請填0", preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "確定", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: NSLocalizedString("ERROR", comment: ""), message: NSLocalizedString("ERROR_MESSAGE", comment: ""), preferredStyle: .alert)
+            let cancel = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .cancel, handler: nil)
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
             

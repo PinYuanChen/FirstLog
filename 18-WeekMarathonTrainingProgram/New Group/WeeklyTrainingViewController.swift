@@ -38,7 +38,7 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "DAY\(section+1)"
+        return dayTrain(day: section+1)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -104,6 +104,11 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
         } catch {
             print("There is no existing track.")
         }
+    }
+    
+    func dayTrain(day:Int) -> String {
+        var dayString = NSLocalizedString("DAY", comment: "")
+        return dayString.replacingOccurrences(of: "{0}", with: "\(day)")
     }
 
 }

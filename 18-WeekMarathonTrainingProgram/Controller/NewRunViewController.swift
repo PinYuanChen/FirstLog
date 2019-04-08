@@ -172,6 +172,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     func labelSetUp() {
         targetDistanceLabel.text = runningGoal
         targetPaceLabel.text = getTargetPace(distance: runningGoalInt)
+        completetionLabel.text = NSLocalizedString("COMPLETE_NOT_YET", comment: "")
         if hasRecord {
             //fetch pacxe data from CD
             complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace))

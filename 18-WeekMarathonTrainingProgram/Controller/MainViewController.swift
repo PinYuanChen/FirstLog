@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             tableview.isHidden = true
             createButton.isHidden = false
-            createButton.setTitle("Start", for: .normal)
+            createButton.setTitle(NSLocalizedString("START_BUTTON", comment: ""), for: .normal)
         }
     }
     

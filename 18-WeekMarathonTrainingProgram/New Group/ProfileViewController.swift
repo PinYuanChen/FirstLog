@@ -76,14 +76,14 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func didTappedLogoutButton(_ sender: Any) {
-        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+        let alertController = UIAlertController(title: NSLocalizedString("PROFILE_LOGOUT", comment: ""), message: NSLocalizedString("PROFILE_LOGOUT_MESSAGE", comment: ""), preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .default) { _ in
             FBSDKLoginManager().logOut()
             UserDefaults.standard.removeObject(forKey: "uid")
             self.isLogin = false
             self.reloadData()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil)
         alertController.addAction(okayAction)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
@@ -96,8 +96,8 @@ class ProfileViewController: UIViewController {
     
     @IBAction func didTappedUploadRecordButton(_ sender: Any) {
         guard let uploadDict = prepareUploadData() else {
-            let alert = UIAlertController(title: "No data exist", message: nil, preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "Confirm", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: NSLocalizedString("PROFILE_NO_DATA_EXIST", comment: ""), message: nil, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .cancel, handler: nil)
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
             return
@@ -108,7 +108,7 @@ class ProfileViewController: UIViewController {
         guard let uidString:String = UserDefaults.standard.object(forKey: "uid") as? String else {
             return
         }
-        ProgressHUD.show("Uploading")
+        ProgressHUD.show(NSLocalizedString("PROFILE_UPLOADING", comment: ""))
         let databaseRef = Database.database().reference().child(uidString)
         let storageRef = Storage.storage().reference().child(uidString)
         
@@ -120,17 +120,22 @@ class ProfileViewController: UIViewController {
                 databaseRef.setValue(post)
             }
             ProgressHUD.dismiss()
-            let alert = UIAlertController(title: "資料備份成功!", message: nil, preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let alert = UIAlertController(title: NSLocalizedString("PROFILE_SUCCESS", comment: ""), message: nil, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .cancel, handler: nil)
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     func reloadData () {
-        ProgressHUD.show("Loading")
+        ProgressHUD.show(NSLocalizedString("PROFILE_LOADING", comment: ""))
         loginStackView.isHidden = isLogin
         downloadUploadStackView.isHidden = !isLogin
+        
+        loginFBButton.setTitle(NSLocalizedString("PROFILE_FB_LOGIN", comment: ""), for: .normal)
+        downloadRecordButton.setTitle(NSLocalizedString("PROFILE_DOWNLOD_RECORD", comment: ""), for: .normal)
+        uploadRecordButton.setTitle(NSLocalizedString("PROFILE_UPLOAD_RECORD", comment: ""), for: .normal)
+        logoutButton.setTitle(NSLocalizedString("PROFILE_LOGOUT", comment: ""), for: .normal)
         
         if FBSDKAccessToken.current() != nil {
             fetchProfile()
@@ -156,10 +161,10 @@ class ProfileViewController: UIViewController {
     
     func updateChartData(finishedCount:Double) {
         finishedValue.value = finishedCount
-        finishedValue.label = "finished"
+        finishedValue.label = NSLocalizedString("PROFILE_CHART_FINISHED", comment: "")
         
         unfinishedValue.value = 128.0 - finishedCount
-        unfinishedValue.label = "unfinished"
+        unfinishedValue.label = NSLocalizedString("PROFILE_CHART_UNFINISHED", comment: "")
         
         let numberOfFinishedDataEntries = [finishedValue, unfinishedValue]
         let chartDataSet = PieChartDataSet(values: numberOfFinishedDataEntries, label: nil)
@@ -172,7 +177,7 @@ class ProfileViewController: UIViewController {
     
     //MARK: - FB login
     func facebookLogin(sender: UIButton) {
-        ProgressHUD.show("Loading")
+        ProgressHUD.show(NSLocalizedString("PROFILE_LOADING", comment: ""))
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             ProgressHUD.dismiss()
             if let error = error {
@@ -276,19 +281,19 @@ class ProfileViewController: UIViewController {
                 guard let downloadString = downloadDict["data"] as? String else {
                     return
                 }
-                let alert = UIAlertController(title: "Notice", message: "Your download record might overwrite your local record. Are you sure you want to continue?", preferredStyle: .alert)
-                let okBtn = UIAlertAction(title: "Confirm", style: .default) { _ in
+                let alert = UIAlertController(title: NSLocalizedString("PROFILE_DOWNLOAND_NOTICE", comment: ""), message: NSLocalizedString("PROFILE_DOWNLOAD_WARNING", comment: ""), preferredStyle: .alert)
+                let okBtn = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .default) { _ in
                     self.removeExistLocalData()
                     self.downloadFirebaseRecord(urlString: downloadString)
                 }
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancel = UIAlertAction(title: NSLocalizedString("CANCEL", comment: ""), style: .cancel, handler: nil)
                 alert.addAction(okBtn)
                 alert.addAction(cancel)
                 self.present(alert, animated: true, completion: nil)
                 
             }else{
-                let alert = UIAlertController(title: "No data exist", message: nil, preferredStyle: .alert)
-                let cancel = UIAlertAction(title: "Confirm", style: .cancel, handler: nil)
+                let alert = UIAlertController(title: NSLocalizedString("PROFILE_NO_DATA_EXIST", comment: ""), message: nil, preferredStyle: .alert)
+                let cancel = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .cancel, handler: nil)
                 alert.addAction(cancel)
                 self.present(alert, animated: true, completion: nil)
             }
@@ -296,7 +301,7 @@ class ProfileViewController: UIViewController {
     }
     
     func downloadFirebaseRecord(urlString:String) {
-        ProgressHUD.show("Downloading")
+        ProgressHUD.show(NSLocalizedString("PROFILE_DOWNLOADING", comment: ""))
         if let downloadURL = URL(string:urlString) {
             URLSession.shared.dataTask(with: downloadURL, completionHandler: { [weak self](data, response, error) in
                 if error != nil {
@@ -376,8 +381,8 @@ class ProfileViewController: UIViewController {
     }
     
     func saveSuccessAlert() {
-        let alert = UIAlertController(title: "資料下載成功!", message: nil, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: NSLocalizedString("PROFILE_SUCCESS", comment: ""), message: nil, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: NSLocalizedString("CONFIRM", comment: ""), style: .cancel, handler: nil)
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
     }

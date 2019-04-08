@@ -13,9 +13,74 @@
 
 //MARK: - Main View Controller
 "FIRST_TIME_DESCRIPTION" = "請按下方的按鈕來建立訓練計畫!";
+"START_BUTTON" = "開始";
 
+//MARK: Pace calculation
+"DISTANCE" = "距離";
+"TIME" = "時間";
+"PACE_CALCULATION" = "配速計算";
+"OPTIONAL" = "選填";
+"ERROR" = "錯誤";
+"ERROR_MESSAGE" = "請填入正確數字\n如為空白請填0";
+"SUGGESTION_LABEL" = "建議填入10公里(或以上)所花的時間。";
+"CALCULATE" = "計算";
+
+//MARK: Pace result
+"PACE_RESULT_TITLE" = "配速結果";
+"SHORT_TEMPO_RUN" = "短中跑";
+"MID_TEMPO_RUN" = "中中跑";
+"LONG_TEMPO_RUN" = "長中跑";
+"LONG_RUN" = "長跑";
+
+//MARK: Training program
+"DAY" = "第{0}天";
 "WEEK" = "第{0}週";
+"HOUR" = "時";
 "MINUTE" = "分";
 "SECOND" = "秒";
 "METER" = "公尺";
 "KM" = "公里";
+"START" = "開始";
+"STOP" = "停止";
+"DELETE" = "刪除";
+"COMPLETE_NOT_YET" = "無";
+"COMPLETE_PASS" = "通過";
+"COMPLETE_FAIL" = "失敗";
+"CLOSE" = "關閉";
+"DELETE_WARN_TITLE" = "刪除紀錄";
+"DELETE_WARN_MESSAGE" = "你確定想要刪除此項紀錄?";
+"CONFIRM" = "確定";
+"CANCEL" = "取消";
+"QUIT" = "離開";
+"STOP_WARN_MESSAGE" = "你尚未完成此次訓練，你確定要離開或繼續訓練?";
+"LOCATION_SERVICE_TITLE" = "開啟位置資訊";
+"LOCATION_SERVICE_MESSAGE" = "如要使用app的追蹤功能，請至「設定」開啟權限。";
+"SETTINGS" = "設定";
+
+//MARK: Profile
+"PROFILE_FB_LOGIN" = "使用FB登入";
+"PROFILE_DOWNLOD_RECORD" = "下載紀錄";
+"PROFILE_UPLOAD_RECORD" = "上傳紀錄";
+"PROFILE_LOGOUT" = "登出";
+"PROFILE_CHART_FINISHED" = "已完成";
+"PROFILE_CHART_UNFINISHED" = "未完成";
+"PROFILE_LOADING" = "載入中";
+"PROFILE_NO_DATA_EXIST" = "無資料存在";
+"PROFILE_DOWNLOAND_NOTICE" = "注意";
+"PROFILE_DOWNLOAD_WARNING" = "你下載的紀錄將會覆蓋掉本地的資料，你確定要繼續嗎？";
+"PROFILE_DOWNLOADING" = "下載中";
+"PROFILE_UPLOADING" = "上傳中";
+"PROFILE_LOGOUT_MESSAGE" = "你確定要登出?";
+"PROFILE_SUCCESS" = "成功";
+
+//MARK: FAQ
+"FAQ_WHAT_IS_THIS" = "這是什麼計劃?";
+"FAQ_ON_WEEK_16" = "我該在第十六週做什麼?";
+"FAQ_TIME_REST" = "當我做多組的跑步訓練時，間隔休息要多久?";
+"FAQ_MISS_RUN" = "如果錯過訓練了，我該補跑嗎?";
+"FAQ_ELSE_TRAININGS" = "一週跑三次就能應付馬拉松賽事嗎? ";
+"FAQ_WHAT_IS_THIS_A" = "此計畫是由富曼跑步及科學訓練中心(The Furman Institute of Running and Scientific Training，簡稱FIRST)所規劃，並刊登在美國權威跑步雜誌Runner's World上。作者Amby Burfoot是知名美國跑者，曾贏得1968年的波士頓馬拉松大賽。目前為止富曼跑步計畫以幫助許多人提升了他們的跑步成績。";
+"FAQ_ON_WEEK_16_A" = "完整的計畫有16週。在第16週的三天訓練裡，第一天是30分鐘輕鬆跑，第二天是20分鐘輕鬆跑，最後一天就是你的馬拉松比賽日。";
+"FAQ_TIME_REST_A" = "組間休息可以分為時間(例如90秒的走路或慢跑恢復)或距離(例如400公尺的走路或慢跑)。視你的身體狀況來決定是要走或跑一段固定的時間或距離。";
+"FAQ_MISS_RUN_A" = "你無法補跑你已經錯過的訓練項目，而且你不應該增加你的訓練量來追上進度。如果你因為輕微的感冒而錯過訓練，也許你可以很快地回復並投入訓練，但如果你受了傷，就應該終止訓練直到完全恢復。";
+"FAQ_ELSE_TRAININGS_A" = "不能。你每週還需額外進行兩次的交叉訓練，這是訓練計畫中相當重要的一部分。我們推薦有氧訓練，像是飛輪、划船、橢圓機之類的，來增進你的跑步與心肺能力。訓練的強度與時間應與你的跑步訓練相同。";

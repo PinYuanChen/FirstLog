@@ -161,11 +161,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="oAr-3A-QaU"/>
                     <connections>
+                        <outlet property="calculateButton" destination="Xis-Cv-ZZb" id="Qeg-AR-Omy"/>
+                        <outlet property="cancelButton" destination="4dc-Ob-WRG" id="RIX-p8-oeK"/>
                         <outlet property="distanceTextField" destination="Pae-1x-F6T" id="3bz-Fh-bUT"/>
+                        <outlet property="distanceTitleLabel" destination="gYd-qc-ecy" id="tCY-77-lnO"/>
                         <outlet property="hourTextField" destination="RDt-bz-BBH" id="3qK-6g-TOg"/>
+                        <outlet property="kmLabel" destination="hus-m4-guS" id="XL3-es-jw0"/>
                         <outlet property="minuteTextField" destination="x26-vq-bdh" id="ioW-6V-bsf"/>
                         <outlet property="secondTextField" destination="YLT-Bn-LRd" id="v11-Yp-m2l"/>
                         <outlet property="suggestionLabel" destination="5Qs-59-VqT" id="dDC-9t-wd6"/>
+                        <outlet property="timeTitleLabel" destination="n2z-IX-QlE" id="YR7-vp-AtM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4GA-1a-pDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,14 +342,19 @@
                     <navigationItem key="navigationItem" id="bhN-cX-Qlh"/>
                     <connections>
                         <outlet property="cancelButton" destination="22e-bv-Ysv" id="ZOo-oS-yiC"/>
+                        <outlet property="confirmButton" destination="14J-2I-052" id="XRs-W7-Sbu"/>
                         <outlet property="longRunLabel" destination="aIu-Sb-0a3" id="825-GY-ofk"/>
+                        <outlet property="longRunTitle" destination="0FV-dY-Q8c" id="I2m-Bf-1RN"/>
                         <outlet property="longTempoRunLabel" destination="ozx-va-3jN" id="5Lu-SF-9zy"/>
+                        <outlet property="longTempoRunTitle" destination="WhW-Zt-DlN" id="NXm-W9-8Cq"/>
                         <outlet property="midTempoRunLabel" destination="Bx6-X9-mLK" id="4UE-TT-l6V"/>
+                        <outlet property="midTempoRunTitle" destination="ASD-RN-tz4" id="gbN-oe-FCM"/>
                         <outlet property="pace1200mLabel" destination="U27-fO-8ZO" id="NFL-5F-aSz"/>
                         <outlet property="pace1600mLabel" destination="jZ3-m6-LPh" id="UkH-6I-mp8"/>
                         <outlet property="pace400mLabel" destination="vkT-t2-4Pz" id="KiG-oV-3ie"/>
                         <outlet property="pace800mLabel" destination="04i-kH-uLc" id="cVW-o8-riJ"/>
                         <outlet property="shortTempoRunLabel" destination="itB-lB-XIP" id="850-hZ-Hld"/>
+                        <outlet property="shortTempoRunTitile" destination="mVY-5d-TxU" id="kwS-E9-i1i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gC-d6-SPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -448,7 +458,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-hn-YXR" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="376" width="335" height="222.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

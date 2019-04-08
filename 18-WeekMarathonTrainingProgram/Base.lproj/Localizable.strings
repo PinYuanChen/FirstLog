@@ -13,6 +13,24 @@
 
 //MARK: Main View Controller
 "FIRST_TIME_DESCRIPTION" = "Create your marathon training program by pressing button below!";
+"START_BUTTON" = "Start";
+
+//MARK: Pace calculation
+"DISTANCE" = "Distance";
+"TIME" = "Time";
+"PACE_CALCULATION" = "Pace Calculation";
+"OPTIONAL" = "Optional";
+"ERROR" = "Error";
+"ERROR_MESSAGE" = "Please fill in correct numbers.\nType zero if it is blank.";
+"SUGGESTION_LABEL" = "It is suggested that you fill in your duration time with more than 10km.";
+"CALCULATE" = "Calculate";
+
+//MARK: Pace result
+"PACE_RESULT_TITLE" = "Pace detail";
+"SHORT_TEMPO_RUN" = "Short tempo run";
+"MID_TEMPO_RUN" = "Mid tempo run";
+"LONG_TEMPO_RUN" = "Long tempo run";
+"LONG_RUN" = "Long run";
 
 //MARK: Training program
 "WEEK" = "Week {0}";
@@ -40,18 +58,20 @@
 
 
 //MARK: Profile
-"PROFILE_FB_LOGIN" = "";
-"PROFILE_DOWNLOD_RECORD" = "";
-"PROFILE_UPLOAD_RECORD" = "";
-"PROFILE_CHART_FINISHED" = "";
-"PROFILE_CHART_UNFINISHED" = "";
-"PROFILE_LOADING" = "";
-"PROFILE_DOWNLOAD_NO_DATA_EXIST" = "";
-"PROFILE_DOWNLOAND_NOTICE" = "";
-"PROFILE_DOWNLOAD_WARNING" = "";
-"PROFILE_DOWNLOADING" = "";
-"PROFILE_UPLOAD_NO_DATA_EXIST" = "";
-"PROFILE_UPLOAD_SUCCESS" = "";
+"PROFILE_FB_LOGIN" = "Login with FB";
+"PROFILE_DOWNLOD_RECORD" = "Download record";
+"PROFILE_UPLOAD_RECORD" = "Upload record";
+"PROFILE_LOGOUT" = "Log out";
+"PROFILE_CHART_FINISHED" = "Finished";
+"PROFILE_CHART_UNFINISHED" = "Unfinished";
+"PROFILE_LOADING" = "Loading";
+"PROFILE_NO_DATA_EXIST" = "No data exist";
+"PROFILE_DOWNLOAND_NOTICE" = "Notice";
+"PROFILE_DOWNLOAD_WARNING" = "Your download record might overwrite your local record. Are you sure you want to continue?";
+"PROFILE_DOWNLOADING" = "Downloading";
+"PROFILE_UPLOADING" = "Uploading";
+"PROFILE_LOGOUT_MESSAGE" = "Are you sure you want to log out?";
+"PROFILE_SUCCESS" = "Success";
 
 //MARK: FAQ
 "FAQ_WHAT_IS_THIS" = "What is this program?";
