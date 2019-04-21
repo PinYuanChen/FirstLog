@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import HealthKit
 import CoreData
 
 public protocol NewRunViewControllerProtocol:AnyObject {
@@ -18,6 +17,12 @@ public protocol NewRunViewControllerProtocol:AnyObject {
 
 class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var targetDistanceTitleLabel: UILabel!
+    @IBOutlet weak var targetPaceTitleLabel: UILabel!
+    @IBOutlet weak var completeTitleLabel: UILabel!
+    @IBOutlet weak var distanceTitleLabel: UILabel!
+    @IBOutlet weak var durationTitleLabel: UILabel!
+    @IBOutlet weak var paceTitleLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var targetDistanceLabel: UILabel!
     @IBOutlet weak var targetPaceLabel: UILabel!
@@ -170,9 +175,16 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func labelSetUp() {
+        targetDistanceTitleLabel.text = NSLocalizedString("TARGET_DISTANCE", comment: "")
         targetDistanceLabel.text = runningGoal
+        targetPaceTitleLabel.text = NSLocalizedString("TARGET_PACE", comment: "")
         targetPaceLabel.text = getTargetPace(distance: runningGoalInt)
+        completeTitleLabel.text = NSLocalizedString("COMPLETE", comment: "")
         completetionLabel.text = NSLocalizedString("COMPLETE_NOT_YET", comment: "")
+        distanceTitleLabel.text = NSLocalizedString("DISTANCE", comment: "")
+        durationTitleLabel.text = NSLocalizedString("DURATION", comment: "")
+        paceTitleLabel.text = NSLocalizedString("PACE", comment: "")
+        
         if hasRecord {
             //fetch pacxe data from CD
             complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace))
@@ -200,6 +212,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         } else {
             runButton.setTitle(NSLocalizedString("START", comment: ""), for: .normal)
         }
+        runButton.backgroundColor = hasRecord ? .red : NAVIGATIONBARCOLOR
     }
     
     func mapSetUp() {
@@ -364,11 +377,11 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         seconds += 1
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: Int(seconds))
-        let secondsQuantity = HKQuantity(unit: HKUnit.second(), doubleValue: Double(s))
-        let minutesQuantity = HKQuantity(unit: HKUnit.minute(), doubleValue: Double(m))
-        let hoursQuantity = HKQuantity(unit: HKUnit.hour(), doubleValue: Double(h))
+        let secondsQuantity = "\(s)"
+        let minutesQuantity = "\(m)"
+        let hoursQuantity = "\(h)"
         durationLabel.text = durationFormatter(hour: hoursQuantity.description, minute: minutesQuantity.description, second: secondsQuantity.description)
-        let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: Double(distanceCount))
+        let distanceQuantity = "\(distanceCount)\(NSLocalizedString("METER", comment: ""))"
         currentDistanceLabel.text = "\(distanceQuantity.description) "
         guard !(instantPace.isNaN || instantPace.isInfinite) else {
             print("illegal value")

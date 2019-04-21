@@ -22,7 +22,7 @@
 "OPTIONAL" = "Optional";
 "ERROR" = "Error";
 "ERROR_MESSAGE" = "Please fill in correct numbers.\nType zero if it is blank.";
-"SUGGESTION_LABEL" = "It is suggested that you fill in your duration time with more than 10km.";
+"SUGGESTION_LABEL" = "The calculator will show how fast your pace should be in the different components of a training week. You are supposed to run at least 10km continuously.";
 "CALCULATE" = "Calculate";
 
 //MARK: Pace result
@@ -56,6 +56,12 @@
 "LOCATION_SERVICE_TITLE" = "Turn on Location Service";
 "LOCATION_SERVICE_MESSAGE" = "To use location tracking feature of the app, please turn on the location service from the Settings app.";
 "SETTINGS" = "Settings";
+"TARGET_DISTANCE" = "Target distance";
+"TARGET_PACE" = "Target pace";
+"COMPLETE" = "Complete";
+"DISTANCE" = "Distance";
+"DURATION" = "Duration";
+"PACE" = "Pace";
 
 //MARK: Profile
 "PROFILE_FB_LOGIN" = "Login with FB";

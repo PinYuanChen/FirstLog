@@ -31,7 +31,6 @@
 		187CC5A922143EBB00B3E847 /* ProgramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 187CC5A722143EBB00B3E847 /* ProgramModel.xcdatamodeld */; };
 		18B9F1702243D71900CD6696 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B9F16F2243D71900CD6696 /* HeaderView.swift */; };
 		18B9F1722243D72A00CD6696 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B9F1712243D72A00CD6696 /* HeaderView.xib */; };
-		18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BE31E22228717E009672F5 /* HealthKit.framework */; };
 		18C61A6022425ABE002634B2 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C61A5F22425ABE002634B2 /* InfoTableViewCell.swift */; };
 		18C71F8922104868007A7FBF /* ProgramListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C71F8822104868007A7FBF /* ProgramListTableViewCell.swift */; };
 		18EBEADB2237FA0A0091C3EC /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EBEAD92237FA0A0091C3EC /* AnswerTableViewCell.swift */; };
@@ -87,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18BE31E32228717E009672F5 /* HealthKit.framework in Frameworks */,
 				180BC186221ED9D300165916 /* CoreLocation.framework in Frameworks */,
 				180BC184221ED9C700165916 /* MapKit.framework in Frameworks */,
 				44E9A16ECDC5BA7061D322F5 /* Pods_18_WeekMarathonTrainingProgram.framework in Frameworks */,

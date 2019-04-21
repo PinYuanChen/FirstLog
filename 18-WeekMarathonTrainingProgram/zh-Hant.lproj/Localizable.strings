@@ -22,7 +22,7 @@
 "OPTIONAL" = "選填";
 "ERROR" = "錯誤";
 "ERROR_MESSAGE" = "請填入正確數字\n如為空白請填0";
-"SUGGESTION_LABEL" = "建議填入10公里(或以上)所花的時間。";
+"SUGGESTION_LABEL" = "計算你在不同距離訓練的配速。你應該要具備至少連續跑10公里的基本能力";
 "CALCULATE" = "計算";
 
 //MARK: Pace result
@@ -56,6 +56,12 @@
 "LOCATION_SERVICE_TITLE" = "開啟位置資訊";
 "LOCATION_SERVICE_MESSAGE" = "如要使用app的追蹤功能，請至「設定」開啟權限。";
 "SETTINGS" = "設定";
+"TARGET_DISTANCE" = "目標距離";
+"TARGET_PACE" = "目標配速";
+"COMPLETE" = "完成";
+"DISTANCE" = "距離";
+"DURATION" = "時間";
+"PACE" = "配速";
 
 //MARK: Profile
 "PROFILE_FB_LOGIN" = "使用FB登入";

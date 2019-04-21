@@ -177,9 +177,8 @@ class ProfileViewController: UIViewController {
     
     //MARK: - FB login
     func facebookLogin(sender: UIButton) {
-        ProgressHUD.show(NSLocalizedString("PROFILE_LOADING", comment: ""))
+        
         FBSDKLoginManager().logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
-            ProgressHUD.dismiss()
             if let error = error {
                 print("Failed to login: \(error.localizedDescription)")
                 return

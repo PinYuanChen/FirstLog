@@ -1002,14 +1002,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="70O-iu-Y53"/>
                     <connections>
+                        <outlet property="completeTitleLabel" destination="vND-4r-Ser" id="ii5-6B-BsP"/>
                         <outlet property="completetionLabel" destination="5jp-fv-orw" id="RQG-6l-5t7"/>
                         <outlet property="currentDistanceLabel" destination="ErT-Nq-x7e" id="Qh1-SE-o7l"/>
                         <outlet property="currentPaceLabel" destination="Upv-Xm-sFk" id="rlf-FJ-MNh"/>
+                        <outlet property="distanceTitleLabel" destination="Qeb-SA-yrt" id="3EC-fQ-Ztb"/>
                         <outlet property="durationLabel" destination="Eoz-OQ-b2j" id="KkL-ZB-BDB"/>
+                        <outlet property="durationTitleLabel" destination="a8l-6A-C51" id="ILF-Le-dBd"/>
                         <outlet property="mapView" destination="bHV-fe-THA" id="6Q6-kP-w5n"/>
+                        <outlet property="paceTitleLabel" destination="BUd-aP-MnN" id="aKN-7s-fJu"/>
                         <outlet property="runButton" destination="LrR-VP-MnK" id="l9i-Q7-TKj"/>
                         <outlet property="targetDistanceLabel" destination="stv-3b-9wj" id="6d3-wu-qwG"/>
+                        <outlet property="targetDistanceTitleLabel" destination="X34-fC-RN3" id="aAh-yn-qJN"/>
                         <outlet property="targetPaceLabel" destination="hok-VP-e3p" id="URQ-Nk-kWc"/>
+                        <outlet property="targetPaceTitleLabel" destination="ofk-S1-vlz" id="XVa-rd-3Yx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6h-b4-f9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
