@@ -816,7 +816,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bHV-fe-THA">
-                                <rect key="frame" x="0.0" y="64" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="300"/>
                                 <connections>
                                     <outlet property="delegate" destination="M1l-hh-1YG" id="2Tv-ln-hSL"/>
                                 </connections>
@@ -836,7 +836,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O2z-Yv-2rf">
-                                <rect key="frame" x="10" y="407.5" width="355" height="204.5"/>
+                                <rect key="frame" x="10" y="374" width="355" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="y4n-oH-bwo" detailTextLabel="RhL-Z0-x7J" rowHeight="20" style="IBUITableViewCellStyleValue1" id="S70-O4-gtQ">
@@ -877,7 +877,7 @@
                             <constraint firstItem="5dj-a0-A8H" firstAttribute="bottom" secondItem="LrR-VP-MnK" secondAttribute="bottom" constant="15" id="frk-80-W22"/>
                             <constraint firstItem="bHV-fe-THA" firstAttribute="top" secondItem="5dj-a0-A8H" secondAttribute="top" id="grA-E0-pTr"/>
                             <constraint firstItem="bHV-fe-THA" firstAttribute="trailing" secondItem="5dj-a0-A8H" secondAttribute="trailing" id="rGD-lU-ciA"/>
-                            <constraint firstItem="bHV-fe-THA" firstAttribute="height" secondItem="mc4-hd-LLp" secondAttribute="height" multiplier="0.5" id="tOz-3l-EK3"/>
+                            <constraint firstItem="bHV-fe-THA" firstAttribute="height" secondItem="mc4-hd-LLp" secondAttribute="height" multiplier="0.45" id="tOz-3l-EK3"/>
                             <constraint firstItem="5dj-a0-A8H" firstAttribute="trailing" secondItem="O2z-Yv-2rf" secondAttribute="trailing" constant="10" id="uEN-zy-jOT"/>
                             <constraint firstItem="O2z-Yv-2rf" firstAttribute="top" secondItem="bHV-fe-THA" secondAttribute="bottom" constant="10" id="vI9-dv-yCM"/>
                             <constraint firstItem="LrR-VP-MnK" firstAttribute="top" secondItem="O2z-Yv-2rf" secondAttribute="bottom" constant="10" id="wo3-D0-hfL"/>

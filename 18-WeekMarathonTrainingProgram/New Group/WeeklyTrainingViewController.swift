@@ -20,7 +20,6 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tableview.layer.cornerRadius = 8
     }
     
     override func viewWillAppear(_ animated: Bool) {

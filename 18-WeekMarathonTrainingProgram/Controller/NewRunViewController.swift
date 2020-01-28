@@ -72,6 +72,8 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         self.navigationItem.rightBarButtonItem = rightCancelButton
         mapSetUp()
         resultTableView.layer.cornerRadius = 8
+        resultTableView.showsVerticalScrollIndicator = false
+        resultTableView.showsHorizontalScrollIndicator = false
     }
     
     
@@ -208,7 +210,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         } else {
             runButton.setTitle(NSLocalizedString("START", comment: ""), for: .normal)
         }
-        runButton.backgroundColor = hasRecord ? .red : NAVIGATIONBARCOLOR
     }
     
     func mapSetUp() {

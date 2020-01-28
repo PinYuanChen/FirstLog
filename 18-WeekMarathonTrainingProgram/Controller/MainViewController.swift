@@ -19,9 +19,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = NSLocalizedString("FIRST_TIME_DESCRIPTION", comment: "")
-        tableview.layer.cornerRadius = 8
-        tableview.showsVerticalScrollIndicator = false
-        tableview.showsHorizontalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
