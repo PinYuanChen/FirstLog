@@ -11,17 +11,14 @@ import UIKit
 class ProgramListTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var programStatus: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        cellBackgroundView.layer.shadowColor = UIColor.lightGray.cgColor
-        cellBackgroundView.layer.shadowOpacity = 0.8
-        cellBackgroundView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        cellBackgroundView.layer.shadowRadius = 2
+        imgView.image = UIImage(named: "calendar-page-empty")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

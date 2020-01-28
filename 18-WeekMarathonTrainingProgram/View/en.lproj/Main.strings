@@ -1,0 +1,165 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "04i-kH-uLc"; */
+"04i-kH-uLc.text" = "Label";
+
+/* Class = "UILabel"; text = "Long Run"; ObjectID = "0FV-dY-Q8c"; */
+"0FV-dY-Q8c.text" = "Long Run";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "14J-2I-052"; */
+"14J-2I-052.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "status"; ObjectID = "1Cv-wS-gyN"; */
+"1Cv-wS-gyN.text" = "status";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "22e-bv-Ysv"; */
+"22e-bv-Ysv.normalTitle" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Cacel"; ObjectID = "4dc-Ob-WRG"; */
+"4dc-Ob-WRG.normalTitle" = "Cacel";
+
+/* Class = "UILabel"; text = "suggestion"; ObjectID = "5Qs-59-VqT"; */
+"5Qs-59-VqT.text" = "suggestion";
+
+/* Class = "UILabel"; text = "NO"; ObjectID = "5jp-fv-orw"; */
+"5jp-fv-orw.text" = "NO";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "64W-Ur-1uE"; */
+"64W-Ur-1uE.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Download record"; ObjectID = "987-Ok-G2g"; */
+"987-Ok-G2g.normalTitle" = "Download record";
+
+/* Class = "UILabel"; text = "Mid Tempo Run"; ObjectID = "ASD-RN-tz4"; */
+"ASD-RN-tz4.text" = "Mid Tempo Run";
+
+/* Class = "UILabel"; text = "pace"; ObjectID = "BUd-aP-MnN"; */
+"BUd-aP-MnN.text" = "pace";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Bx6-X9-mLK"; */
+"Bx6-X9-mLK.text" = "Label";
+
+/* Class = "UILabel"; text = "800m"; ObjectID = "CIo-rC-qbp"; */
+"CIo-rC-qbp.text" = "800m";
+
+/* Class = "UILabel"; text = "                "; ObjectID = "Eoz-OQ-b2j"; */
+"Eoz-OQ-b2j.text" = "                ";
+
+/* Class = "UILabel"; text = "          "; ObjectID = "ErT-Nq-x7e"; */
+"ErT-Nq-x7e.text" = "          ";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "HYZ-ni-dGi"; */
+"HYZ-ni-dGi.normalTitle" = "Logout";
+
+/* Class = "UILabel"; text = "1200m"; ObjectID = "L6v-px-4uB"; */
+"L6v-px-4uB.text" = "1200m";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "LBV-bg-rFg"; */
+"LBV-bg-rFg.text" = ":";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LrR-VP-MnK"; */
+"LrR-VP-MnK.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Distance"; ObjectID = "Qeb-SA-yrt"; */
+"Qeb-SA-yrt.text" = "Distance";
+
+/* Class = "UITextField"; placeholder = "hh"; ObjectID = "RDt-bz-BBH"; */
+"RDt-bz-BBH.placeholder" = "hh";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "U27-fO-8ZO"; */
+"U27-fO-8ZO.text" = "Label";
+
+/* Class = "UILabel"; text = "           "; ObjectID = "Upv-Xm-sFk"; */
+"Upv-Xm-sFk.text" = "           ";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "VCv-ng-fzn"; */
+"VCv-ng-fzn.normalTitle" = "Login with Facebook";
+
+/* Class = "UILabel"; text = "Long Tempo Run"; ObjectID = "WhW-Zt-DlN"; */
+"WhW-Zt-DlN.text" = "Long Tempo Run";
+
+/* Class = "UILabel"; text = "Target Distance"; ObjectID = "X34-fC-RN3"; */
+"X34-fC-RN3.text" = "Target Distance";
+
+/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "Xis-Cv-ZZb"; */
+"Xis-Cv-ZZb.normalTitle" = "Calculate";
+
+/* Class = "UILabel"; text = "Week"; ObjectID = "XxC-xK-sTt"; */
+"XxC-xK-sTt.text" = "Week";
+
+/* Class = "UITextField"; placeholder = "ss"; ObjectID = "YLT-Bn-LRd"; */
+"YLT-Bn-LRd.placeholder" = "ss";
+
+/* Class = "UILabel"; text = "1600m"; ObjectID = "YXF-VY-Rgy"; */
+"YXF-VY-Rgy.text" = "1600m";
+
+/* Class = "UILabel"; text = "duration"; ObjectID = "a8l-6A-C51"; */
+"a8l-6A-C51.text" = "duration";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aIu-Sb-0a3"; */
+"aIu-Sb-0a3.text" = "Label";
+
+/* Class = "UINavigationController"; title = "PaceCalculationNavigationController"; ObjectID = "aSW-3S-KH5"; */
+"aSW-3S-KH5.title" = "PaceCalculationNavigationController";
+
+/* Class = "UIButton"; normalTitle = "Upload record"; ObjectID = "dmE-mf-Xwn"; */
+"dmE-mf-Xwn.normalTitle" = "Upload record";
+
+/* Class = "UIViewController"; title = "PaceCalculationViewController"; ObjectID = "fJO-ip-6nk"; */
+"fJO-ip-6nk.title" = "PaceCalculationViewController";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "foU-fC-jC4"; */
+"foU-fC-jC4.title" = "Item";
+
+/* Class = "UILabel"; text = "Distance"; ObjectID = "gYd-qc-ecy"; */
+"gYd-qc-ecy.text" = "Distance";
+
+/* Class = "UILabel"; text = "Pace"; ObjectID = "hok-VP-e3p"; */
+"hok-VP-e3p.text" = "Pace";
+
+/* Class = "UILabel"; text = "km"; ObjectID = "hus-m4-guS"; */
+"hus-m4-guS.text" = "km";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "itB-lB-XIP"; */
+"itB-lB-XIP.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jZ3-m6-LPh"; */
+"jZ3-m6-LPh.text" = "Label";
+
+/* Class = "UILabel"; text = ":"; ObjectID = "lZU-SG-hOQ"; */
+"lZU-SG-hOQ.text" = ":";
+
+/* Class = "UILabel"; text = "Short Tempo Run"; ObjectID = "mVY-5d-TxU"; */
+"mVY-5d-TxU.text" = "Short Tempo Run";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "n2z-IX-QlE"; */
+"n2z-IX-QlE.text" = "Time";
+
+/* Class = "UILabel"; text = "Target Pace"; ObjectID = "ofk-S1-vlz"; */
+"ofk-S1-vlz.text" = "Target Pace";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ozx-va-3jN"; */
+"ozx-va-3jN.text" = "Label";
+
+/* Class = "UILabel"; text = "Distance"; ObjectID = "stv-3b-9wj"; */
+"stv-3b-9wj.text" = "Distance";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "u75-lu-eEl"; */
+"u75-lu-eEl.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "uCq-wW-hMl"; */
+"uCq-wW-hMl.title" = "Item 2";
+
+/* Class = "UILabel"; text = "Complete"; ObjectID = "vND-4r-Ser"; */
+"vND-4r-Ser.text" = "Complete";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vkT-t2-4Pz"; */
+"vkT-t2-4Pz.text" = "Label";
+
+/* Class = "UILabel"; text = "400m"; ObjectID = "wQm-nR-Rwd"; */
+"wQm-nR-Rwd.text" = "400m";
+
+/* Class = "UITextField"; placeholder = "mm"; ObjectID = "x26-vq-bdh"; */
+"x26-vq-bdh.placeholder" = "mm";
+
+/* Class = "UILabel"; text = "Create your first marathon training program by pressing \"+\" button below!"; ObjectID = "yFK-Vl-5lJ"; */
+"yFK-Vl-5lJ.text" = "Create your first marathon training program by pressing \"+\" button below!";

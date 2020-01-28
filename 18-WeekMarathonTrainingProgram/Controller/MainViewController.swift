@@ -19,6 +19,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = NSLocalizedString("FIRST_TIME_DESCRIPTION", comment: "")
+        tableview.layer.cornerRadius = 8
+        tableview.showsVerticalScrollIndicator = false
+        tableview.showsHorizontalScrollIndicator = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +80,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramListCell", for: indexPath) as! ProgramListTableViewCell
         cell.selectionStyle = .none
-        var weekString = NSLocalizedString("WEEK", comment: "")
+        let weekString = NSLocalizedString("WEEK", comment: "")
         cell.weekLabel.text = weekString.replacingOccurrences(of: "{0}", with: "\(indexPath.row+1)")
         let completion = getCompleteStatus(week: "Week\(indexPath.row+1)", runManager: runDataManager)
         cell.programStatus.text = "\(completion)%"

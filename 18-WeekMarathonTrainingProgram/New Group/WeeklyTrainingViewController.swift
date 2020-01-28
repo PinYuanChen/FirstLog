@@ -11,7 +11,6 @@ import CoreData
 
 class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    
     @IBOutlet weak var tableview: UITableView!
     var trainingArray:[[String]]?
     let runDataManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
@@ -21,6 +20,7 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableview.layer.cornerRadius = 8
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,7 +109,7 @@ class WeeklyTrainingViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func dayTrain(day:Int) -> String {
-        var dayString = NSLocalizedString("DAY", comment: "")
+        let dayString = NSLocalizedString("DAY", comment: "")
         return dayString.replacingOccurrences(of: "{0}", with: "\(day)")
     }
 

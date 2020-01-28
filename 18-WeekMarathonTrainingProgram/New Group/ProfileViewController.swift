@@ -133,9 +133,20 @@ class ProfileViewController: UIViewController {
         downloadUploadStackView.isHidden = !isLogin
         
         loginFBButton.setTitle(NSLocalizedString("PROFILE_FB_LOGIN", comment: ""), for: .normal)
+        loginFBButton.clipsToBounds = true
+        loginFBButton.layer.cornerRadius = 5
+        
         downloadRecordButton.setTitle(NSLocalizedString("PROFILE_DOWNLOD_RECORD", comment: ""), for: .normal)
+        downloadRecordButton.clipsToBounds = true
+        downloadRecordButton.layer.cornerRadius = 5
+        
         uploadRecordButton.setTitle(NSLocalizedString("PROFILE_UPLOAD_RECORD", comment: ""), for: .normal)
+        uploadRecordButton.clipsToBounds = true
+        uploadRecordButton.layer.cornerRadius = 5
+        
         logoutButton.setTitle(NSLocalizedString("PROFILE_LOGOUT", comment: ""), for: .normal)
+        logoutButton.clipsToBounds = true
+        logoutButton.layer.cornerRadius = 5
         
         if FBSDKAccessToken.current() != nil {
             fetchProfile()

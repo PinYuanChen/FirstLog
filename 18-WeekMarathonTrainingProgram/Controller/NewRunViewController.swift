@@ -15,22 +15,12 @@ public protocol NewRunViewControllerProtocol:AnyObject {
     var requestRun:[Run] {get}
 }
 
-class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var targetDistanceTitleLabel: UILabel!
-    @IBOutlet weak var targetPaceTitleLabel: UILabel!
-    @IBOutlet weak var completeTitleLabel: UILabel!
-    @IBOutlet weak var distanceTitleLabel: UILabel!
-    @IBOutlet weak var durationTitleLabel: UILabel!
-    @IBOutlet weak var paceTitleLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var targetDistanceLabel: UILabel!
-    @IBOutlet weak var targetPaceLabel: UILabel!
-    @IBOutlet weak var completetionLabel: UILabel!
-    @IBOutlet weak var currentDistanceLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var currentPaceLabel: UILabel!
     @IBOutlet weak var runButton: UIButton!
+    @IBOutlet weak var resultTableView: UITableView!
+    
     var rightCancelButton:UIBarButtonItem?
     var (hasRecord,complete) = (false,false)
     var timer:Timer?
@@ -49,6 +39,23 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     let runManager = CoreDataManager<Run>(momdFilename: "ProgramModel", entityName: "Run", sortKey: "id")
     let cllocationManager = CoreDataManager<Location>(momdFilename: "ProgramModel", entityName: "Location", sortKey: "id")
+    var aryTitles = [
+        NSLocalizedString("TARGET_DISTANCE", comment: ""),
+        NSLocalizedString("TARGET_PACE", comment: ""),
+        NSLocalizedString("DISTANCE", comment: ""),
+        NSLocalizedString("DURATION", comment: ""),
+        NSLocalizedString("PACE", comment: ""),
+        NSLocalizedString("COMPLETE", comment: "")
+    ]
+    
+    var dicData = [
+        NSLocalizedString("TARGET_DISTANCE", comment: "") : runningGoal,
+        NSLocalizedString("TARGET_PACE", comment: ""): "",
+        NSLocalizedString("DISTANCE", comment: "") : "",
+        NSLocalizedString("DURATION", comment: "") : "",
+        NSLocalizedString("PACE", comment: "") : "",
+        NSLocalizedString("COMPLETE", comment: "") : ""
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,13 +64,14 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             selector: #selector(refreshMapAndData),
             name: Notification.Name("refreshMapAndData"),
             object: nil)
-        labelSetUp()
+        updateData()
         buttonSetUp()
         navigationSetUp(target: self)
         self.navigationItem.title = runningGoal
         rightCancelButton = UIBarButtonItem(title: NSLocalizedString("CLOSE", comment: ""), style: .plain, target: self, action: #selector(didTappedCloseButton))
         self.navigationItem.rightBarButtonItem = rightCancelButton
         mapSetUp()
+        resultTableView.layer.cornerRadius = 8
     }
     
     
@@ -107,11 +115,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                         self.seconds = 0.0
                         self.distanceCount = 0
                         self.instantPace = 0.0
-                        self.currentDistanceLabel.text = ""
-                        self.durationLabel.text = ""
-                        self.currentPaceLabel.text = ""
-                        self.completetionLabel.text = NSLocalizedString("COMPLETE_NOT_YET", comment: "")
-                        self.labelSetUp()
+                        self.updateData()
                         self.buttonSetUp()
                         self.locationDataArray.removeAll()
                         self.mapSetUp()
@@ -139,9 +143,6 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 self.seconds = 0.0
                 self.distanceCount = 0
                 self.instantPace = 0.0
-                self.currentDistanceLabel.text = ""
-                self.durationLabel.text = ""
-                self.currentPaceLabel.text = ""
                 self.buttonSetUp()
                 self.locationDataArray.removeAll()
             }))
@@ -169,39 +170,34 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             mapView.removeOverlay(polyline!)
         }
         
-        labelSetUp()
+        updateData()
         buttonSetUp()
         mapSetUp()
     }
     
-    func labelSetUp() {
-        targetDistanceTitleLabel.text = NSLocalizedString("TARGET_DISTANCE", comment: "")
-        targetDistanceLabel.text = runningGoal
-        targetPaceTitleLabel.text = NSLocalizedString("TARGET_PACE", comment: "")
-        targetPaceLabel.text = getTargetPace(distance: runningGoalInt)
-        completeTitleLabel.text = NSLocalizedString("COMPLETE", comment: "")
-        completetionLabel.text = NSLocalizedString("COMPLETE_NOT_YET", comment: "")
-        distanceTitleLabel.text = NSLocalizedString("DISTANCE", comment: "")
-        durationTitleLabel.text = NSLocalizedString("DURATION", comment: "")
-        paceTitleLabel.text = NSLocalizedString("PACE", comment: "")
+    func updateData() {
+        if ((dicData[NSLocalizedString("TARGET_PACE", comment: "")]) == "") {
+            dicData[NSLocalizedString("TARGET_PACE", comment: "")] = getTargetPace(distance: runningGoalInt)
+        }
         
         if hasRecord {
-            //fetch pacxe data from CD
+            //fetch data from CD
             complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(localDataManager.runItem!.pace))
             if complete {
-                completetionLabel.text = NSLocalizedString("COMPLETE_PASS", comment: "")
+                dicData[NSLocalizedString("COMPLETE", comment: "")] = NSLocalizedString("COMPLETE_PASS", comment: "")
             } else {
-                completetionLabel.text = NSLocalizedString("COMPLETE_FAIL", comment: "")
+                dicData[NSLocalizedString("COMPLETE", comment: "")] = NSLocalizedString("COMPLETE_FAIL", comment: "")
             }
             if requestRun != nil {
                 for item in requestRun! {
-                    currentDistanceLabel.text = item.distance
+                    dicData[NSLocalizedString("DISTANCE", comment: "")] = item.distance
                     let (minute,second) = secondsToMinutesSeconds(seconds: Int(item.pace))
-                    currentPaceLabel.text = "\(minute) \(NSLocalizedString("MINUTE", comment: "")) \(second) \(NSLocalizedString("SECOND", comment: ""))"
-                    durationLabel.text = item.duration
+                    dicData[NSLocalizedString("PACE", comment: "")] = "\(minute) \(NSLocalizedString("MINUTE", comment: "")) \(second) \(NSLocalizedString("SECOND", comment: ""))"
+                    dicData[NSLocalizedString("DURATION", comment: "")] = item.duration
                 }
             }
         }
+        resultTableView.reloadData()
     }
     
     func buttonSetUp() {
@@ -380,15 +376,15 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let secondsQuantity = "\(s)"
         let minutesQuantity = "\(m)"
         let hoursQuantity = "\(h)"
-        durationLabel.text = durationFormatter(hour: hoursQuantity.description, minute: minutesQuantity.description, second: secondsQuantity.description)
+        dicData[NSLocalizedString("DURATION", comment: "")] = durationFormatter(hour: hoursQuantity.description, minute: minutesQuantity.description, second: secondsQuantity.description)
         let distanceQuantity = "\(distanceCount)\(NSLocalizedString("METER", comment: ""))"
-        currentDistanceLabel.text = "\(distanceQuantity.description) "
+        dicData[NSLocalizedString("DISTANCE", comment: "")] = "\(distanceQuantity.description) "
         guard !(instantPace.isNaN || instantPace.isInfinite) else {
             print("illegal value")
             return
         }
         let (minute,second) = secondsToMinutesSeconds(seconds: Int(instantPace))
-        currentPaceLabel.text = "\(minute) \(NSLocalizedString("MINUTE", comment: "")) \(second) \(NSLocalizedString("SECOND", comment: ""))"
+        dicData[NSLocalizedString("PACE", comment: "")] = "\(minute) \(NSLocalizedString("MINUTE", comment: "")) \(second) \(NSLocalizedString("SECOND", comment: ""))"
         if distanceCount >= runningGoalInt {
             stopTimer()
             hasRecord = true
@@ -427,6 +423,7 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 }
             }
         }
+        resultTableView.reloadData()
     }
     
     func fetchDataToRequestRun() {
@@ -542,12 +539,29 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
     }
     
+    //MARK: - TableView DataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UITableViewCell
+        cell.selectionStyle = .none
+        let title = aryTitles[indexPath.row]
+        cell.textLabel?.text = title
+        cell.detailTextLabel?.text = dicData[title]
+        return cell
+    }
+    
     //MARK: - Core Data
     typealias EditDoneHandler = (_ success:Bool,_ resultItem:Run?) -> Void
     func editRun(originalItem:Run?,completion:@escaping EditDoneHandler) {
         var finalItem = originalItem
         if finalItem == nil {
-            //創建一個Run Item
             finalItem = runManager.createItemTo(target: localDataManager.programItem!)
             finalItem?.id = "\(week)\(runSection)\(runRow)"
             localDataManager.programItem?.addToRun(finalItem!)
@@ -555,8 +569,8 @@ class NewRunViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         finalItem?.id = "\(week)\(runSection)\(runRow)"
         finalItem?.week = "Week\(week)"
-        finalItem?.duration = durationLabel.text
-        finalItem?.distance = currentDistanceLabel.text
+        finalItem?.duration = dicData[NSLocalizedString("DURATION", comment: "")]
+        finalItem?.distance = dicData[NSLocalizedString("DISTANCE", comment: "")]
         finalItem?.pace = instantPace
         finalItem?.complete = checkCompletion(distance: runningGoalInt, workoutPace: Int(instantPace))
         completion(true,finalItem)
